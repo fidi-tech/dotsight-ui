@@ -1,0 +1,24 @@
+@import '~@styles/palette.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.result {
+  padding: 45px;
+  border-radius: 20px;
+  border: 1px solid $border;
+  background-color: $border;
+}
+
+.config {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.update {
+  width: fit-content;
+}

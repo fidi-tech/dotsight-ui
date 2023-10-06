@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  gap: 0;
+  vertical-align: middle;
+}
+
+.popover {
+  position: absolute;
+  z-index: 10;
+}
+
+.example {
+  height: auto;
+  width: 10px;
+  display: block;
+  position: relative;
+}

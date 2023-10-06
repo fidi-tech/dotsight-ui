@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  gap: 30px;
+}
+
+.example, .right {
+  flex: 1;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.next {
+  width: fit-content;
+}

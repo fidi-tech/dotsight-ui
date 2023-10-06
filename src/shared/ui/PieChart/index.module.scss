@@ -1,0 +1,21 @@
+.root {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.center {
+  fill: currentColor;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.part {
+  stroke-width: 32;
+  transform-origin: center;
+}

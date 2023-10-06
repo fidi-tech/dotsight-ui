@@ -1,0 +1,46 @@
+@import '~@styles/palette.scss';
+
+.theme-regular {
+  background-color: $brand;
+  color: white;
+}
+
+.root {
+  border-radius: 12px;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 11px 15px;
+  user-select: none;
+  cursor: default;
+  height: 40px;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+
+  &.clickable {
+    cursor: pointer;
+  }
+}
+
+.text {
+  flex: 1;
+  white-space: pre-line;
+  line-height: 1.19;
+}
+
+.icon {
+  display: flex;
+  height: 14px;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    height: 100%;
+  }
+}
+
+.disabled {
+  cursor: default;
+}

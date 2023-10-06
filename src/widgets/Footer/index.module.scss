@@ -1,0 +1,43 @@
+@import '~@styles/palette.scss';
+
+.root {
+  display: flex;
+  font-size: 12px;
+  font-weight: 500;
+  color: $dark;
+  column-gap: 40px;
+  padding: 30px 0;
+}
+
+.icon {
+  color: $dark;
+  display: inline-flex;
+  margin-right: 10px;
+  align-items: center;
+
+  svg {
+    height: 20px;
+  }
+}
+
+.copyright {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.socialWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+
+.social {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: $dark;
+  width: 18px;
+}

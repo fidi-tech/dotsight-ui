@@ -1,0 +1,25 @@
+@import '~@styles/palette.scss';
+
+.root {}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.configuration {
+  border-top: 1px solid $gray;
+  margin-top: 30px;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
