@@ -20,7 +20,7 @@ DotSight-UI operates under the [Apache License](./NOTICE).
 3. Clone this repository.
 4. Navigate to the cloned repository and ```npm ci``` to install the necessary dependencies.
 5. Build the app with ```npm run build```.
-6Initiate the DotSight-UI application by executing ```npm start```.
+6. Initiate the DotSight-UI application by executing ```npm start```.
 
 ## Pages
 ### List of pipelines
