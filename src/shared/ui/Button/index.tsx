@@ -25,7 +25,7 @@ export const Button = ({text, onClick, icon, className, theme = 'regular', iconP
     [styles.clickable]: !disabled && onClick,
   });
   return (
-    <div className={cName} onClick={!disabled ? onClick : undefined} data-e2e={e2e} data-testid={testId}>
+    <div className={cName} onClick={!disabled ? onClick : undefined} data-e2e={e2e} data-testid={testId} role="button">
       {icon && iconPosition === 'Left' && <div className={styles.icon}>{icon}</div>}
       {text && <p className={styles.text}>{text}</p>}
       {icon && iconPosition === 'Right' && <div className={styles.icon}>{icon}</div>}
