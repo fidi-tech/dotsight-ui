@@ -43,13 +43,13 @@ describe('features/dataSourceSelector useDataSourceOptionsForPipeline', () => {
 
   it('maps suggestions into options', () => {
     (selectAll as jest.MockedFn<any>).mockImplementation(() => [
-      {type: 't1'},
-      {type: 't2'},
+      {type: 't1', name: 'n1'},
+      {type: 't2', name: 'n2'},
     ]);
     const {result} = renderHook(() => useDataSourceOptionsForPipeline({pipelineId: '1'}));
     expect(result.current.typeOptions).toEqual([
-      {label: 't1', value: 't1'},
-      {label: 't2', value: 't2'},
+      {label: 'n1', value: 't1'},
+      {label: 'n2', value: 't2'},
     ]);
   });
 

@@ -20,6 +20,7 @@ export const useMapperConfiguration = ({pipelineId, selectedType}: {pipelineId: 
 
   return {
     config,
+    description: selectedMapper?.description,
     configSchema: selectedMapper?.configSchema,
     handleConfigUpdate,
   };

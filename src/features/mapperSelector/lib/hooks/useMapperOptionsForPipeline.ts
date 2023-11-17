@@ -13,7 +13,7 @@ export const useMapperOptionsForPipeline = ({pipelineId}: {pipelineId: PipelineI
 
   const suggestions = useSelector(selectAll);
   const typeOptions = useMemo(
-    () => suggestions.map(suggestion => ({value: suggestion.type, label: suggestion.type})),
+    () => suggestions.map(suggestion => ({value: suggestion.type, label: suggestion.name})),
     [suggestions]
   );
   const onOptionSelect = useCallback((option: Option) => {

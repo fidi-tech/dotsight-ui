@@ -16,8 +16,8 @@ jest.mock('@/entities/pipeline/model/getters', () => ({
 }));
 jest.mock('@/entities/mapperSuggestion/model', () => ({
   selectAll: jest.fn(() => [
-    {type: 's1'},
-    {type: 's2'},
+    {type: 's1', name: 'n1'},
+    {type: 's2', name: 'n2'},
   ]),
 }));
 
@@ -34,8 +34,8 @@ describe('features/mapperSelector useMapperOptionsForPipeline', () => {
       pipelineId: 'pid',
     }));
     expect(result.current.typeOptions).toEqual([
-      {value: 's1', label: 's1'},
-      {value: 's2', label: 's2'},
+      {value: 's1', label: 'n1'},
+      {value: 's2', label: 'n2'},
     ]);
   });
 
