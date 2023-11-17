@@ -14,6 +14,7 @@ export const useDataSourceConfiguration = ({pipelineId, selectedType}: {pipeline
 
   return {
     config: pipelineDatasource?.config,
+    description: selectedDataSource?.description,
     configSchema: selectedDataSource?.configSchema,
   };
 };

@@ -12,7 +12,7 @@ export const useDataSourceOptionsForPipeline = ({pipelineId}: {pipelineId: Pipel
   }, []);
   const suggestions = useSelector(selectAll);
   const typeOptions = useMemo(
-    () => suggestions.map(suggestion => ({value: suggestion.type, label: suggestion.type})),
+    () => suggestions.map(suggestion => ({value: suggestion.type, label: suggestion.name})),
     [suggestions]
   );
 

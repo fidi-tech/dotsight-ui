@@ -13,11 +13,12 @@ const useEnhance = ({pipelineId}: {pipelineId: PipelineId}) => {
     onOptionSelect,
     isDisabled,
   } = useDataSourceOptionsForPipeline({pipelineId});
-  const {config, configSchema} = useDataSourceConfiguration({pipelineId, selectedType});
+  const {description, config, configSchema} = useDataSourceConfiguration({pipelineId, selectedType});
 
   return {
     selectedType,
     typeOptions,
+    description,
     configSchema,
     config,
     onOptionSelect,

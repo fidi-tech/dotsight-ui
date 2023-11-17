@@ -19,6 +19,7 @@ const MapperSelector = ({id}: Props, ref: Ref<any>) => {
     typeOptions,
     isDisabled,
     config,
+    description,
     configSchema,
     handleConfigUpdate,
     formRef,
@@ -32,6 +33,9 @@ const MapperSelector = ({id}: Props, ref: Ref<any>) => {
           <Selector options={typeOptions} selected={selectedType} onSelect={onOptionSelect} isDisabled={isDisabled} />
         </div>
       </div>
+      {description && <div className={styles.description}>
+        {description}
+      </div>}
       {configSchema &&
         <Form
           ref={formRef}

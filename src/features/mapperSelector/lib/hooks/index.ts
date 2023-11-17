@@ -14,7 +14,7 @@ const useEnhance = ({ref, pipelineId}: {ref: Ref<any>, pipelineId: PipelineId}) 
     typeOptions,
     isDisabled,
   } = useMapperOptionsForPipeline({pipelineId});
-  const {config, configSchema, handleConfigUpdate} = useMapperConfiguration({pipelineId, selectedType});
+  const {description, config, configSchema, handleConfigUpdate} = useMapperConfiguration({pipelineId, selectedType});
 
   const {formRef} = useOnNextStep({ref, pipelineId, selectedType, config});
 
@@ -24,6 +24,7 @@ const useEnhance = ({ref, pipelineId}: {ref: Ref<any>, pipelineId: PipelineId}) 
     typeOptions,
     isDisabled,
     config,
+    description,
     configSchema,
     handleConfigUpdate,
     formRef,

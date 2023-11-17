@@ -22,6 +22,7 @@ const DataSourceSelector = ({id}: Props, ref: Ref<any>) => {
     typeOptions,
     selectedType,
     onOptionSelect,
+    description,
     configSchema,
     config,
     isDisabled,
@@ -58,6 +59,9 @@ const DataSourceSelector = ({id}: Props, ref: Ref<any>) => {
         <div>
           <Selector options={typeOptions} selected={selectedType} onSelect={onOptionSelect} isDisabled={isDisabled} />
         </div>
+      </div>
+      <div className={styles.description}>
+        {description}
       </div>
       {configSchema &&
         <Form
