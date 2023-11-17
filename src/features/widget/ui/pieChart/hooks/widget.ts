@@ -11,7 +11,6 @@ const useEnhance = (
   {pipelineId, widgetId, parameters, customization}: CommonWidgetProps<Parameters, Customization>
 ) => {
   const _parameters = useMemo(() => ({
-    ...parameters,
     walletIds: [parameters.walletId],
   }), [parameters])
 
@@ -27,7 +26,7 @@ const useEnhance = (
 
   const items = useMemo(() => {
     return data?.items?.map(item => ({
-      id: item.id,
+      name: item.name,
       value: getAbsoluteMetricValue(item.value, customization.unit),
     })).filter(item => typeof item.value !== 'undefined');
   }, [data, customization.unit]);
@@ -36,20 +35,19 @@ const useEnhance = (
     if (!items) {
       return null;
     }
-    const {order = 'ASC', count = 10} = customization;
+    const {order = 'ASC', count} = customization;
     const sorted = items.slice()
       .filter(item => item.value && item.value > 0)
-      .sort((itemA, itemB) => (itemA.value! - itemB.value!)*(order === 'ASC' ? -1 : 1))
+      .sort((itemA, itemB) => (itemA.value! - itemB.value!)*(order === 'DESC' ? -1 : 1))
       .slice(0, count);
-    const sum = sorted.reduce((acc, item) => { return acc + item.value!; }, 0);
     return sorted.reduce((acc, item, i) => {
       acc.push({
-        id: item.id,
-        percent: item.value! / sum,
+        name: item.name,
+        value: item.value!,
         color: customization.palette![i],
       })
       return acc;
-    }, [] as Array<{id: string, percent: number, color: string}>);
+    }, [] as Array<{name: string, value: number, color: string}>);
   }, [items, customization]);
 
   return {
