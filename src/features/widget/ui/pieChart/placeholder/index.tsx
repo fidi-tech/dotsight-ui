@@ -8,18 +8,18 @@ import styles from './index.module.scss';
 
 const PIE = [
   {
-    id: '1',
-    percent: 0.7,
+    name: 'Unit #1',
+    value: 721,
     color: '#7e8bff',
   },
   {
-    id: '2',
-    percent: 0.2,
+    name: 'Unit #2',
+    value: 2100,
     color: '#79818d',
   },
   {
-    id: '3',
-    percent: 0.1,
+    name: 'Unit #3',
+    value: 139,
     color: '#fafafa',
   }
 ];
