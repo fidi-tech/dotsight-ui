@@ -7,9 +7,10 @@ import {updateDataSourceSuggestions} from './actions';
 
 type Params = {
   pipelineId: PipelineId;
+  entity: string;
 }
 
-export const fetchPipelineDataSourceSuggestions = ({pipelineId}: Params) => async (dispatch: Dispatch) => {
+export const fetchPipelineDataSourceSuggestions = ({pipelineId, entity}: Params) => async (dispatch: Dispatch) => {
   const response = await getPipelineDataSourceSuggestions({id: pipelineId});
-  return dispatch(updateDataSourceSuggestions({data: response.data.walletToken})); // todo walletToken??
+  return dispatch(updateDataSourceSuggestions({data: response.data[entity]}));
 };

@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 
-import {getPipelineDataSources, getPipelineWidgets} from './getters';
+import {getPipelineDataSources, getPipelineMappers, getPipelineWidgets} from './getters';
 import {Pipeline} from './types';
 import {pipelineAdapter} from './adapter';
 
@@ -14,7 +14,17 @@ export const selectDefaultDataSource = createSelector(
   (pipeline: Pipeline | undefined) => pipeline && getPipelineDataSources(pipeline)?.[0],
 );
 
+export const selectMappers = createSelector(
+  selectById,
+  (pipeline: Pipeline | undefined) => pipeline && getPipelineMappers(pipeline),
+)
+
 export const selectDefaultWidgetType = createSelector(
   selectById,
   (pipeline: Pipeline | undefined) => pipeline && getPipelineWidgets(pipeline)?.[0]?.type,
+)
+
+export const selectDefaultWidgetDataShape = createSelector(
+  selectById,
+  (pipeline: Pipeline | undefined) => pipeline && getPipelineWidgets(pipeline)?.[0]?.datashape,
 )

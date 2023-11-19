@@ -13,7 +13,10 @@ export type Pipeline = {
     id: string;
     code: string;
     type: string;
-    config: object;
+    config: {
+      entity: string;
+      [propName: string]: any;
+    };
   }>;
   dataSources: Array<{
     id: string;
