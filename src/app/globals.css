@@ -62,6 +62,13 @@ fieldset {
     border: none;
 }
 
+@font-face {
+    font-family: 'Gilroy-Regular';
+    src: url('/fonts/Gilroy-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
