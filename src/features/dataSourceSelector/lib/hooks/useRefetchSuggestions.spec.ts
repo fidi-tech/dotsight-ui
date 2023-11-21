@@ -1,7 +1,9 @@
+import {renderHook} from '@testing-library/react';
+
 import {
   fetchPipelineDataSourceSuggestions
 } from '@/entities/dataSourceSuggestion/model/fetchPipelineDataSourceSuggestions';
-import {renderHook} from '@testing-library/react';
+
 import {useRefetchSuggestions} from './useRefetchSuggestions';
 
 let mockDispatch = jest.fn(action => action);

@@ -1,10 +1,10 @@
+import {renderHook} from '@testing-library/react';
+
 import {
   fetchWidgetMapperSuggestions
 } from '@/entities/mapperSuggestion/model/fetchWidgetMapperSuggestions';
-import {renderHook} from '@testing-library/react';
+
 import {useRefetchSuggestions} from './useRefetchSuggestions';
-import {selectById} from '@/entities/pipeline/model';
-import {getPipelineWidgets} from '@/entities/pipeline/model/getters';
 
 let mockDispatch = jest.fn(action => action);
 jest.mock('@/infra/providers/redux', () => ({

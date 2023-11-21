@@ -10,6 +10,6 @@ type Params = {
 }
 
 export const fetchPipelineDataSourceSuggestions = ({pipelineId}: Params) => async (dispatch: Dispatch) => {
-  const response = await getPipelineDataSourceSuggestions({id: pipelineId});
-  return dispatch(updateDataSourceSuggestions({data: response.data.walletToken})); // todo walletToken??
+  const {data} = await getPipelineDataSourceSuggestions({id: pipelineId});
+  return dispatch(updateDataSourceSuggestions({data}));
 };

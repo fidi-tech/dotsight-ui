@@ -1,6 +1,7 @@
+import {useEffect} from 'react';
+
 import {PipelineId} from '@/entities/pipeline/model';
 import {useDispatch} from '@/infra/providers/redux';
-import {useEffect} from 'react';
 import {
   fetchPipelineDataSourceSuggestions
 } from '@/entities/dataSourceSuggestion/model/fetchPipelineDataSourceSuggestions';
@@ -8,6 +9,8 @@ import {
 export const useRefetchSuggestions = ({pipelineId}: {pipelineId: PipelineId}) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPipelineDataSourceSuggestions({pipelineId}));
+    dispatch(fetchPipelineDataSourceSuggestions({
+      pipelineId,
+    }));
   }, [dispatch, pipelineId]);
 };
