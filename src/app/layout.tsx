@@ -1,16 +1,11 @@
 'use client'
 
-import cx from 'classnames';
-import { Inter } from 'next/font/google'
-
 import {Providers} from '@/infra/providers';
 import Header from '@/widgets/Header';
 import Footer from '@/widgets/Footer';
 
 import styles from './layout.module.scss';
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({
   children,
@@ -19,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cx(styles.root, inter.className)}>
+      <body className={styles.root}>
         <Providers>
           <div className={styles.container}>
             <Header />
