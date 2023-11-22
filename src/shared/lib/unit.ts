@@ -7,7 +7,7 @@ export const getAbsoluteMetricValue = (value: Value, unitId?: UnitId): number | 
     return value;
   }
   if (typeof value === 'object') {
-    if (!unitId) {
+    if (!unitId || typeof value[unitId] === 'undefined') {
       return Object.values(value)[0];
     }
     return value[unitId];
