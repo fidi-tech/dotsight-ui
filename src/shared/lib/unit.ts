@@ -1,15 +1,17 @@
 import {UnitId} from '@/entities/unit/model';
 
-type Value = number | Record<UnitId, number>;
+type MultiValue = Record<UnitId, number>
+type Value = number | MultiValue;
 
+export function isMetricMultiValue(value: Value): value is MultiValue {
+  return typeof value === 'object';
+}
 export const getAbsoluteMetricValue = (value: Value, unitId?: UnitId): number | undefined => {
-  if (typeof value === 'number') {
-    return value;
-  }
-  if (typeof value === 'object') {
-    if (!unitId || typeof value[unitId] === 'undefined') {
+  if (isMetricMultiValue(value)) {
+    if (!unitId) {
       return Object.values(value)[0];
     }
     return value[unitId];
   }
+  return value;
 }
