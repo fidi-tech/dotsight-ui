@@ -6,7 +6,7 @@ const ObjectFieldTemplate = ({
   properties,
   formData,
 }: ObjectFieldTemplateProps) =>
-  <Grid spacing={6}>
+  <Grid>
     {properties.map((element, index) => {
       if (element.name === 'palette' && !(formData.withMarks && formData.count > 0)) {
         return null;

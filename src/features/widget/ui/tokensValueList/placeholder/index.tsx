@@ -2,19 +2,19 @@ import React from 'react';
 
 import {Table} from '@/shared/ui/Table';
 import {Module} from '@/shared/ui/Module';
-import {formatValue} from '@/entities/value/lib/format';
 import Loader from '@/shared/ui/Loader';
 import ErrorPlaceholder from '@/shared/ui/ErrorPlaceholder';
+import {CURRENCY_FORMATTER} from '@/shared/lib/currency';
 
 import styles from './index.module.scss';
 
 const ROWS = [
-  ['Placeholder 1', formatValue(1568)],
-  ['Placeholder 2', formatValue(1237.2)],
-  ['Placeholder 3', formatValue(420)],
-  ['Placeholder 4', formatValue(57)],
-  ['Placeholder 5', formatValue(22)],
-  ['Other', formatValue(2130)],
+  ['Placeholder 1', CURRENCY_FORMATTER.usd.format(1568)],
+  ['Placeholder 2', CURRENCY_FORMATTER.usd.format(1237.2)],
+  ['Placeholder 3', CURRENCY_FORMATTER.usd.format(420)],
+  ['Placeholder 4', CURRENCY_FORMATTER.usd.format(57)],
+  ['Placeholder 5', CURRENCY_FORMATTER.usd.format(22)],
+  ['Other', CURRENCY_FORMATTER.usd.format(2130)],
 ];
 
 const PALETTE = [
