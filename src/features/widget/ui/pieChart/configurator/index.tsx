@@ -5,7 +5,7 @@ import {TemplatesType} from '@rjsf/utils';
 
 import {ConfiguratorHandle} from '@/entities/widget/lib/widget';
 import ColorInput from '@/shared/ui/ColorInput';
-import ColorArrayFieldTemplate from '@/shared/ColorArrayFieldTemplate';
+import ColorArrayFieldTemplate from '@/shared/ui/ColorArrayFieldTemplate';
 
 import type {Parameters, Customization} from '../params';
 import {useEnhance} from '../hooks/configurator';

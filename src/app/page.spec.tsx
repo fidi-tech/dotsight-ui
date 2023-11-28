@@ -16,6 +16,10 @@ jest.mock('@/widgets/pipelinesList/ui', () => ({
     <div data-testid="pipelines" />
   ),
 }));
+jest.mock('@/features/HOC/withAuth/ui', () => ({
+  withAuth: (component: any) => component,
+}));
+jest.mock('@/features/mainLayout/ui', () => function MainLayout(props: any) { return props.children })
 
 describe('Home', () => {
   it('dispatches fetchPipelines on mount', () => {

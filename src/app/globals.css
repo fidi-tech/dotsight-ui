@@ -26,6 +26,10 @@ dd {
     margin: 0;
 }
 
+html, body {
+    height: 100vh;
+}
+
 body {
     min-height: 100vh;
     scroll-behavior: smooth;

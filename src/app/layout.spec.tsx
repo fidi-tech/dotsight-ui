@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
+
 import RootLayout from './layout';
 
 jest.mock('@/infra/providers', () => ({
@@ -10,8 +11,6 @@ jest.mock('@/infra/providers', () => ({
     </div>
   ),
 }));
-jest.mock('@/widgets/Header');
-jest.mock('@/widgets/Footer');
 
 describe('RootLayout', () => {
   it('renders children wrapped in the Providers', () => {

@@ -1,0 +1,19 @@
+.container {
+  width: 1250px;
+  margin: 0 auto;
+  padding: 26px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  height: 100vh;
+}
+
+.contentWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
