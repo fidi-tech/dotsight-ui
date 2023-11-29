@@ -3,12 +3,15 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://localhost:3000/:path*' // Proxy to Backend
-      }
-    ]
+    if (process.env.NODE_ENV === 'development') {
+      return [
+        {
+          source: '/api/:path*',
+          destination: 'http://localhost:3000/api/:path*' // Proxy to Backend
+        }
+      ];
+    }
+    return [];
   },
   webpack(config) {
     config.resolve.alias = {
