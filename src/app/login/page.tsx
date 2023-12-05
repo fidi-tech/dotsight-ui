@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter, redirect } from "next/navigation"
+import { redirect } from "next/navigation"
 import { getCookie } from 'cookies-next';
 import { useEffect } from 'react';
 
@@ -18,10 +18,9 @@ const Login = () => {
       redirect('/');
     }
   }, [token]);
-  const router = useRouter();
-  const loginGoogle = () => router.push('/api/auth/google');
-  const loginX = () => router.push('/api/auth/twitter');
-  const loginGithub = () => router.push('/api/auth/github');
+  const loginGoogle = () => window.location.assign('/api/auth/google');
+  const loginX = () => window.location.assign('/api/auth/twitter');
+  const loginGithub = () => window.location.assign('/api/auth/github');
   return (
     <div className={styles.root}>
       <div className={styles.header}>

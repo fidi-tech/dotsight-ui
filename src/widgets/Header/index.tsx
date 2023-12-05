@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import {useRouter} from 'next/navigation';
 
 import {Module} from '@/shared/ui/Module';
 import {Button} from '@/shared/ui/Button';
@@ -11,11 +10,7 @@ import {Icons} from '@/shared/ui/icons';
 import styles from './index.module.scss';
 
 const Header = () => {
-  const router = useRouter();
-  const disconnect = () => {
-    router.refresh()
-    router.push('/api/auth/logout');
-  }
+  const disconnect = () => window.location.assign('/api/auth/logout');
   return (
     <Module className={styles.root}>
       <a href="https://fidi.tech" className={styles.badge}>
