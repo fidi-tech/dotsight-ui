@@ -9,6 +9,18 @@
     gap: 20px;
 }
 
+.createModule {
+    max-width: 400px;
+
+    .title {
+        margin-bottom: 10px;
+    }
+
+    .hr {
+        margin: 20px auto;
+    }
+}
+
 .hr {
     height: 1px;
     background-color: $border;

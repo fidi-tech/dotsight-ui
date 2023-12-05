@@ -6,12 +6,13 @@ import { useEffect } from 'react';
 
 import {Module} from '@/shared/ui/Module';
 import {Icons} from '@/shared/ui/icons';
+import {ACCESS_TOKEN} from '@/shared/constants/cookies';
 
 import Button from './components/Button';
 import styles from './index.module.scss';
 
 const Login = () => {
-  const token = getCookie('access_token');
+  const token = getCookie(ACCESS_TOKEN);
   useEffect(() => {
     if (token) {
       redirect('/');

@@ -5,6 +5,11 @@
   color: white;
 }
 
+.theme-muted {
+  background-color: $gray;
+  color: $dark;
+}
+
 .root {
   border-radius: 12px;
   display: inline-flex;

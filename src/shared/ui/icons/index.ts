@@ -1,5 +1,7 @@
 import Database from './database.svg';
+import Disconnect from './disconnect.svg';
 import Discord from './discord.svg';
+import EmptyPipe from './emptyPipe.svg';
 import FlatStack from './flatStack.svg';
 import Github from './github.svg';
 import Google from './google.svg';
@@ -10,7 +12,9 @@ import X from './x.svg';
 
 export const IconNames = {
   Database: 'Database',
+  Disconnect: 'Disconnect',
   Discord: 'Discord',
+  EmptyPipe: 'EmptyPipe',
   FlatStack: 'FlatStack',
   Github: 'Github',
   Google: 'Google',
@@ -24,7 +28,9 @@ export type IconName = typeof IconNames[keyof typeof IconNames];
 
 export const Icons: Record<IconName, any> = {
   [IconNames.Database]: Database,
+  [IconNames.Disconnect]: Disconnect,
   [IconNames.Discord]: Discord,
+  [IconNames.EmptyPipe]: EmptyPipe,
   [IconNames.FlatStack]: FlatStack,
   [IconNames.Github]: Github,
   [IconNames.Google]: Google,
