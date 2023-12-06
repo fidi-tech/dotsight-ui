@@ -11,4 +11,4 @@ export const isDevEnv = NODE_ENV === 'development';
 
 export const isProdEnv = NODE_ENV === 'production';
 
-export const API_URL = isDevEnv ? '/api' : '';
+export const API_URL = '/api';
