@@ -1,0 +1,10 @@
+<svg viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="disconnect">
+<path id="Path 46" d="M6 15L3.5 15C2.11929 15 1 13.8807 1 12.5L1 3.5C1 2.11929 2.11929 1 3.5 1H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="Path 47">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M13 8H6H13Z" fill="currentColor"/>
+<path d="M13 8H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path id="Path 48" d="M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

@@ -1,0 +1,57 @@
+@import '~@styles/palette.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+.header {
+  margin-top: 50px;
+}
+.logo {
+  display: flex;
+  height: 46px;
+  width: 144px;
+  background-image: url('/img/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.module {
+  text-align: center;
+  width: 440px;
+}
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 32px;
+  color: black;
+  margin-top: 20px;
+}
+.text {
+  color: $dark;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  max-width: 256px;
+  margin: 15px auto 25px auto;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dark {
+  background-color: #22262B;
+  border: 1px solid #292D34;
+  color: white;
+}
+.footer {
+  margin-bottom: 30px;
+}

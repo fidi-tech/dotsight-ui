@@ -13,8 +13,8 @@ const Footer = () => (
       <span>FiDi Tech Inc ©{new Date().getFullYear()} - All rights reserved</span>
     </div>
     <div className={styles.socialWrapper}>
-      <a href="https://twitter.com/cryptofidi" target="_blank" className={styles.social}>
-        <Icons.Twitter />
+      <a href="https://x.com/cryptofidi" target="_blank" className={styles.social}>
+        <Icons.X />
       </a>
       <a href="https://t.me/+vxA51osvNrw5NGUx" target="_blank" className={styles.social}>
         <Icons.Telegram />

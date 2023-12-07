@@ -1,5 +1,30 @@
+@import '~@styles/palette.scss';
+
 .root {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.empty {
+  background-color: $gray !important;
+  padding: 40px !important;
+  color: $dark;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
+
+  p {
+    max-width: 212px;
+    text-align: center;
+  }
+
+  svg {
+    width: 128px;
+  }
 }
