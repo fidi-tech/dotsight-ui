@@ -1,13 +1,17 @@
 import React, {createRef, Ref, useImperativeHandle} from 'react';
-
-import {customizationSchema, parametersSchema} from '../params';
 import FormType from '@rjsf/core';
 
-export const useEnhance = ({ref}: {ref: Ref<any>}) => {
+import {PipelineId} from '@/entities/pipeline/model';
+import useParametersSchema from '@/features/widget/lib/useParametersSchema';
+
+import {customizationSchema} from '../params';
+
+export const useEnhance = ({ref, pipelineId}: {ref: Ref<any>, pipelineId: PipelineId}) => {
   const parametersFormRef = createRef<FormType>();
   const customizationFormRef = createRef<FormType>();
   const [parametersFormData, setParametersFormData] = React.useState(null);
   const [customizationFormData, setCustomizationFormData] = React.useState(null);
+  const {parametersSchema} = useParametersSchema({pipelineId});
 
   useImperativeHandle(ref, () => ({
     getConfiguration: () => {

@@ -12,10 +12,6 @@ import {Parameters, Customization} from '../params';
 const useEnhance = (
   {pipelineId, widgetId, parameters, customization}: CommonWidgetProps<Parameters, Customization>
 ) => {
-  const _parameters = useMemo(() => ({
-    ...parameters,
-    walletIds: [parameters.walletId],
-  }), [parameters])
   const {
     data,
     isLoading,
@@ -23,7 +19,7 @@ const useEnhance = (
   } = useWidgetData<DistributionDatashape>({
     pipelineId,
     widgetId,
-    params: _parameters,
+    params: parameters,
   });
 
   const items = useMemo(() => {
