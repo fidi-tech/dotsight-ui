@@ -3,14 +3,17 @@ import {z} from 'zod';
 import {zodToJsonSchema} from 'zod-to-json-schema';
 
 import {modifyArrayLength} from '@/shared/lib/array';
+import {PipelineId} from '@/entities/pipeline/model';
+import useParametersSchema from '@/features/widget/lib/useParametersSchema';
 
-import {customization as _customization, Customization, Parameters, parametersSchema} from '../params';
+import {customization as _customization, Customization, Parameters} from '../params';
 
-export const useEnhance = ({ref}: {ref: Ref<any>}) => {
+export const useEnhance = ({ref, pipelineId}: {ref: Ref<any>, pipelineId: PipelineId}) => {
   const parametersFormRef = createRef<any>();
   const customizationFormRef = createRef<any>();
   const [parametersFormData, setParametersFormData] = useState<Parameters | null>(null);
   const [customizationFormData, setCustomizationFormData] = useState<Customization | null>(null);
+  const {parametersSchema} = useParametersSchema({pipelineId});
 
   const updateCustomizationFormData = useCallback((data: Customization) => {
     if (data.withMarks && data.palette) {

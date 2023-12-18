@@ -3,13 +3,14 @@ import Form from '@rjsf/mui';
 import validator from '@rjsf/validator-ajv8';
 
 import {ConfiguratorHandle} from '@/entities/widget/lib/widget';
+import {PipelineId} from '@/entities/pipeline/model';
 
 import type {Parameters, Customization} from '../params';
 import {useEnhance} from '../hooks/configurator';
 import styles from './index.module.scss';
 
-const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, object>(
-  (_, ref) => {
+const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, {pipelineId: PipelineId}>(
+  ({pipelineId}, ref) => {
     const {
       parametersFormRef,
       parametersSchema,
@@ -19,7 +20,11 @@ const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, o
       customizationSchema,
       customizationFormData,
       setCustomizationFormData,
-    } = useEnhance({ref});
+    } = useEnhance({ref, pipelineId});
+
+    if (!parametersSchema) {
+      return null;
+    }
 
     return (
       <div className={styles.root}>
@@ -27,6 +32,10 @@ const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, o
           ref={parametersFormRef}
           schema={parametersSchema}
           uiSchema={{
+            "ui:options": {
+              title: '',
+              description: '',
+            },
             "ui:submitButtonOptions": {
               "norender": true,
             },
@@ -41,6 +50,10 @@ const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, o
           ref={customizationFormRef}
           schema={customizationSchema}
           uiSchema={{
+            "ui:options": {
+              title: '',
+              description: '',
+            },
             "ui:submitButtonOptions": {
               "norender": true,
             },

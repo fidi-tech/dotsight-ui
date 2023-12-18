@@ -6,16 +6,18 @@ import {TemplatesType} from '@rjsf/utils';
 import {ConfiguratorHandle} from '@/entities/widget/lib/widget';
 import ColorInput from '@/shared/ui/ColorInput';
 import ColorArrayFieldTemplate from '@/shared/ui/ColorArrayFieldTemplate';
+import ArrayFieldTemplate from '@/shared/ui/WalletsArrayFieldTemplate';
+import ObjectFieldTemplate from '@/shared/ui/ObjectFieldTemplate';
+import {PipelineId} from '@/entities/pipeline/model';
 
 import {useEnhance} from '../hooks/configurator';
 import type {Parameters, Customization} from '../params';
-import ObjectFieldTemplate from './templates/ObjectFieldTemplate';
 import styles from './index.module.scss';
 
 const customFields: Partial<TemplatesType> = { ArrayFieldTemplate: ColorArrayFieldTemplate };
 
-const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, object>(
-  (_, ref) => {
+const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, {pipelineId: PipelineId}>(
+  ({pipelineId}, ref) => {
     const {
       parametersFormRef,
       parametersFormData,
@@ -25,7 +27,11 @@ const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, o
       customizationFormData,
       setCustomizationFormData,
       customizationSchema,
-    } = useEnhance({ref});
+    } = useEnhance({ref, pipelineId});
+
+    if (!parametersSchema) {
+      return null;
+    }
 
     return (
       <div className={styles.root}>
@@ -33,9 +39,21 @@ const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, o
           ref={parametersFormRef}
           schema={parametersSchema}
           uiSchema={{
+            "ui:options": {
+              title: '',
+            },
+            'walletIds' : {
+              'ui:ArrayFieldTemplate': ArrayFieldTemplate,
+            },
             "ui:submitButtonOptions": {
               "norender": true,
             },
+            "ui:globalOptions": {
+              addable: true,
+              orderable: false,
+              removable: true,
+            },
+            "ui:ObjectFieldTemplate": ObjectFieldTemplate,
           }}
           validator={validator}
           showErrorList={false}

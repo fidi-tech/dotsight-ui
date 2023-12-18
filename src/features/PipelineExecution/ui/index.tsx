@@ -19,7 +19,7 @@ type Props = {
 export const PipelineExecution = ({id}: Props) => {
   const pipeline = useSelector((state) => selectById(state, id))!;
 
-  const settingsRef = useRef<ConfiguratorHandle<any, any>>(null);
+  const settingsRef = useRef<ConfiguratorHandle<any, any> | null>(null);
   const [settings, updateSettings] = useState<Configuration<any, any>>();
   const onUpdateConfiguration = useCallback(() => {
     let newConfiguration;
@@ -46,7 +46,7 @@ export const PipelineExecution = ({id}: Props) => {
   return (
     <div className={styles.root}>
       <Module className={styles.config}>
-        <Configurator ref={settingsRef} />
+        <Configurator ref={settingsRef} pipelineId={id} />
         <Button onClick={onUpdateConfiguration} text="Update" className={styles.update} />
       </Module>
       <div className={styles.result}>

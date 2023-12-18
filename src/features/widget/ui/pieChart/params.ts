@@ -2,7 +2,7 @@ import {z} from 'zod';
 import {zodToJsonSchema} from 'zod-to-json-schema';
 
 export const parameters = z.object({
-  walletId: z.string(),
+  walletIds: z.array(z.string()),
 });
 export type Parameters = z.infer<typeof parameters>;
 export const parametersSchema = zodToJsonSchema(parameters, "parametersSchema");
