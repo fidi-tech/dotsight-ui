@@ -5,6 +5,7 @@ import {Module} from '@/shared/ui/Module';
 import Loader from '@/shared/ui/Loader';
 import ErrorPlaceholder from '@/shared/ui/ErrorPlaceholder';
 import {CURRENCY_FORMATTER} from '@/shared/lib/currency';
+import {getColorsFromPaletteByVariant, PaletteVariant} from '@/shared/ui/styles/palettes';
 
 import styles from './index.module.scss';
 
@@ -17,14 +18,7 @@ const ROWS = [
   ['Other', CURRENCY_FORMATTER.usd.format(2130)],
 ];
 
-const PALETTE = [
-  '#7e8bff',
-  '#7ec6ff',
-  '#7effe5',
-  '#7effb5',
-  '#79818d',
-  '#dcdee1',
-];
+const PALETTE = getColorsFromPaletteByVariant(PaletteVariant.v1);
 
 type Props = {
   isLoading: boolean,

@@ -1,20 +1,23 @@
 import React, {forwardRef} from 'react';
 import Form from '@rjsf/mui';
 import validator from '@rjsf/validator-ajv8';
-import {TemplatesType} from '@rjsf/utils';
+import {RegistryWidgetsType, TemplatesType} from '@rjsf/utils';
 
 import {ConfiguratorHandle} from '@/entities/widget/lib/widget';
-import ColorInput from '@/shared/ui/ColorInput';
 import ColorArrayFieldTemplate from '@/shared/ui/ColorArrayFieldTemplate';
 import ArrayFieldTemplate from '@/shared/ui/WalletsArrayFieldTemplate';
 import ObjectFieldTemplate from '@/shared/ui/ObjectFieldTemplate';
 import {PipelineId} from '@/entities/pipeline/model';
+import PaletteRadio from '@/shared/ui/PaletteRadio';
 
 import {useEnhance} from '../hooks/configurator';
 import type {Parameters, Customization} from '../params';
 import styles from './index.module.scss';
 
 const customFields: Partial<TemplatesType> = { ArrayFieldTemplate: ColorArrayFieldTemplate };
+const widgets: RegistryWidgetsType = {
+  RadioWidget: PaletteRadio,
+};
 
 const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, {pipelineId: PipelineId}>(
   ({pipelineId}, ref) => {
@@ -74,9 +77,7 @@ const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, {
               removable: false,
             },
             'palette': {
-              'items': {
-                'ui:widget': ColorInput,
-              },
+              "ui:widget": "radio",
             },
             "ui:ObjectFieldTemplate": ObjectFieldTemplate,
           }}
@@ -86,6 +87,7 @@ const Configurator = forwardRef<ConfiguratorHandle<Parameters, Customization>, {
           onChange={data => setCustomizationFormData(data.formData)}
           onError={console.error}
           templates={customFields}
+          widgets={widgets}
         />
       </div>
     );

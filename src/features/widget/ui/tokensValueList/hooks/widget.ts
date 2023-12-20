@@ -52,7 +52,7 @@ const useEnhance = (
           text,
         }
       })
-      .filter(item => typeof item.value !== 'undefined')
+      .filter(item => item.value && (item.value > 0))
       .sort((itemA, itemB) => {
         if (!itemA.value) {
           return 1;
@@ -61,11 +61,10 @@ const useEnhance = (
           return -1;
         }
         return (itemA.value - itemB.value) * (order === 'ASC' ? 1 : -1);
-      })
-      .slice(0, count);
+      });
     return {
-      rows: sorted.map(item => ([item.name, item.text]))
-    };
+      rows: sorted.slice(0, Math.min(count, sorted.length)).map(item => ([item.name, item.text]))
+    }
   }, [items, customization]);
 
   return {
