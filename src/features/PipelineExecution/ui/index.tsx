@@ -45,10 +45,6 @@ export const PipelineExecution = ({id}: Props) => {
 
   return (
     <div className={styles.root}>
-      <Module className={styles.config}>
-        <Configurator ref={settingsRef} pipelineId={id} />
-        <Button onClick={onUpdateConfiguration} text="Update" className={styles.update} />
-      </Module>
       <div className={styles.result}>
         {settings && (
           <Widget
@@ -60,6 +56,10 @@ export const PipelineExecution = ({id}: Props) => {
         )}
         {!settings && (Placeholder ? <Placeholder isLoading={false} isError={false} /> : <div>Default placeholder</div>)}
       </div>
+      <Module className={styles.config}>
+        <Configurator ref={settingsRef} pipelineId={id} />
+        <Button onClick={onUpdateConfiguration} text="Update" className={styles.update} />
+      </Module>
     </div>
   )
 }

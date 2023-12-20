@@ -24,8 +24,11 @@ export const Table = ({header, rows, palette}: Props) => {
         {rows.map((row, i) => (
           <tr className={styles.row} key={row[0]}>
             {row.map((value, j) =>
-              <td className={styles.cell} key={value}>
-                {j === 0 && palette?.[i] ? <div className={styles.marker} style={{color: palette?.[i]}} /> : null}
+              <td className={styles.cell} key={`${value}${i}`}>
+                {j === 0 && palette
+                  ? <div className={styles.marker} style={{color: palette[i % palette.length]}} />
+                  : null
+                }
                 {value}
               </td>
             )}

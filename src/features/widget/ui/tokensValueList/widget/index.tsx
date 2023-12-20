@@ -3,6 +3,7 @@ import React from 'react';
 import {Module} from '@/shared/ui/Module';
 import {Widget} from '@/entities/widget/lib/widget';
 import {Table} from '@/shared/ui/Table';
+import {getColorsFromPaletteByVariant} from '@/shared/ui/styles/palettes';
 
 import type {Parameters, Customization} from '../params';
 import useEnhance from '../hooks/widget';
@@ -23,7 +24,7 @@ const TokensValueList: Widget<Parameters, Customization> = props => {
   const {palette} = props.customization;
   return (
     <Module>
-      <Table header={['Asset', 'Value']} rows={rows} palette={palette} />
+      <Table header={['Asset', 'Value']} rows={rows} palette={palette && getColorsFromPaletteByVariant(palette)} />
     </Module>
   )
 };

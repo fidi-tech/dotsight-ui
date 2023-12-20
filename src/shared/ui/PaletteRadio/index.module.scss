@@ -1,0 +1,27 @@
+@import '~@styles/colors.scss';
+
+.title {
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.palette {
+  flex: 1;
+  height: 40px;
+  border: 2px solid #DCDEE1;
+  border-radius: 12px;
+  overflow: hidden;
+
+  &.selected {
+    border-color: $brand;
+  }
+}

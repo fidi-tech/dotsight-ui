@@ -1,38 +1,24 @@
-import {createRef, Ref, useCallback, useEffect, useImperativeHandle, useMemo, useState} from 'react';
-import {z} from 'zod';
+import {createRef, Ref, useCallback, useImperativeHandle, useMemo, useState} from 'react';
 import {zodToJsonSchema} from 'zod-to-json-schema';
 
-import {modifyArrayLength} from '@/shared/lib/array';
 import {PipelineId} from '@/entities/pipeline/model';
 import useParametersSchema from '@/features/widget/lib/useParametersSchema';
 
-import {customization as _customization, Customization, Parameters} from '../params';
+import {customization, Customization, Parameters} from '../params';
+import {PaletteVariant} from '@/shared/ui/styles/palettes';
 
 export const useEnhance = ({ref, pipelineId}: {ref: Ref<any>, pipelineId: PipelineId}) => {
   const parametersFormRef = createRef<any>();
   const customizationFormRef = createRef<any>();
   const [parametersFormData, setParametersFormData] = useState<Parameters | null>(null);
-  const [customizationFormData, setCustomizationFormData] = useState<Customization | null>(null);
+  const [customizationFormData, setCustomizationFormData] = useState<Partial<Customization>>({
+    palette: PaletteVariant.v1,
+  });
   const {parametersSchema} = useParametersSchema({pipelineId});
 
   const updateCustomizationFormData = useCallback((data: Customization) => {
-    if (data.palette) {
-      data.palette = modifyArrayLength(data.palette, data.count ?? 0, '');
-    }
     setCustomizationFormData(data);
   }, [setCustomizationFormData]);
-  const [customization, setCustomization] = useState(_customization);
-  const customizationSchema = useMemo(
-    () => zodToJsonSchema(customization, "customizationSchema"),
-    [customization],
-  );
-
-  useEffect(() => {
-    const count = customizationFormData?.count ?? 0;
-    setCustomization(_customization.extend({
-      palette: z.string().array().length(count).describe('Palette'),
-    }));
-  }, [customizationFormData?.count]);
 
   useImperativeHandle(ref, () => ({
     getConfiguration: () => {
@@ -55,6 +41,6 @@ export const useEnhance = ({ref, pipelineId}: {ref: Ref<any>, pipelineId: Pipeli
     customizationFormRef,
     customizationFormData,
     setCustomizationFormData: updateCustomizationFormData,
-    customizationSchema,
+    customizationSchema: zodToJsonSchema(customization, "customizationSchema"),
   }
 }

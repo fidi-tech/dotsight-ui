@@ -1,9 +1,13 @@
 import {useWidgetData} from '@/features/widget/lib/useWidgetData';
+import {PaletteVariant} from '@/shared/ui/styles/palettes';
 
 import useEnhance from './widget';
 
 jest.mock('react', () => ({
   useMemo: jest.fn((fn: any) => fn()),
+}));
+jest.mock('@/shared/ui/styles/palettes', () => ({
+  getColorsFromPaletteByVariant: jest.fn(() => ['a', 'b', 'c']),
 }));
 jest.mock('@/features/widget/lib/useWidgetData');
 
@@ -14,7 +18,7 @@ describe('features/widget/ui/pieChart/hooks/widget useEnhance', () => {
       pipelineId: '42',
       widgetId: '2',
       parameters: {walletIds: ['0x123']},
-      customization: {order: 'ASC', palette: ['a', 'b'], count: 2, unit: 'x'},
+      customization: {order: 'ASC', palette: 'v1' as PaletteVariant, count: 2, unit: 'x'},
     });
     expect(useWidgetData).toHaveBeenCalledTimes(1);
     expect(useWidgetData).toHaveBeenCalledWith({
@@ -30,7 +34,7 @@ describe('features/widget/ui/pieChart/hooks/widget useEnhance', () => {
       pipelineId: '42',
       widgetId: '2',
       parameters: {walletIds: ['0x123']},
-      customization: {order: 'ASC' as const, palette: ['a', 'b'], count: 2, unit: 'x'},
+      customization: {order: 'ASC' as const, palette: 'v1' as PaletteVariant, count: 2, unit: 'x'},
     };
     (useWidgetData as any as jest.MockedFn<any>).mockImplementation(() => ({
       isLoading: true,
@@ -50,7 +54,7 @@ describe('features/widget/ui/pieChart/hooks/widget useEnhance', () => {
       pipelineId: '42',
       widgetId: '2',
       parameters: {walletIds: ['0x123']},
-      customization: {order: 'ASC', palette: ['a', 'b'], count: 2, unit: 'x'},
+      customization: {order: 'ASC', palette: 'v1' as PaletteVariant, count: 2, unit: 'x'},
     }).error).toEqual({code: '404'});
   });
 
@@ -71,7 +75,7 @@ describe('features/widget/ui/pieChart/hooks/widget useEnhance', () => {
         pipelineId: '42',
         widgetId: '2',
         parameters: {walletIds: ['0x123']},
-        customization: {order: 'ASC', palette: ['a', 'b'], count: 2, unit: 'x'},
+        customization: {order: 'ASC', palette: 'v1' as PaletteVariant, count: 2, unit: 'x'},
       }).data).toEqual([
         {name: 'n1', value: 1, color: 'a'},
         {name: 'n4', value: 4, color: 'b'},
@@ -93,7 +97,7 @@ describe('features/widget/ui/pieChart/hooks/widget useEnhance', () => {
         pipelineId: '42',
         widgetId: '2',
         parameters: {walletIds: ['0x123']},
-        customization: {order: 'ASC', palette: ['a', 'b', 'c'], count: 3, unit: 'x'},
+        customization: {order: 'ASC', palette: 'v1' as PaletteVariant, count: 3, unit: 'x'},
       }).data).toEqual([
         {name: 'n1', value: 1, color: 'a'},
         {name: 'n2', value: 2, color: 'b'},
@@ -119,7 +123,7 @@ describe('features/widget/ui/pieChart/hooks/widget useEnhance', () => {
         pipelineId: '42',
         widgetId: '2',
         parameters: {walletIds: ['0x123']},
-        customization: {order: 'ASC', palette: ['a', 'b', 'c'], count: 3, unit: 'x'},
+        customization: {order: 'ASC', palette: 'v1' as PaletteVariant, count: 3, unit: 'x'},
       }).data).toEqual([
         {name: 'n1', value: 1, color: 'a'},
         {name: 'n2', value: 2, color: 'b'},
@@ -129,7 +133,7 @@ describe('features/widget/ui/pieChart/hooks/widget useEnhance', () => {
         pipelineId: '42',
         widgetId: '2',
         parameters: {walletIds: ['0x123']},
-        customization: {order: 'DESC', palette: ['a', 'b', 'c'], count: 3, unit: 'x'},
+        customization: {order: 'DESC', palette: 'v1' as PaletteVariant, count: 3, unit: 'x'},
       }).data).toEqual([
         {name: 'n3', value: 3, color: 'a'},
         {name: 'n2', value: 2, color: 'b'},
@@ -141,13 +145,13 @@ describe('features/widget/ui/pieChart/hooks/widget useEnhance', () => {
         pipelineId: '42',
         widgetId: '2',
         parameters: {walletIds: ['0x123']},
-        customization: {order: 'ASC', palette: ['a', 'b'], count: 2, unit: 'x'},
+        customization: {order: 'ASC', palette: 'v1' as PaletteVariant, count: 2, unit: 'x'},
       }).data?.length).toEqual(2);
       expect(useEnhance({
         pipelineId: '42',
         widgetId: '2',
         parameters: {walletIds: ['0x123']},
-        customization: {order: 'DESC', palette: ['a'], count: 1, unit: 'x'},
+        customization: {order: 'DESC', palette: 'v1' as PaletteVariant, count: 1, unit: 'x'},
       }).data?.length).toEqual(1);
     });
   });

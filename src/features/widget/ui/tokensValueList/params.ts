@@ -1,6 +1,8 @@
 import {z} from 'zod';
 import {zodToJsonSchema} from 'zod-to-json-schema';
 
+import {PaletteVariant} from '@/shared/ui/styles/palettes';
+
 export const parameters = z.object({
   walletId: z.string(),
 });
@@ -11,7 +13,9 @@ export const customization = z.object({
   count: z.coerce.number().int().min(1),
   order: z.enum(['ASC', 'DESC'] as const).optional(),
   withMarks: z.boolean().optional(),
-  palette: z.array(z.string()).optional().describe('Palette'),
+  palette: z.enum([PaletteVariant.v1, PaletteVariant.v2, PaletteVariant.v3] as const),
   unit: z.string(),
 });
 export type Customization = z.infer<typeof customization>;
+
+export const partialCustomization = customization.partial({palette: true});

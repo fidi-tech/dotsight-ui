@@ -3,24 +3,26 @@ import React from 'react';
 import {PieChart as PieChartComponent} from '@/shared/ui/PieChart';
 import Loader from '@/shared/ui/Loader';
 import ErrorPlaceholder from '@/shared/ui/ErrorPlaceholder';
+import {getColorsFromPaletteByVariant, PaletteVariant} from '@/shared/ui/styles/palettes';
 
 import styles from './index.module.scss';
 
+const palette = getColorsFromPaletteByVariant(PaletteVariant.v1);
 const PIE = [
   {
     name: 'Unit #1',
-    value: 721,
-    color: '#7e8bff',
+    value: 2100,
+    color: palette[0],
   },
   {
     name: 'Unit #2',
-    value: 2100,
-    color: '#79818d',
+    value: 721,
+    color: palette[1],
   },
   {
     name: 'Unit #3',
     value: 139,
-    color: '#fafafa',
+    color: palette[2],
   }
 ];
 

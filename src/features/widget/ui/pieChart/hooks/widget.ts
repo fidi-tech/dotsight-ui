@@ -4,6 +4,7 @@ import {useWidgetData} from '@/features/widget/lib/useWidgetData';
 import {DistributionDatashape} from '@/entities/datashape/model/distribution';
 import {CommonWidgetProps} from '@/entities/widget/lib/widget';
 import {getAbsoluteMetricValue} from '@/shared/lib/unit';
+import {getColorsFromPaletteByVariant} from '@/shared/ui/styles/palettes';
 
 import {Parameters, Customization} from '../params';
 
@@ -31,7 +32,8 @@ const useEnhance = (
     if (!items) {
       return null;
     }
-    const {order = 'ASC', count} = customization;
+    const {order = 'ASC', count, palette} = customization;
+    const _palette = getColorsFromPaletteByVariant(palette);
     const sorted = items.slice()
       .filter(item => item.value && item.value > 0)
       .sort((itemA, itemB) => (itemA.value! - itemB.value!)*(order === 'DESC' ? -1 : 1))
@@ -40,7 +42,7 @@ const useEnhance = (
       acc.push({
         name: item.name,
         value: item.value!,
-        color: customization.palette![i],
+        color: _palette![i % _palette.length],
       })
       return acc;
     }, [] as Array<{name: string, value: number, color: string}>);
