@@ -21,7 +21,7 @@ const useParametersSchema = ({pipelineId}: {pipelineId: PipelineId}) => {
     () => {
       dispatch(getPipelineExecutionParams({pipelineId, mapperCode}));
     },
-    [dispatch, pipelineId, mapperCode],
+    [dispatch, pipelineId, mapperCode, pipeline],
   );
 
   return {
