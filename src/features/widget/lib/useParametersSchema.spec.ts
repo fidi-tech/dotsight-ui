@@ -4,7 +4,7 @@ import {
   getPipelineExecutionParams,
 } from '@/entities/pipelineExecutionParams/model/providers/getPipelineExecutionParams';
 import {selectById} from '@/entities/pipeline/model';
-import {selectById as selectPipelineExecutionParams} from '@/entities/pipelineExecutionParams/model';
+import {selectSafeRJSFPipelineExecutionParams} from '@/entities/pipelineExecutionParams/model';
 
 import useParametersSchema from './useParametersSchema';
 
@@ -46,7 +46,7 @@ describe('features/widget useParametersSchema', () => {
   });
 
   it('should return the data if params exists', () => {
-    (selectPipelineExecutionParams as jest.MockedFn<any>).mockReturnValue({pId: 'pId'});
+    (selectSafeRJSFPipelineExecutionParams as jest.MockedFn<any>).mockReturnValue({pId: 'pId'});
     (getPipelineExecutionParams as jest.MockedFn<any>).mockResolvedValue({
       data: {
         wid: {some: 'data'},

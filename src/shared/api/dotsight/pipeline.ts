@@ -2,7 +2,7 @@ import type {AxiosPromise} from 'axios';
 
 import {api} from '@/shared/api/dotsight/base';
 import {WidgetId} from '@/entities/widget/model/types';
-import {PipelineExecutionParams} from '@/entities/pipelineExecutionParams/model/types';
+import {PipelineExecutionParamsRaw} from '@/entities/pipelineExecutionParams/model/types';
 
 import type {Pipeline, PipelineId, MapperId, ExecuteResult} from './models';
 
@@ -16,7 +16,7 @@ export const getPipelineById = ({id}: {id: PipelineId}): AxiosPromise<Pipeline> 
 
 export const getPipelineParams = (
   {id, mapperCode}: {id: PipelineId, mapperCode: MapperId}
-): AxiosPromise<PipelineExecutionParams> =>
+): AxiosPromise<PipelineExecutionParamsRaw> =>
   api.get(`${BASE_URL}/${id}/mappers/${mapperCode}/params`)
 
 export const createPipeline = ({name}: {name?: string}): AxiosPromise<Pipeline> =>
