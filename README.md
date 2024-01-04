@@ -20,15 +20,13 @@ npm ci
 # build the application
 npm run build
 ```
+Make sure you have a running [DotSight](https://github.com/fidi-tech/dotsight) instance in the background before launching the UI.
 ```bash
 # development (no authentication)
 npm run dev
 # production
 npm start
 ```
-
-5. Build the app with ```npm run build```.
-6. Initiate the DotSight-UI application by executing ```npm start```.
 
 ## Usage
 DotSight UI is under active development.
