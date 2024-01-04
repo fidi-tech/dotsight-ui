@@ -14,7 +14,7 @@ export const customization = z.object({
   order: z.enum(['ASC', 'DESC'] as const).optional(),
   withMarks: z.boolean().optional(),
   palette: z.enum([PaletteVariant.v1, PaletteVariant.v2, PaletteVariant.v3] as const),
-  unit: z.string(),
+  unit: z.string().default('usd'),
 });
 export type Customization = z.infer<typeof customization>;
 
