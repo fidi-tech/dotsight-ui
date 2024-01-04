@@ -5,10 +5,9 @@ import {HistoricalLinesDatashape} from '@/entities/datashape/model/historicalLin
 import {CommonWidgetProps} from '@/entities/widget/lib/widget';
 import {getAbsoluteMetricValue} from '@/shared/lib/unit';
 import {getColorsFromPaletteByVariant} from '@/shared/ui/styles/palettes';
+import {convertToLabel} from './utils';
 
 import {Customization} from '../params';
-
-const convertToLabel = (date: Date) => date.toLocaleString();
 
 const useEnhance = (
   {pipelineId, widgetId, parameters, customization}: CommonWidgetProps<any, Customization>

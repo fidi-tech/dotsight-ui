@@ -10,6 +10,10 @@ jest.mock('@/shared/ui/styles/palettes', () => ({
   getColorsFromPaletteByVariant: jest.fn(() => ['red', 'green', 'blue']),
 }));
 
+jest.mock('./utils', () => ({
+  convertToLabel: (date: Date) => `${date.getTime()}`,
+}))
+
 describe('LineChart useEnhance', () => {
   it('should return error if error happened', () => {
     const error = new Error('42');
@@ -79,8 +83,8 @@ describe('LineChart useEnhance', () => {
             backgroundColor: 'red',
             borderColor: 'red',
             data: [
-              {x: "1/1/1970, 3:00:01 AM", y: 1},
-              {x: "1/1/1970, 3:00:10 AM", y: 1.5},
+              {x: "1000", y: 1},
+              {x: "10000", y: 1.5},
             ],
             label: 'first',
           },
@@ -88,16 +92,16 @@ describe('LineChart useEnhance', () => {
             backgroundColor: 'green',
             borderColor: 'green',
             data: [
-              {x: "1/1/1970, 3:00:02 AM", y: 10},
-              {x: "1/1/1970, 3:00:10 AM", y: 15},
+              {x: "2000", y: 10},
+              {x: "10000", y: 15},
             ],
             label: 'second',
           },
         ],
         labels: [
-          "1/1/1970, 3:00:01 AM",
-          "1/1/1970, 3:00:10 AM",
-          "1/1/1970, 3:00:02 AM",
+          "1000",
+          "10000",
+          "2000",
         ],
       },
       error: null,
