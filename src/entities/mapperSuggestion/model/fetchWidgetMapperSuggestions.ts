@@ -12,6 +12,6 @@ type Params = {
 }
 
 export const fetchWidgetMapperSuggestions = ({pipelineId, widgetId}: Params) => async (dispatch: Dispatch) => {
-  const response = await getWidgetMapperSuggestions({id: pipelineId, widgetId});
-  return dispatch(updateMapperSuggestions({data: response.data}));
+  const data = await getWidgetMapperSuggestions({id: pipelineId, widgetId});
+  return dispatch(updateMapperSuggestions({data}));
 };

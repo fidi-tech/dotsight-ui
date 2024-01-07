@@ -16,6 +16,6 @@ export const setPipelineDataSource = (
     config: object,
   }
 ) => async (dispatch: Dispatch) => {
-  const response = await _setPipelineDataSource({pipelineId, type, config});
-  return dispatch(updatePipelines({pipelines: [response.data]}));
+  const pipeline = await _setPipelineDataSource({pipelineId, type, config});
+  return dispatch(updatePipelines({pipelines: [pipeline]}));
 };

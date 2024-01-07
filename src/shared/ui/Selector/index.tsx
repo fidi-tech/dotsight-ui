@@ -11,9 +11,10 @@ type Props = {
   selected?: string,
   onSelect: (option: Option) => void,
   isDisabled?: boolean,
+  isSearchable?: boolean,
 }
 
-export const Selector = ({options, selected, onSelect, isDisabled = false}: Props) => {
+export const Selector = ({options, selected, onSelect, isDisabled = false, isSearchable}: Props) => {
   const selectedOption = useMemo(
     () => options.find(option => option.value === selected),
     [options, selected],
@@ -25,6 +26,6 @@ export const Selector = ({options, selected, onSelect, isDisabled = false}: Prop
   }, [onSelect]);
 
   return (
-    <Select options={options} value={selectedOption} onChange={onChange} isDisabled={isDisabled} />
+    <Select options={options} value={selectedOption} onChange={onChange} isDisabled={isDisabled} isSearchable={isSearchable} />
   )
 }

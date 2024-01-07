@@ -24,4 +24,7 @@ export type Pipeline = {
     config: object;
   }>;
   results: any;
+  isPublic: boolean;
+  canExecute: boolean;
+  canModify: boolean;
 };

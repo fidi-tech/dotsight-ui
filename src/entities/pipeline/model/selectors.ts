@@ -17,14 +17,19 @@ export const selectDefaultDataSource = createSelector(
 export const selectMappers = createSelector(
   selectById,
   (pipeline: Pipeline | undefined) => pipeline && getPipelineMappers(pipeline),
-)
+);
 
 export const selectDefaultWidgetType = createSelector(
   selectById,
   (pipeline: Pipeline | undefined) => pipeline && getPipelineWidgets(pipeline)?.[0]?.type,
-)
+);
 
 export const selectDefaultWidgetDataShape = createSelector(
   selectById,
   (pipeline: Pipeline | undefined) => pipeline && getPipelineWidgets(pipeline)?.[0]?.datashape,
+);
+
+export const selectCanModify = createSelector(
+  selectById,
+  (pipeline: Pipeline | undefined) => pipeline ? pipeline.canModify : false,
 )
