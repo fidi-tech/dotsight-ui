@@ -10,6 +10,6 @@ type Params = {
 }
 
 export const fetchPipelineDataSourceSuggestions = ({pipelineId}: Params) => async (dispatch: Dispatch) => {
-  const {data} = await getPipelineDataSourceSuggestions({id: pipelineId});
+  const data = await getPipelineDataSourceSuggestions({id: pipelineId});
   return dispatch(updateDataSourceSuggestions({data}));
 };

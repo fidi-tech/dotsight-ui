@@ -50,8 +50,8 @@ export const useWidgetData = <D>({
     (async () => {
       try {
         dispatch(loadingAction());
-        const response = await executePipeline({pipelineId, widgetIds: [widgetId], params});
-        dispatch(dataAction(response.data[widgetId] as D));
+        const data = await executePipeline({pipelineId, widgetIds: [widgetId], params});
+        dispatch(dataAction(data[widgetId] as D));
       } catch (err) {
         console.error(err);
         dispatch(errorAction(err as Error));

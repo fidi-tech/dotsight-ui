@@ -8,11 +8,11 @@ import {setPipelineExecutionParams} from '../actions';
 export const getPipelineExecutionParams = (
   {pipelineId, mapperCode}: {pipelineId: PipelineId, mapperCode: string},
 ) => async (dispatch: Dispatch) => {
-  const response = await getPipelineParams({id: pipelineId, mapperCode});
+  const params = await getPipelineParams({id: pipelineId, mapperCode});
   return dispatch(setPipelineExecutionParams({
     pipelineExecutionParams: {
       id: pipelineId,
-      ...response.data
+      ...params,
     },
   }));
 };

@@ -22,9 +22,9 @@ const Home = () => {
     dispatch(fetchPipelines());
   }, [dispatch]);
   const onCreate = useCallback(async () => {
-    const result = await createPipeline({});
-    if (result?.data?.id) {
-      router.push(`/pipeline/${result?.data?.id}`);
+    const pipeline = await createPipeline({});
+    if (pipeline?.id) {
+      router.push(`/pipeline/${pipeline?.id}`);
     }
   }, [router]);
 

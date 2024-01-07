@@ -1,4 +1,4 @@
-import {PipelineId, selectById} from '@/entities/pipeline/model';
+import {PipelineId, selectById, selectCanModify} from '@/entities/pipeline/model';
 import {useSelector} from 'react-redux';
 import {getPipelineMappers} from '@/entities/pipeline/model/getters';
 import {useCallback, useMemo, useState} from 'react';
@@ -7,6 +7,7 @@ import {selectAll} from '@/entities/mapperSuggestion/model';
 
 export const useMapperOptionsForPipeline = ({pipelineId}: {pipelineId: PipelineId}) => {
   const pipeline = useSelector((state) => selectById(state, pipelineId));
+  const canModify = useSelector(state => selectCanModify(state, pipelineId));
 
   const mapper = pipeline && Object.values(getPipelineMappers(pipeline) || {})?.[0];
   const [selectedType, setSelectedType] = useState(mapper?.type);
@@ -24,6 +25,6 @@ export const useMapperOptionsForPipeline = ({pipelineId}: {pipelineId: PipelineI
     selectedType,
     onOptionSelect,
     typeOptions,
-    isDisabled: Boolean(mapper?.type),
+    isDisabled: !canModify || Boolean(mapper?.type),
   };
 };
