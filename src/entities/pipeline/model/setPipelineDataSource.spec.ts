@@ -11,9 +11,7 @@ jest.mock('./actions', () => ({
 describe('setPipelineDataSource', () => {
   it('should dispatch updatePipelines with the results from the backend', async () => {
     const dispatch = jest.fn(a => a);
-    (_setPipelineDataSource as jest.MockedFn<any>).mockResolvedValue({
-      data: '42'
-    });
+    (_setPipelineDataSource as jest.MockedFn<any>).mockResolvedValue('42');
 
     await expect(setPipelineDataSource({pipelineId: '100', type: 't', config: {some: 'config'}})(dispatch));
 

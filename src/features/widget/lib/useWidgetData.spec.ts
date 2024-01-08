@@ -40,9 +40,7 @@ describe('features/widget useWidgetData', () => {
 
   it('should return the data once backend returns it', async () => {
     (executePipeline as jest.MockedFn<any>).mockResolvedValue({
-      data: {
-        wid: {some: 'data'},
-      },
+      wid: {some: 'data'},
     });
 
     const params = {some: 'params'};
@@ -83,14 +81,10 @@ describe('features/widget useWidgetData', () => {
   it('should refetch the data if params changed', async () => {
     (executePipeline as jest.MockedFn<any>)
       .mockResolvedValueOnce({
-        data: {
-          wid: {some: 'data'},
-        },
+        wid: {some: 'data'},
       })
       .mockResolvedValueOnce({
-        data: {
-          wid: {other: 'data'},
-        },
+        wid: {other: 'data'},
       });
 
     let params: object = {some: 'params'};

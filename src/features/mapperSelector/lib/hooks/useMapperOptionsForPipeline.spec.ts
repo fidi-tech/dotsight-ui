@@ -6,6 +6,7 @@ jest.mock('react-redux', () => ({
 }));
 jest.mock('@/entities/pipeline/model', () => ({
   selectById: jest.fn((s, id) => ({id})),
+  selectCanModify: jest.fn(() => true),
 }));
 jest.mock('@/entities/pipeline/model/getters', () => ({
   getPipelineMappers: jest.fn(() => ({

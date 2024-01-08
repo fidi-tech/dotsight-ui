@@ -1,4 +1,4 @@
-import {selectDefaultWidgetType} from '@/entities/pipeline/model';
+import {selectDefaultWidgetType, selectCanModify} from '@/entities/pipeline/model';
 import {act, renderHook} from '@testing-library/react';
 import {useWidgetTypesForPipeline} from './useWidgetTypesForPipeline';
 
@@ -65,6 +65,7 @@ describe('features/widgetTypeSelector useWidgetTypesForPipeline', () => {
 
   it('should not been disabled when type is not defined for pipeline', () => {
     (selectDefaultWidgetType as any as jest.MockedFn<any>).mockImplementation(() => undefined);
+    (selectCanModify as any as jest.MockedFn<any>).mockImplementation(() => true);
     const {result: {current: {
       isDisabled,
     }}} = renderHook(() => useWidgetTypesForPipeline({pipelineId: '1'}));
