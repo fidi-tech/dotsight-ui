@@ -1,13 +1,9 @@
-import React, {useCallback, forwardRef, useImperativeHandle, useState, Ref, ChangeEvent} from 'react';
-import {useSelector} from 'react-redux';
-import { useRouter } from 'next/navigation'
-
-import {useDispatch} from '@/infra/providers/redux';
+import React, {forwardRef, Ref} from 'react';
+import cx from 'classnames';
 import {PipelineId} from '@/entities/pipeline/model/types';
-import {Input} from '@/shared/ui/Input/index';
-import {selectById} from '@/entities/pipeline/model/selectors';
-import {updatePipelineName} from '@/entities/pipeline/model/providers/updateName';
-import {getPipelineName} from '@/entities/pipeline/model/getters';
+import {Input} from '@/shared/ui/Input';
+import {Selector} from '@/shared/ui/Selector';
+import {useEnhance} from '@/features/pipelineSave/lib/hooks';
 
 import styles from './index.module.scss';
 
@@ -16,28 +12,45 @@ type Props = {
 }
 
 const PipelineSave = ({id}: Props, ref: Ref<any>) => {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const pipeline = useSelector((state) => selectById(state, id))!;
-  const [name, setName] = useState(getPipelineName(pipeline));
-  const onChangeName = useCallback((e: ChangeEvent<HTMLInputElement>) => setName(e.target.value), [setName]);
-  const next = useCallback(
-    () => {
-      dispatch(updatePipelineName({
-        pipelineId: id,
-        name
-      }));
-      router.push('/');
-    },
-    [dispatch, router, id, name]
-  );
+  const {
+    canModify,
+    name,
+    onChangeName,
+    visibilityOptions,
+    visibility,
+    onChangeVisibility,
+    isLinkVisible,
+  } = useEnhance({pipelineId: id, ref});
 
-  useImperativeHandle(ref, () => ({next}));
+  if (!canModify) {
+    return null;
+  }
 
   return (
     <div className={styles.root}>
       <p className={styles.title}>Save your Data Pipeline</p>
-      <Input onChange={onChangeName} value={name} />
+      <div className={styles.form}>
+        <div className={cx(styles.row, styles.name)}>
+          <Input isDisabled={!canModify} onChange={onChangeName} value={name} />
+        </div>
+        <div className={styles.row}>
+          <div className={styles.label}>
+            Data pipeline visibility:
+          </div>
+          <Selector
+            isDisabled={!canModify}
+            options={visibilityOptions}
+            onSelect={onChangeVisibility}
+            selected={visibility}
+            isSearchable={false}
+          />
+        </div>
+        {isLinkVisible &&
+          <div className={styles.row}>
+            <Input isDisabled value={`https://dot.fidi.tech/pipeline/${id}`} />
+          </div>
+        }
+      </div>
     </div>
   )
 }

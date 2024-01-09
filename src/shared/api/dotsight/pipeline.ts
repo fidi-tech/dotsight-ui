@@ -1,4 +1,4 @@
-import type {AxiosPromise} from 'axios';
+import {isAxiosError} from 'axios';
 
 import {api} from '@/shared/api/dotsight/base';
 import {WidgetId} from '@/entities/widget/model/types';
@@ -8,21 +8,36 @@ import type {Pipeline, PipelineId, MapperId, ExecuteResult} from './models';
 
 const BASE_URL = '/pipelines';
 
-export const getPipelinesList = (): AxiosPromise<Pipeline[]> =>
-  api.get(BASE_URL);
+export const getPipelinesList = async (): Promise<Pipeline[]> => {
+  const response = await api.get(BASE_URL);
+  return response.data;
+}
 
-export const getPipelineById = ({id}: {id: PipelineId}): AxiosPromise<Pipeline> =>
-  api.get(`${BASE_URL}/${id}`)
+export const getPipelineById = async ({id}: {id: PipelineId}): Promise<Pipeline | null> => {
+  try {
+    const response = await api.get(`${BASE_URL}/${id}`);
+    return response.data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response?.status && [401, 403].includes(error.response?.status)) {
+      return null;
+    }
+    throw error;
+  }
+};
 
-export const getPipelineParams = (
+export const getPipelineParams = async (
   {id, mapperCode}: {id: PipelineId, mapperCode: MapperId}
-): AxiosPromise<PipelineExecutionParamsRaw> =>
-  api.get(`${BASE_URL}/${id}/mappers/${mapperCode}/params`)
+): Promise<PipelineExecutionParamsRaw> => {
+  const response = await api.get(`${BASE_URL}/${id}/mappers/${mapperCode}/params`);
+  return response.data;
+}
 
-export const createPipeline = ({name}: {name?: string}): AxiosPromise<Pipeline> =>
-  api.post(BASE_URL, {name})
+export const createPipeline = async ({name}: {name?: string}): Promise<Pipeline> => {
+  const response = await api.post(BASE_URL, {name});
+  return response.data;
+};
 
-export const addWidgetToPipeline = (
+export const addWidgetToPipeline = async (
   {
     id,
     type,
@@ -34,19 +49,24 @@ export const addWidgetToPipeline = (
     config: any,
     datashape: string,
   }
-): AxiosPromise<Pipeline> =>
-  api.post(`${BASE_URL}/${id}/widgets`, {
+): Promise<Pipeline> => {
+  const response = await api.post(`${BASE_URL}/${id}/widgets`, {
     type,
     config,
     datashape
-  })
-
-export const updatePipelineName = ({id, name}: {id: PipelineId, name: string}): AxiosPromise<any> =>
-  api.patch(`${BASE_URL}/${id}`, {
-    name
   });
+  return response.data;
+};
 
-export const getWidgetMapperSuggestions = (
+export const updatePipeline = async ({id, name, isPublic}: {id: PipelineId, name: string, isPublic: boolean}): Promise<any> => {
+  const response = await api.patch(`${BASE_URL}/${id}`, {
+    name,
+    isPublic,
+  });
+  return response.data;
+};
+
+export const getWidgetMapperSuggestions = async (
   {
     id,
     widgetId,
@@ -54,10 +74,12 @@ export const getWidgetMapperSuggestions = (
     id: PipelineId,
     widgetId: WidgetId,
   }
-): AxiosPromise<any> =>
-  api.get(`${BASE_URL}/${id}/widgets/${widgetId}/suggestions/mappers`);
+): Promise<any> => {
+  const response = await api.get(`${BASE_URL}/${id}/widgets/${widgetId}/suggestions/mappers`);
+  return response.data;
+};
 
-export const setPipelineWidgetMapper = (
+export const setPipelineWidgetMapper = async (
   {
     pipelineId,
     widgetId,
@@ -71,23 +93,27 @@ export const setPipelineWidgetMapper = (
     type: string,
     config: object,
   }
-): AxiosPromise<any> =>
-  api.post(`${BASE_URL}/${pipelineId}/widgets/${widgetId}/mappers`, {
+): Promise<Pipeline> => {
+  const response = await api.post(`${BASE_URL}/${pipelineId}/widgets/${widgetId}/mappers`, {
     code,
     type,
     config
   });
+  return response.data;
+};
 
-export const getPipelineDataSourceSuggestions = (
+export const getPipelineDataSourceSuggestions = async (
   {
     id
   }: {
     id: PipelineId
   }
-): AxiosPromise<any> =>
-  api.get(`${BASE_URL}/${id}/suggestions/data-sources`);
+): Promise<any> => {
+  const response = await api.get(`${BASE_URL}/${id}/suggestions/data-sources`);
+  return response.data;
+}
 
-export const setPipelineDataSource = (
+export const setPipelineDataSource = async (
   {
     pipelineId,
     type,
@@ -97,12 +123,15 @@ export const setPipelineDataSource = (
     type: string,
     config: object,
   }
-) => api.post(`${BASE_URL}/${pipelineId}/data-sources`, {
-  type,
-  config,
-});
+): Promise<Pipeline> => {
+  const response = await api.post(`${BASE_URL}/${pipelineId}/data-sources`, {
+    type,
+    config,
+  });
+  return response.data;
+}
 
-export const executePipeline = (
+export const executePipeline = async (
   {
     pipelineId,
     widgetIds,
@@ -112,21 +141,26 @@ export const executePipeline = (
     widgetIds: WidgetId[],
     params: Record<string, any>,
   }
-) => api.get(`${BASE_URL}/${pipelineId}/execute`, {
-  params: {
-    ...params,
-    widgetIds,
-  },
-});
+): Promise<any> => {
+  const response = await api.get(`${BASE_URL}/${pipelineId}/execute`, {
+    params: {
+      ...params,
+      widgetIds,
+    },
+  });
+  return response.data;
+}
 
-export const getPipelineOutput = (
+export const getPipelineOutput = async (
   pipelineId: PipelineId,
   mapperIds: MapperId[],
   params: Record<string, any>,
-): AxiosPromise<ExecuteResult> =>
-  api.get(`${BASE_URL}/${pipelineId}/execute`, {
+): Promise<ExecuteResult> => {
+  const response = await api.get(`${BASE_URL}/${pipelineId}/execute`, {
     params: {
       ...params,
       mapperIds,
     },
   });
+  return response.data;
+};

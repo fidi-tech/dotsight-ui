@@ -1,7 +1,7 @@
 import {act, renderHook} from '@testing-library/react';
 
 import {selectAll} from '@/entities/dataSourceSuggestion/model';
-import {selectDefaultDataSource} from '@/entities/pipeline/model';
+import {selectDefaultDataSource, selectCanModify} from '@/entities/pipeline/model';
 
 import {useDataSourceOptionsForPipeline} from './useDataSourceOptionsForPipeline';
 
@@ -13,12 +13,14 @@ jest.mock('@/entities/dataSourceSuggestion/model', () => ({
 }));
 jest.mock('@/entities/pipeline/model', () => ({
   selectDefaultDataSource: jest.fn(),
+  selectCanModify: jest.fn(),
 }));
 
 describe('features/dataSourceSelector useDataSourceOptionsForPipeline', () => {
   beforeEach(() => {
     (selectAll as jest.MockedFn<any>).mockImplementation(() => []);
     (selectDefaultDataSource as any as jest.MockedFn<any>).mockImplementation(() => ({type: '42'}));
+    (selectCanModify as any as jest.MockedFn<any>).mockImplementation(() => true);
   });
 
   it('makes selectedType equal the type that was already selected in the pipeline', () => {

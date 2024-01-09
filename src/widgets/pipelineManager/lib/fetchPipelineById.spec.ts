@@ -4,16 +4,14 @@ import {getPipelineById} from '@/shared/api/dotsight';
 jest.mock('@/shared/api/dotsight', () => ({
   getPipelineById: jest.fn(),
 }));
-jest.mock('./actions', () => ({
+jest.mock('@/entities/pipeline/model/actions', () => ({
   updatePipelines: jest.fn(({pipelines}) => ({pipelines})),
 }));
 
 describe('fetchPipelineById', () => {
   it('should dispatch updatePipelines with the results from the backend', async () => {
     const dispatch = jest.fn(a => a);
-    (getPipelineById as jest.MockedFn<any>).mockResolvedValue({
-      data: '42'
-    });
+    (getPipelineById as jest.MockedFn<any>).mockResolvedValue('42');
 
     await expect(fetchPipelineById({id: '100'})(dispatch));
 

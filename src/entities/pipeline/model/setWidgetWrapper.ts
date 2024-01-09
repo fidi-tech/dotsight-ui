@@ -21,6 +21,6 @@ export const setWidgetWrapper = (
     config: object,
   }
 ) => async (dispatch: Dispatch) => {
-  const response = await setPipelineWidgetMapper({pipelineId, widgetId, type, code, config});
-  return dispatch(updatePipelines({pipelines: [response.data]}));
+  const pipeline = await setPipelineWidgetMapper({pipelineId, widgetId, type, code, config});
+  return dispatch(updatePipelines({pipelines: [pipeline]}));
 };

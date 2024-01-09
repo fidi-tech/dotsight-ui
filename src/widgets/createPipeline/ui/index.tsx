@@ -10,9 +10,9 @@ import {Icons} from '@/shared/ui/icons';
 export const CreatePipeline = () => {
   const router = useRouter();
   const onCreate = useCallback(async () => {
-    const result = await createPipeline({});
-    if (result?.data?.id) {
-      router.push(`/pipeline/${result?.data?.id}`);
+    const pipeline = await createPipeline({});
+    if (pipeline?.id) {
+      router.push(`/pipeline/${pipeline?.id}`);
     }
   }, [router]);
   return (

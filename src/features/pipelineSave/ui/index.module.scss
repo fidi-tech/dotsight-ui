@@ -5,10 +5,33 @@
   align-items: center;
   gap: 35px;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .title {
   font-size: 18px;
   font-weight: 600;
   line-height: 22px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.label {
+  flex: 1;
+  font-weight: 600;
+  color: black;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.name {
+  margin-bottom: 3rem;
 }
