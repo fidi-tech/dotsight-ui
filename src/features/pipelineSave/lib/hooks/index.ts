@@ -1,10 +1,12 @@
 import {useDispatch} from '@/infra/providers/redux';
 import {useSelector} from 'react-redux';
 import {selectById, selectCanModify} from '@/entities/pipeline/model';
-import {ChangeEvent, Ref, useCallback, useImperativeHandle, useMemo, useState} from 'react';
+import {ChangeEvent, Ref, useCallback, useImperativeHandle, useState} from 'react';
 import {getPipelineName} from '@/entities/pipeline/model/getters';
 import {savePipeline} from '@/features/pipelineSave/lib/thunks/savePipeline';
 import {VISIBILITY, Visibility} from '@/features/pipelineSave/lib/const';
+
+const VISIBILITY_OPTIONS = Object.values(VISIBILITY).map(visibility => ({value: visibility, label: visibility}));
 
 export const useEnhance = ({pipelineId, ref}: {pipelineId: string, ref: Ref<any>}) => {
   const dispatch = useDispatch();
@@ -16,7 +18,6 @@ export const useEnhance = ({pipelineId, ref}: {pipelineId: string, ref: Ref<any>
 
   const [visibility, setVisibility] = useState<Visibility>(pipeline.isPublic ? VISIBILITY.PUBLIC : VISIBILITY.PRIVATE);
   const onChangeVisibility = useCallback(({value}: {value: string}) => setVisibility(value as Visibility), [setVisibility]);
-  const visibilityOptions = useMemo(() => Object.values(VISIBILITY).map(visibility => ({value: visibility, label: visibility})), []);
 
   const next = useCallback(
     () => {
@@ -33,7 +34,7 @@ export const useEnhance = ({pipelineId, ref}: {pipelineId: string, ref: Ref<any>
     onChangeName,
     visibility,
     onChangeVisibility,
-    visibilityOptions,
+    visibilityOptions: VISIBILITY_OPTIONS,
     isLinkVisible: visibility === VISIBILITY.PUBLIC,
   }
 };
