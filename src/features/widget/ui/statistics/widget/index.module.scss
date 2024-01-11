@@ -1,0 +1,27 @@
+.header {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.logo {
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}

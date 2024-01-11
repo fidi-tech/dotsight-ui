@@ -1,0 +1,42 @@
+@import '~@styles/colors.scss';
+
+.root {
+  display: flex;
+  border-radius: 10px;
+  background: rgba(237, 238, 240, 0.50);
+  padding: 15px;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  color: $dark;
+}
+
+.value {
+  display: flex;
+  align-items: center;
+}
+
+.percentage {
+  color: #45DB7B;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    height: 6px;
+    margin-top: -2px;
+  }
+}
+
+.negative {
+  color: #FF6F6F;
+
+  svg {
+    transform: rotate(180deg);
+  }
+}

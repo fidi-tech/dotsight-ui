@@ -10,6 +10,7 @@ import Plus from './plus.svg';
 import Reddit from './reddit.svg';
 import Telegram from './telegram.svg';
 import Trash from './trash.svg';
+import Triangle from './triangle.svg';
 import X from './x.svg';
 
 export const IconNames = {
@@ -25,6 +26,7 @@ export const IconNames = {
   Reddit: 'Reddit',
   Telegram: 'Telegram',
   Trash: 'Trash',
+  Triangle: 'Triangle',
   X: 'X',
 }
 
@@ -43,5 +45,6 @@ export const Icons: Record<IconName, any> = {
   [IconNames.Reddit]: Reddit,
   [IconNames.Telegram]: Telegram,
   [IconNames.Trash]: Trash,
+  [IconNames.Triangle]: Triangle,
   [IconNames.X]: X,
 } as const;
