@@ -4,7 +4,7 @@ import Widget from './widget';
 import Configurator from './configurator';
 import Placeholder from './placeholder';
 
-export const type = 'singleMetric';
+export const type = 'statistics';
 export const dataShape = STATISTICS_DATASHAPE_CODE;
 
 const Statistics = {
