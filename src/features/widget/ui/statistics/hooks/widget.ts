@@ -48,7 +48,7 @@ const useEnhance = (
         change: stat.change,
       }
     })
-  }, [data?.stats]);
+  }, [data, customization.unit]);
 
   return {
     data: data && {

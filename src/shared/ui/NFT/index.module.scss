@@ -1,0 +1,80 @@
+@import '~@styles/colors.scss';
+
+$size: 185px;
+
+.root {
+  width: $size;
+  border-radius: 12px;
+  border: solid 1px $border;
+  background-color: $module;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  flex: 1;
+  padding: 6px 15px;
+}
+
+.collectionName {
+  font-size: 12px;
+  font-weight: 500;
+  color: $dark;
+}
+
+.image {
+  object-fit: cover;
+  width: $size;
+  height: $size;
+  border-radius: 12px;
+  border: solid 1px $border;
+  overflow: hidden;
+}
+
+.nftName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #22262B;
+}
+
+.pricing {
+  display: flex;
+  justify-content: end;
+  margin: 6px;
+  padding: 10px;
+  border-radius: 9px;
+  background-color: $gray;
+  text-align: end;
+}
+
+.oldPrice {
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  color: $dark;
+  align-items: center;
+}
+
+.clock, .chainIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    height: 100%;
+  }
+}
+
+.clock {
+  height: 10px;
+  margin-right: 6px;
+}
+
+.chainIcon {
+  height: 12px;
+  margin-left: 6px;
+}
+
+.clickable {
+  cursor: pointer;
+}
