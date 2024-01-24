@@ -8,7 +8,7 @@ const type = 'lineChart';
 const dataShape = HISTORICAL_LINES_DATASHAPE_CODE;
 
 const lineChart = {
-  title: 'Line Chart',
+  title: 'Time Series',
   type,
   dataShape,
   Widget,

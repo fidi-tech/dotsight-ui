@@ -13,11 +13,11 @@ const Header = () => {
   const disconnect = () => window.location.assign('/api/auth/logout');
   return (
     <Module className={styles.root}>
-      <a href="https://fidi.tech" className={styles.badge}>
+      <a href="https://dot.fidi.tech" className={styles.badge}>
         <div className={styles.logo} />
       </a>
       <div className={styles.links}>
-        <Link href="/" className={styles.link}>My Pipelines</Link>
+        <Link href="/" className={styles.link}>Code-Free Analytics</Link>
       </div>
       <Button onClick={disconnect} icon={<Icons.Disconnect />} theme="muted" className={styles.disconnect} />
     </Module>

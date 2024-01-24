@@ -8,7 +8,7 @@ const type = 'pieChart';
 const dataShape = DISTRIBUTION_DATASHAPE_CODE;
 
 const pieChart = {
-  title: 'Pie Chart',
+  title: 'Distribution (Pie Chart)',
   type,
   dataShape,
   Widget,

@@ -8,7 +8,7 @@ export const type = 'tokensValueList';
 export const dataShape = DISTRIBUTION_DATASHAPE_CODE;
 
 const tokensValueList = {
-  title: 'Tokens value list',
+  title: 'Assets Values',
   type,
   dataShape,
   Widget,
