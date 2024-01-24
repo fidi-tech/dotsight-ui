@@ -29,6 +29,9 @@ const useEnhance = (
 
     const result = [];
     for (const line of data.items) {
+      if (!line.value) {
+        continue;
+      }
       for (const point of line.value) {
         result.push(point.timestamp);
       }
@@ -46,7 +49,7 @@ const useEnhance = (
     }
 
     return data.items.map((line, i) => ({
-      data: line.value
+      data: (line.value || [])
         .map(point => ({
           x: convertToLabel(new Date(point.timestamp * 1000)),
           y: getAbsoluteMetricValue(point.value, customization.unit),
@@ -55,7 +58,7 @@ const useEnhance = (
       label: line.name,
       borderColor: getColorsFromPaletteByVariant(customization.palette)[i],
       backgroundColor: getColorsFromPaletteByVariant(customization.palette)[i],
-    }));
+    })).filter(item => item.data.length);
   }, [data, customization.palette, customization.unit]);
 
   return {
