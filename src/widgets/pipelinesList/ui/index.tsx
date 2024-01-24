@@ -20,7 +20,7 @@ export const PipelinesList = () => {
       ))}
       {!nonEmptyList && <Module className={styles.empty} dataTestId="empty">
         <Icons.EmptyPipe />
-        <p>No Pipelines has been created so far.</p>
+        <p>No Dashboards has been created so far.</p>
       </Module>}
     </div>
   );

@@ -8,7 +8,7 @@ export const type = 'statistics';
 export const dataShape = STATISTICS_DATASHAPE_CODE;
 
 const Statistics = {
-  title: 'Statistics',
+  title: 'Key Statistics',
   type,
   dataShape,
   Widget,

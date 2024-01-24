@@ -8,7 +8,7 @@ export const type = 'singleMetric';
 export const dataShape = SINGLE_METRIC_DATASHAPE_CODE;
 
 const singleMetric = {
-  title: 'Single metric',
+  title: 'Single Metric',
   type,
   dataShape,
   Widget,

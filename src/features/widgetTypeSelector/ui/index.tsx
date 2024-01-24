@@ -21,7 +21,7 @@ const WidgetTypeSelector = ({id}: Props, ref: Ref<any>) => {
   return (
     <div className={styles.root}>
       <div className={styles.main}>
-        <div className={styles.title}>What type of widget do you want to build?</div>
+        <div className={styles.title}>What type of widget would you like to build?</div>
         <div>
           <Selector options={typeOptions} selected={selectedType} onSelect={onOptionSelect} isDisabled={isDisabled} />
         </div>

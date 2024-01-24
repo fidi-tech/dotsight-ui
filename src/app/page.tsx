@@ -33,12 +33,12 @@ const Home = () => {
       <div className={styles.root}>
         <div>
           <Module className={styles.createModule}>
-            <p className={styles.title}>Create Data Pipeline</p>
-            <p className={styles.text}>Easily construct and create custom data pipelines for advanced Web3 analytics.</p>
+            <p className={styles.title}>Build Web3 Dashboard</p>
+            <p className={styles.text}>Seamlessly design and deploy tailored data dashboards for in-depth Web3 analytics.</p>
             <hr className={styles.hr}/>
             <Button
               onClick={onCreate}
-              text="Create Pipeline"
+              text="New Dashboard"
               icon={<Icons.Database />}
               iconPosition="Left"
               testId="create"
@@ -46,7 +46,7 @@ const Home = () => {
           </Module>
         </div>
         <hr className={styles.hr}/>
-        <p className={styles.title}>Your Data Pipelines</p>
+        <p className={styles.title}>My Dashboards</p>
         <div className={styles.list}>
           <PipelinesList />
         </div>

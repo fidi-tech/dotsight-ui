@@ -33,7 +33,7 @@ export const PipelineExecution = ({id}: Props) => {
   }, []);
 
   if (!isPipelineCompleted(pipeline)) {
-    return (<div>Is not completed</div>)
+    return (<div>Please specify your preferred settings to personalize the dashboard.</div>)
   }
 
   const widget = getPipelineWidgets(pipeline)[0];
