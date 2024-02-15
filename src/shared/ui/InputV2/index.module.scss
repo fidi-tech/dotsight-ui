@@ -1,0 +1,30 @@
+@import '~@styles/colors.scss';
+
+.root {
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border-radius: 12px;
+  border: 1px solid #DCDEE1;
+  box-sizing: border-box;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  color: $dark;
+}
+
+.inputWrapper {
+  display: flex;
+  width: 100%;
+  input {
+    all: unset;
+    background-color: transparent;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+}

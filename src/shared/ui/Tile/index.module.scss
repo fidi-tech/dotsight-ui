@@ -1,0 +1,19 @@
+@import '~@styles/colors.scss';
+
+.root {
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #DCDEE1;
+  color: #131417;
+  padding: 10px;
+}
+
+.isActive, .root:hover {
+  color: $brand;
+  border-radius: 10px;
+  border: 1px solid $brand;
+  background: rgba(126, 139, 255, 0.15);
+}

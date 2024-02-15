@@ -1,0 +1,15 @@
+@import '~@styles/colors.scss';
+
+.root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #DCDEE1;
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  background-color: $brand;
+}

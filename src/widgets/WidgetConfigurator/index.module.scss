@@ -1,0 +1,41 @@
+@import '~@styles/colors.scss';
+
+.root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  display: grid;
+  grid-template-areas:
+    "preview preview"
+    "types adjustments";
+  gap: 20px;
+}
+
+.preview {
+  grid-area: preview;
+}
+
+.types {
+  grid-area: types;
+}
+
+.adjustments {
+  grid-area: adjustments;
+}
+
+.controls {
+  background-color: $module;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.nextIcon {
+  width: 24px;
+  height: 24px;
+  transform: rotate(180deg);
+}

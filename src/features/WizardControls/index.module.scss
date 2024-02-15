@@ -1,0 +1,28 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left, .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.left {
+  flex: 1;
+  justify-content: start;
+}
+
+.center {
+  width: 360px;
+  height: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.right {
+  flex: 1;
+  justify-content: end;
+}

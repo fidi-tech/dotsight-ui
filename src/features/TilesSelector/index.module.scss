@@ -1,0 +1,39 @@
+.root {
+
+}
+
+.header {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #EDEEF0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: black;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.search {
+  width: 475px;
+  height: 40px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 10px;
+}
+
+.tile {
+  justify-content: start;
+}
