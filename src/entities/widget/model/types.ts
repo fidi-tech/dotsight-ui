@@ -8,5 +8,6 @@ export type Widget = {
   name: string,
   category: string,
   subcategories: SubCategoryId[],
-  metrics: MetricId[]
+  metrics?: MetricId[],
+  preset?: string,
 }

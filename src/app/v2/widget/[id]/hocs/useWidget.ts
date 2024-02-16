@@ -18,7 +18,7 @@ export const useWidget = (id: WidgetId) => {
   let step;
   if (widget) {
     step = 0;
-    if (getWidgetMetricsIds(widget).length) {
+    if (getWidgetMetricsIds(widget)?.length) {
       step = 1;
     }
   }
