@@ -51,7 +51,7 @@ const NewWidget = ({}: Props) => {
               onClick={onCreate.bind(this, getCategoryId(category))}
             >
               <NameWithIcon
-                Icon={<div className={styles.icon}><Icon /></div>}
+                Icon={<div className={styles.icon}>{Icon && <Icon />}</div>}
                 nameClassName={styles.name}
               >
                 {getCategoryName(category)}
