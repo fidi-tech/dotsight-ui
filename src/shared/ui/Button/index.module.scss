@@ -3,6 +3,11 @@
 .theme-regular {
   background-color: $brand;
   color: white;
+
+  &.disabled {
+    background-color: $gray;
+    color: $dark;
+  }
 }
 
 .theme-muted {

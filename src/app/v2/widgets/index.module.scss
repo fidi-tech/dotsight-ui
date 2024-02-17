@@ -1,0 +1,45 @@
+@import '~@styles/colors.scss';
+
+.content {
+  padding: 20px;
+}
+
+.createModule {
+  max-width: 400px;
+
+  .title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #131417;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+
+    svg {
+      color: $brand;
+      width: 20px;
+    }
+  }
+
+  .text {
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: $dark;
+  }
+}
+
+.hr {
+  height: 1px;
+  background-color: $border;
+  margin: 30px 10px;
+  border: none;
+}
+
+.widgetsIcon {
+  display: flex;
+  color: $brand;
+}

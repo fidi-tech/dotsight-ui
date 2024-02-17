@@ -13,6 +13,11 @@ export const createWidget = async ({category, name}): Promise<any[]> => {
   return response.data.widget;
 }
 
+export const fetchWidgets = async (): Promise<any[]> => {
+  const response = await api.get(BASE_URL);
+  return response.data.widgets;
+}
+
 export const fetchWidgetById = async (id: WidgetId): any => {
   const response = await api.get(`${BASE_URL}/${id}`);
   return response.data.widget;

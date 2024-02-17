@@ -1,0 +1,31 @@
+@import '~@styles/colors.scss';
+
+.title, .row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.title, .list {
+  padding-left: 20px;
+  padding-right: 3px;
+}
+
+.title {
+  background-color: $gray;
+  border-radius: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  & + & {
+    border-top: 1px solid $gray;
+  }
+}
+
+.name {
+  cursor: pointer;
+}

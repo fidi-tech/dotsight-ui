@@ -8,11 +8,12 @@ import {StepTitle} from '@/shared/ui/StepTitle';
 import {Module} from '@/shared/ui/Module';
 import TilesSelector from '@/features/TilesSelector';
 import {CategoryId} from '@/entities/category/model';
+import {NameWithIcon} from '@/shared/ui/NameWithIcon';
+import {getSubCategoryIcon, getSubCategoryName} from '@/entities/subCategory/model/getters';
 
 import styles from './index.module.scss';
 import {useEnhance} from './hocs';
 import {Title} from './components/Title';
-import {NameWithIcon} from '@/shared/ui/NameWithIcon';
 
 type Props = {
   id: string;
@@ -21,10 +22,12 @@ type Props = {
 const TITLES_MAP = {
   [CategoryId.wallet]: 'Search for Wallet',
   [CategoryId.network]: 'Available Networks',
+  [CategoryId.token]: 'Search for Token',
 }
 const PLACEHOLDER_MAP = {
   [CategoryId.wallet]: 'Type in wallet address, ens...',
   [CategoryId.network]: 'Search for Networks/Protocols, Key words...',
+  [CategoryId.token]: 'Search for Tokens...',
 }
 
 const SubCategoriesSelector = ({id}: Props) => {
@@ -35,22 +38,24 @@ const SubCategoriesSelector = ({id}: Props) => {
     onSelectSubCategory,
     query,
     setQuery,
+    isCompleted,
   } = useEnhance(id);
 
   if (!categoryId) {
     return null;
   }
 
-  const renderSubCategory = useCallback((subCategory) =>
+  const renderSubCategory = useCallback(subCategory =>
       <NameWithIcon
-        Icon={subCategory.icon &&
-        <img
-          src={subCategory.icon}
-          className={styles.tileIcon}
-        />
+        Icon={getSubCategoryIcon(subCategory) &&
+          <img
+            alt={getSubCategoryName(subCategory)}
+            src={getSubCategoryIcon(subCategory)}
+            className={styles.tileIcon}
+          />
         }
       >
-        {subCategory.name}
+        {getSubCategoryName(subCategory)}
       </NameWithIcon>
     , [])
 
@@ -76,13 +81,14 @@ const SubCategoriesSelector = ({id}: Props) => {
         <WizardControls
           right={
             <Button
-              onClick={() => nextStep()}
+              onClick={nextStep}
               text="Next"
               icon={
                 <div className={styles.nextIcon}>
                   <Icons.OutlinedArrow />
                 </div>
               }
+              disabled={!isCompleted}
             />
           }
           percentage={33}

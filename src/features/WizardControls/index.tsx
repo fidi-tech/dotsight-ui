@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import {Bar} from '@/shared/ui/Bar';
 
 type Props = {
-  left: React.Component,
+  left?: React.Component,
   right: React.Component,
   percentage?: number,
 }

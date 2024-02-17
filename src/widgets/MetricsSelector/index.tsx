@@ -8,6 +8,7 @@ import {StepTitle} from '@/shared/ui/StepTitle';
 import {Module} from '@/shared/ui/Module';
 import TilesSelector from '@/features/TilesSelector';
 import {NameWithIcon} from '@/shared/ui/NameWithIcon';
+import {getMetricIcon, getMetricName} from '@/entities/metric/model/getters';
 
 import {Title} from './components/Title';
 import styles from './index.module.scss';
@@ -24,18 +25,20 @@ const MetricsSelector = ({id}: Props) => {
     onSelectMetrics,
     query,
     setQuery,
+    isCompleted,
   } = useEnhance(id);
 
   const renderMetric = useCallback((metric) =>
     <NameWithIcon
-      Icon={metric.icon &&
+      Icon={getMetricIcon(metric) &&
         <img
-          src={metric.icon}
+          alt={getMetricName(metric)}
+          src={getMetricIcon(metric)}
           className={styles.tileIcon}
         />
       }
     >
-      {metric.name}
+      {getMetricName(metric)}
     </NameWithIcon>
   , [])
 
@@ -66,7 +69,7 @@ const MetricsSelector = ({id}: Props) => {
               theme="minor"
               iconPosition="Left"
               icon={
-                <div className={styles.previousIcon}>
+                <div>
                   <Icons.OutlinedArrow/>
                 </div>
               }
@@ -74,13 +77,14 @@ const MetricsSelector = ({id}: Props) => {
           }
           right={
             <Button
-              onClick={() => nextStep()}
+              onClick={nextStep}
               text="Next"
               icon={
                 <div className={styles.nextIcon}>
                   <Icons.OutlinedArrow />
                 </div>
               }
+              disabled={!isCompleted}
             />
           }
           percentage={66}

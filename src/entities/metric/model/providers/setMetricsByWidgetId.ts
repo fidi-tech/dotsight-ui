@@ -10,6 +10,6 @@ import {updateMetrics} from '../actions';
 export const setMetricsByWidgetId = (id: WidgetId, selectedMetricsIds: MetricId[], query: string) =>
   async (dispatch: Dispatch) => {
     const {widget, metrics} = await setWidgetMetricsById(id, selectedMetricsIds, query);
-    dispatch(updateMetrics(metrics));
+    dispatch(updateMetrics(metrics.metrics));
     dispatch(upsert(widget));
   }

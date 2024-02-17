@@ -8,6 +8,9 @@ export const widgetSlice = createSlice({
   reducers: {
     upsert(state, action) {
       widgetAdapter.upsertOne(state, action.payload);
+    },
+    updateAll(state, action) {
+      widgetAdapter.setAll(state, action.payload);
     }
   },
 });

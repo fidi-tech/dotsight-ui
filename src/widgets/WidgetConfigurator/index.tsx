@@ -22,8 +22,6 @@ const WidgetConfigurator = ({id}: Props) => {
     onSelectViewType,
   } = useEnhance();
 
-  console.log(viewType, 'ppprent')
-
   return (
     <div className={styles.root}>
       <div className={styles.content}>
@@ -46,7 +44,7 @@ const WidgetConfigurator = ({id}: Props) => {
               theme="minor"
               iconPosition="Left"
               icon={
-                <div className={styles.previousIcon}>
+                <div>
                   <Icons.OutlinedArrow/>
                 </div>
               }

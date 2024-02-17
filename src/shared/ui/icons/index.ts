@@ -1,4 +1,5 @@
 import Chart from './chart.svg';
+import ChevronUp from './chevronUp.svg';
 import Clock from './clock.svg';
 import Database from './database.svg';
 import Disconnect from './disconnect.svg';
@@ -15,6 +16,7 @@ import Plus from './plus.svg';
 import Reddit from './reddit.svg';
 import Search from './search.svg';
 import Telegram from './telegram.svg';
+import Tiles from './tiles.svg';
 import Trash from './trash.svg';
 import Triangle from './triangle.svg';
 import Wallet from './wallet.svg';
@@ -22,6 +24,7 @@ import X from './x.svg';
 
 export const IconNames = {
   Chart: 'Chart',
+  ChevronUp: 'ChevronUp',
   Clock: 'Clock',
   Database: 'Database',
   Disconnect: 'Disconnect',
@@ -38,6 +41,7 @@ export const IconNames = {
   Reddit: 'Reddit',
   Search: 'Search',
   Telegram: 'Telegram',
+  Tiles: 'Tiles',
   Trash: 'Trash',
   Triangle: 'Triangle',
   Wallet: 'Wallet',
@@ -48,6 +52,7 @@ export type IconName = typeof IconNames[keyof typeof IconNames];
 
 export const Icons: Record<IconName, any> = {
   [IconNames.Chart]: Chart,
+  [IconNames.ChevronUp]: ChevronUp,
   [IconNames.Clock]: Clock,
   [IconNames.Database]: Database,
   [IconNames.Disconnect]: Disconnect,
@@ -64,6 +69,7 @@ export const Icons: Record<IconName, any> = {
   [IconNames.Reddit]: Reddit,
   [IconNames.Search]: Search,
   [IconNames.Telegram]: Telegram,
+  [IconNames.Tiles]: Tiles,
   [IconNames.Trash]: Trash,
   [IconNames.Triangle]: Triangle,
   [IconNames.Wallet]: Wallet,

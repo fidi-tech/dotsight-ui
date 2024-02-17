@@ -34,6 +34,18 @@ const MAP = {
       for your widget
     </p>
   ),
+  [CategoryId.token]: () => (
+    <p className={styles.title}>
+      Select the
+      <span className={styles.branded}>
+        <span className={styles.titleIcon}>
+          <Icons.Wallet />
+        </span>
+        Token(s)
+      </span>
+      for your widget
+    </p>
+  ),
 }
 
 export const Title = ({categoryId}: Props) => {
