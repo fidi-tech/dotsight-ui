@@ -18,6 +18,12 @@
 
 .preview {
   grid-area: preview;
+  padding: 85px 85px;
+  background-color: $border;
+  border-radius: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .types {

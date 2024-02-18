@@ -1,22 +1,46 @@
-import {useState} from 'react';
+import {useSelector} from 'react-redux';
+import {useEffect, useState, useMemo} from 'react';
 
-import widgets from '@/features/widgetViews/ui';
+import widgetViews from '@/features/widgetViews/ui';
+import {WidgetId} from '@/entities/widget/model';
+import {useDispatch} from '@/infra/providers/redux';
+import {getWidgetById} from '@/entities/widget/model/providers/getWidgetById';
+import {selectById} from '@/entities/widget/model/selectors';
 
-const TYPES = Object.values(widgets).map(widget => ({
-  id: widget.type,
-  name: widget.title,
-  Icon: widget.Icon,
-  isAvailable: true,
+const TYPES = Object.values(widgetViews).map(widgetView => ({
+  id: widgetView.type,
+  name: widgetView.title,
+  Icon: widgetView.Icon,
+  getUnavailabilityReason: widgetView.getUnavailabilityReason,
 }))
 
-export const useTypes = () => {
-  const [selected, onSelect] = useState(TYPES[0].id);
+export const useTypes = (id: WidgetId) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getWidgetById(id));
+  }, [dispatch, id]);
+  const widget = useSelector((state) => selectById(state, id));
+
+  const [selected, onSelect] = useState();
+  const types = useMemo(() => {
+    return TYPES.map(({getUnavailabilityReason, ...type}) => {
+      return {
+        ...type,
+        isSelected: selected === type.id,
+        unavailabilityReason: getUnavailabilityReason?.(widget),
+      };
+    })
+  }, [widget, TYPES, selected]);
+  useEffect(() => {
+    const firstAvailable = types.find(type => !type.unavailabilityReason);
+    if (firstAvailable) {
+      onSelect(firstAvailable.id);
+    }
+  }, []);
+
   const [query, setQuery] = useState('');
   return {
-    types: TYPES.filter(type => !query || type.name.includes(query)).map(type => ({
-      ...type,
-      isSelected: selected.includes(type.id),
-    })),
+    types,
     query,
     setQuery,
     onSelect,

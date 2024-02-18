@@ -18,8 +18,6 @@ export const Preview = ({id, viewType}: Props) => {
     return null;
   }
 
-  console.log(widgets, viewType, 'mvmv')
-
   const Widget = widgets[viewType].Widget;
 
   return (

@@ -8,12 +8,13 @@ import {withAuth} from '@/features/HOC/withAuth/ui';
 import SubCategoriesSelector from '@/widgets/SubCategoriesSelector';
 import MetricsSelector from '@/widgets/MetricsSelector';
 import WidgetConfigurator from '@/widgets/WidgetConfigurator';
+import {WidgetId} from '@/entities/widget/model';
 
 import {useEnhance} from './hocs';
 
 type Props = {
   params: {
-    id?: string;
+    id?: WidgetId;
   }
 }
 

@@ -5,6 +5,7 @@ import WizardControls from '@/features/WizardControls';
 import {Button} from '@/shared/ui/Button';
 import {Icons} from '@/shared/ui/icons';
 import {Module} from '@/shared/ui/Module';
+import {WidgetId} from '@/entities/widget/model';
 
 import styles from './index.module.scss';
 import {Types} from './components/Types';
@@ -12,7 +13,7 @@ import {Preview} from './components/Preview';
 import {useEnhance} from './hocs';
 
 type Props = {
-  id: string;
+  id: WidgetId;
 }
 
 const WidgetConfigurator = ({id}: Props) => {
@@ -30,7 +31,7 @@ const WidgetConfigurator = ({id}: Props) => {
         </div>
         <div className={styles.types}>
           <Module>
-            <Types onSelect={onSelectViewType} />
+            <Types onSelect={onSelectViewType} widgetId={id} />
           </Module>
         </div>
         <div className={styles.adjustments}><Module>adjustments</Module></div>

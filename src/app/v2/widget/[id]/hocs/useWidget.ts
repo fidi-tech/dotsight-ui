@@ -1,6 +1,5 @@
 import {useSelector} from 'react-redux';
 import {useEffect} from 'react';
-import {useWizard} from 'react-use-wizard';
 
 import {WidgetId} from '@/entities/widget/model';
 import {useDispatch} from '@/infra/providers/redux';

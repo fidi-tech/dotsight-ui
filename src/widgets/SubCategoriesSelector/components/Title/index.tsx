@@ -39,7 +39,7 @@ const MAP = {
       Select the
       <span className={styles.branded}>
         <span className={styles.titleIcon}>
-          <Icons.Wallet />
+          <Icons.Tokens />
         </span>
         Token(s)
       </span>

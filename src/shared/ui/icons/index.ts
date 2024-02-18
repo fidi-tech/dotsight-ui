@@ -17,6 +17,7 @@ import Reddit from './reddit.svg';
 import Search from './search.svg';
 import Telegram from './telegram.svg';
 import Tiles from './tiles.svg';
+import Tokens from './tokens.svg';
 import Trash from './trash.svg';
 import Triangle from './triangle.svg';
 import Wallet from './wallet.svg';
@@ -42,6 +43,7 @@ export const IconNames = {
   Search: 'Search',
   Telegram: 'Telegram',
   Tiles: 'Tiles',
+  Tokens: 'Tokens',
   Trash: 'Trash',
   Triangle: 'Triangle',
   Wallet: 'Wallet',
@@ -70,6 +72,7 @@ export const Icons: Record<IconName, any> = {
   [IconNames.Search]: Search,
   [IconNames.Telegram]: Telegram,
   [IconNames.Tiles]: Tiles,
+  [IconNames.Tokens]: Tokens,
   [IconNames.Trash]: Trash,
   [IconNames.Triangle]: Triangle,
   [IconNames.Wallet]: Wallet,

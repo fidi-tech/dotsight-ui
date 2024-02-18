@@ -21,6 +21,7 @@ import {getCategoryId, getCategoryName} from '@/entities/category/model/getters'
 const ICON_MAP = {
   'wallet': Icons.Wallet,
   'network': Icons.Nodes,
+  'token': Icons.Tokens,
 }
 
 type Props = {}

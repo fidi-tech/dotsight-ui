@@ -1,16 +1,18 @@
 import React, {useCallback} from 'react';
 
 import TilesSelector from '@/features/TilesSelector';
+import {WidgetId} from '@/entities/widget/model';
 
 import styles from './index.module.scss';
 import {useEnhance} from './hocs';
 
 type Props = {
+  widgetId: WidgetId,
   onSelect: (id: string) => void,
 }
 
-export const Types = ({onSelect: onParentSelect}: Props) => {
-  const {types, query, setQuery, onSelect} = useEnhance();
+export const Types = ({onSelect: onParentSelect, widgetId}: Props) => {
+  const {types, query, setQuery, onSelect} = useEnhance(widgetId);
 
   const _onSelect = useCallback((t) => {
     onParentSelect(t);
