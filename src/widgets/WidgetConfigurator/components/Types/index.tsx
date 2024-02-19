@@ -8,16 +8,10 @@ import {useEnhance} from './hocs';
 
 type Props = {
   widgetId: WidgetId,
-  onSelect: (id: string) => void,
 }
 
-export const Types = ({onSelect: onParentSelect, widgetId}: Props) => {
+export const Types = ({widgetId}: Props) => {
   const {types, query, setQuery, onSelect} = useEnhance(widgetId);
-
-  const _onSelect = useCallback((t) => {
-    onParentSelect(t);
-    onSelect(t);
-  }, [onSelect]);
 
   const renderType = useCallback(tile => {
     const Icon = tile.Icon;
@@ -39,7 +33,7 @@ export const Types = ({onSelect: onParentSelect, widgetId}: Props) => {
         placeholder="Search for Widget Types"
         tiles={types}
         renderTile={renderType}
-        onSelect={_onSelect}
+        onSelect={onSelect}
       />
     </div>
   );

@@ -1,9 +1,13 @@
-import {useState} from 'react';
+import {useSelector} from 'react-redux';
 
-export const useViewType = () => {
-  const [viewType, setViewType] = useState();
+import {WidgetId} from '@/entities/widget/model';
+import {selectById} from '@/entities/widget/model/selectors';
+import {getWidgetView} from '@/entities/widget/model/getters';
+
+export const useViewType = (id: WidgetId) => {
+  const widget = useSelector((state) => selectById(state, id));
+  const viewType = getWidgetView(widget);
   return {
     viewType,
-    onSelectViewType: setViewType,
   };
 }

@@ -1,5 +1,5 @@
 import {api} from '@/shared/api/dotsight/base';
-import {WidgetId} from '@/entities/widget/model';
+import {WidgetId, WidgetView} from '@/entities/widget/model';
 import {SubCategoryId} from '@/entities/subCategory/model';
 import {MetricId} from '@/entities/metric/model';
 
@@ -54,4 +54,12 @@ export const setWidgetMetricsById = async (id: WidgetId, metrics: MetricId[], qu
 export const fetchWidgetDataById = async (id: WidgetId): any => {
   const response = await api.get(`${BASE_URL}/${id}/data`);
   return response.data;
+}
+
+export const updateWidget = async (id: WidgetId, {name, view}: { name?: string, view?: WidgetView }): any => {
+  const response = await api.patch(
+    `${BASE_URL}/${id}`,
+    {name, view}
+  )
+  return response.data.widget;
 }

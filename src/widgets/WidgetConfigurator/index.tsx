@@ -18,10 +18,7 @@ type Props = {
 
 const WidgetConfigurator = ({id}: Props) => {
   const { previousStep, nextStep } = useWizard();
-  const {
-    viewType,
-    onSelectViewType,
-  } = useEnhance();
+  const { viewType } = useEnhance(id);
 
   return (
     <div className={styles.root}>
@@ -31,7 +28,7 @@ const WidgetConfigurator = ({id}: Props) => {
         </div>
         <div className={styles.types}>
           <Module>
-            <Types onSelect={onSelectViewType} widgetId={id} />
+            <Types widgetId={id} />
           </Module>
         </div>
         <div className={styles.adjustments}><Module>adjustments</Module></div>

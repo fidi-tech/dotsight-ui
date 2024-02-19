@@ -5,7 +5,7 @@ import {WidgetId} from '@/entities/widget/model';
 import {useDispatch} from '@/infra/providers/redux';
 import {getWidgetById} from '@/entities/widget/model/providers/getWidgetById';
 import {selectById} from '@/entities/widget/model/selectors';
-import {getWidgetMetricsIds} from '@/entities/widget/model/getters';
+import {getWidgetMetricsIds, getWidgetView} from '@/entities/widget/model/getters';
 
 export const useWidget = (id: WidgetId) => {
   const dispatch = useDispatch();
@@ -19,6 +19,9 @@ export const useWidget = (id: WidgetId) => {
     step = 0;
     if (getWidgetMetricsIds(widget)?.length) {
       step = 1;
+    }
+    if (getWidgetView(widget)) {
+      step = 2;
     }
   }
 

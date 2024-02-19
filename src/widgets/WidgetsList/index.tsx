@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {getWidgetCategoryId, getWidgetId, getWidgetName} from '@/entities/widget/model/getters';
+import {getWidgetCategoryId, getWidgetId, getWidgetName, getWidgetView} from '@/entities/widget/model/getters';
+import {WidgetTypeTag} from '@/shared/ui/WidgetTypeTag';
 
 import styles from './index.module.scss';
 import {useEnhance} from './hocs';
@@ -20,10 +21,16 @@ export const WidgetsList = () => {
       <div className={styles.list}>
         {widgets.map(widget => (
           <div className={styles.row} key={getWidgetId(widget)}>
-            <div className={styles.name} onClick={goToWidget.bind(this, getWidgetId(widget))}>{getWidgetName(widget)}</div>
+            <div className={styles.name} onClick={goToWidget.bind(this, getWidgetId(widget))}>
+              {getWidgetName(widget)}
+            </div>
             <div/>
-            <div>{getWidgetCategoryId(widget)}</div>
-            <div/>
+            <div>
+              {getWidgetCategoryId(widget)}
+            </div>
+            <div>
+              <WidgetTypeTag type={getWidgetView(widget)}/>
+            </div>
             <div/>
             <div/>
           </div>
