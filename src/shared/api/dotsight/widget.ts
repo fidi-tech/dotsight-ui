@@ -3,7 +3,7 @@ import {WidgetId, WidgetView} from '@/entities/widget/model';
 import {SubCategoryId} from '@/entities/subCategory/model';
 import {MetricId} from '@/entities/metric/model';
 
-const BASE_URL = '/widgets';
+const BASE_URL = '/v2/widgets';
 
 export const createWidget = async ({category, name}): Promise<any[]> => {
   const response = await api.post(BASE_URL, {
