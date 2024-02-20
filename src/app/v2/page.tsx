@@ -4,7 +4,7 @@ import React, {useCallback} from 'react';
 import { useRouter } from 'next/navigation'
 
 import MainLayout from '@/features/mainLayout/ui';
-import {withAuth} from '@/features/HOC/withAuth/ui';
+import {withAuth2} from '@/features/HOC/withAuth/ui';
 import {Module} from '@/shared/ui/Module';
 import {Button} from '@/shared/ui/Button';
 import {Icons} from '@/shared/ui/icons';
@@ -44,4 +44,4 @@ const Widgets = ({}: Props) => {
   </MainLayout>;
 }
 
-export default withAuth(Widgets);
+export default withAuth2(Widgets);

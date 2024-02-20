@@ -4,7 +4,7 @@ import React, {useEffect} from 'react';
 import {useWizard, Wizard} from 'react-use-wizard';
 
 import MainLayout from '@/features/mainLayout/ui';
-import {withAuth} from '@/features/HOC/withAuth/ui';
+import {withAuth2} from '@/features/HOC/withAuth/ui';
 import SubCategoriesSelector from '@/widgets/SubCategoriesSelector';
 import MetricsSelector from '@/widgets/MetricsSelector';
 import WidgetConfigurator from '@/widgets/WidgetConfigurator';
@@ -35,4 +35,4 @@ const Widget = ({ params }: Props) => {
   </MainLayout>;
 }
 
-export default withAuth(Widget);
+export default withAuth2(Widget);

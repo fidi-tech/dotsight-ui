@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 import {useDispatch} from '@/infra/providers/redux';
 import {getCategoriesList} from '@/entities/category/model/providers/getCategoriesList';
 import MainLayout from '@/features/mainLayout/ui';
-import {withAuth} from '@/features/HOC/withAuth/ui';
+import {withAuth2} from '@/features/HOC/withAuth/ui';
 import {StepTitle} from '@/shared/ui/StepTitle';
 import {Tile} from '@/shared/ui/Tile';
 import {Icons} from '@/shared/ui/icons';
@@ -65,4 +65,4 @@ const NewWidget = ({}: Props) => {
   </MainLayout>;
 }
 
-export default withAuth(NewWidget);
+export default withAuth2(NewWidget);
