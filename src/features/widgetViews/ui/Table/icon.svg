@@ -1,12 +1,17 @@
-<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="chart-pie-2 1">
-<g id="Group">
-<g id="Group_2">
-<path id="Vector" d="M12.5 2.83334V12.5" stroke="#79818D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_2" d="M19.7147 6.06534L12.5 12.5" stroke="#79818D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_3" d="M17.9747 20.4667L12.5 12.5" stroke="#79818D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_4" d="M12.4999 22.1667C17.8387 22.1667 22.1666 17.8388 22.1666 12.5C22.1666 7.16126 17.8387 2.83334 12.4999 2.83334C7.16117 2.83334 2.83325 7.16126 2.83325 12.5C2.83325 17.8388 7.16117 22.1667 12.4999 22.1667Z" stroke="#79818D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-</g>
-</g>
+<svg viewBox="0 0 62 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M47.5 1.5H8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M47.5 6.5H8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M47.5 11.5H8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M47.5 16.5H8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M47.5 21.5H8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M60.5 1.5H52.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M60.5 6.5H52.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M60.5 11.5H52.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M60.5 16.5H52.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M60.5 21.5H52.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M3.5 1.5H1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M3.5 6.5H1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M3.5 11.5H1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M3.5 16.5H1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M3.5 21.5H1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 </svg>

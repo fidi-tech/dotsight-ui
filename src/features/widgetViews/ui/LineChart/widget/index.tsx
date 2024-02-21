@@ -1,36 +1,92 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js';
+import {XAxis, YAxis, Tooltip, Legend, AreaChart, Area} from 'recharts';
+
+import {getColorsFromPaletteByVariant, PaletteVariant} from '@/shared/ui/styles/palettes';
+import {Module} from '@/shared/ui/Module';
 
 import {useEnhance} from './hocs';
-
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
-
-const OPTIONS = {
-  plugins: {
-    legend: {
-      display: false,
-    },
-    customCanvasBackgroundColor: {
-      color: 'white',
-    },
-  },
-};
+import styles from './index.module.scss';
+import {LegendLine} from './components/LegendLine';
+import {Tooltip as CustomizedTooltip} from './components/Tooltip';
+import {formatTime, formatValue} from './helpers';
 
 type Props = {
   data: any,
 }
 
+const CustomizedLegend = (props) => {
+  const {payload, external} = props;
+  const {title, items} = external;
+  return (
+    <div className={styles.legend}>
+      <div className={styles.title}><div>{title}</div></div>
+      <div className={styles.marks}>
+        {payload.map(mark =>(
+          <div className={styles.mark}>
+            <LegendLine name={items[mark.dataKey].name} color={mark.color} />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const View = ({data}: Props) => {
   const {
+    title,
     chart,
+    keys,
+    items,
   } = useEnhance(data);
+
   return (
-    <div>
-      Line Chart!
-      <Line data={chart} options={OPTIONS} />
-      {JSON.stringify(data)}
-    </div>
+    <Module className={styles.root}>
+      <AreaChart width={700} height={230} data={chart} margin={{top: 20, right: 0, bottom: 20, left: 0}}>
+        <defs>
+          {keys.map((key, i) =>
+            <linearGradient id={`color${key}`} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]} stopOpacity={0.2}/>
+              <stop offset="55%" stopColor={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]} stopOpacity={0}/>
+            </linearGradient>
+          )}
+        </defs>
+        <YAxis
+          mirror
+          tickLine={false}
+          axisLine={false}
+          type="number"
+          stroke="#dcdee1"
+          tickFormatter={formatValue}
+          interval="preserveEnd"
+          tick={{stroke: '#79818D', fill: '#79818D', fontSize: '14px', fontWeight: 500, strokeWidth: 0}}
+          tickMargin={30}
+        />
+        <XAxis
+          dataKey="timestamp"
+          interval="preserveStartEnd"
+          tickLine={false}
+          stroke="#dcdee1"
+          minTickGap={50}
+          tickFormatter={formatTime}
+          padding={{left: 80, right: 40}}
+          tick={{stroke: '#79818D', fill: '#79818D', fontSize: '14px', fontWeight: 500, strokeWidth: 0}}
+        />
+        <Tooltip content={<CustomizedTooltip external={{items}} />} />
+        <Legend verticalAlign="top" align="left" iconType="plainline" content={<CustomizedLegend external={{title, items}} />} />
+        {keys.map((key, i) =>
+          <Area
+            type="monotone"
+            dataKey={key}
+            stroke={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]}
+            strokeWidth={2}
+            activeDot={{ stroke: getColorsFromPaletteByVariant(PaletteVariant.v1)[i], strokeWidth: 2, r: 2 }}
+            dot={false}
+            fillOpacity={1}
+            fill={`url(#color${key})`}
+          />
+        )}
+      </AreaChart>
+    </Module>
   )
 }
 

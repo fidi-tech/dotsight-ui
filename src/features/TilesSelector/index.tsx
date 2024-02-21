@@ -9,7 +9,7 @@ import {Input} from '@/shared/ui/InputV2';
 
 type Tile = {
   id: string,
-  isAvailable: boolean,
+  isDisabled?: boolean,
   isSelected: boolean,
 }
 
@@ -41,7 +41,13 @@ const TilesSelector = ({title, placeholder, query, setQuery, tiles, onSelect, re
       <div className={styles.content}>
         {tiles.map(tile => {
           return (
-            <Tile isActive={tile.isSelected} className={styles.tile} key={tile.id} onClick={onSelect.bind(this, tile.id)}>
+            <Tile
+              isActive={tile.isSelected}
+              isDisabled={tile.isDisabled}
+              className={styles.tile}
+              key={tile.id}
+              onClick={(!tile.isDisabled ? onSelect.bind(this, tile.id) : undefined)}
+            >
               {renderTile(tile)}
             </Tile>
           )

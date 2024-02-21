@@ -1,7 +1,6 @@
 @import '~@styles/colors.scss';
 
 .root {
-  cursor: pointer;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +10,12 @@
   padding: 10px;
 }
 
-.isActive, .root:hover {
+.isDisabled {
+  opacity: 0.5;
+}
+
+.isActive, .root:hover:not(.isDisabled) {
+  cursor: pointer;
   color: $brand;
   border-radius: 10px;
   border: 1px solid $brand;

@@ -31,7 +31,7 @@ const WidgetConfigurator = ({id}: Props) => {
             <Types widgetId={id} />
           </Module>
         </div>
-        <div className={styles.adjustments}><Module>adjustments</Module></div>
+        {/*<div className={styles.adjustments}><Module>adjustments</Module></div>*/}
       </div>
       <div className={styles.controls}>
         <WizardControls

@@ -1,7 +1,7 @@
 'use client'
 
-import React, {useEffect} from 'react';
-import {useWizard, Wizard} from 'react-use-wizard';
+import React from 'react';
+import {Wizard} from 'react-use-wizard';
 
 import MainLayout from '@/features/mainLayout/ui';
 import {withAuth2} from '@/features/HOC/withAuth/ui';

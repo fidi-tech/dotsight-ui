@@ -25,15 +25,17 @@ export const useTypes = (id: WidgetId) => {
   const view = getWidgetView(widget);
 
   const [selected, onSelect] = useState();
+  const [query, setQuery] = useState('');
   const types = useMemo(() => {
     return TYPES.map(({getUnavailabilityReason, ...type}) => {
       return {
         ...type,
         isSelected: selected === type.id,
+        isDisabled: !!getUnavailabilityReason?.(widget),
         unavailabilityReason: getUnavailabilityReason?.(widget),
       };
-    })
-  }, [widget, TYPES, selected]);
+    }).filter(type => type.isSelected || type.name.toLowerCase().includes(query.toLowerCase()))
+  }, [widget, TYPES, selected, query]);
   const _onSelect = useCallback((type) => {
     onSelect(type);
     if (type !== view) {
@@ -42,19 +44,18 @@ export const useTypes = (id: WidgetId) => {
   }, [onSelect, view, id]);
   useEffect(() => {
     if (view) {
-      const type = types.find(t => t.id === view);
+      const type = types.find(t => t.id === view && !t.isDisabled);
       if (type) {
         _onSelect(type.id);
         return;
       }
     }
-    const firstAvailable = types.find(type => !type.unavailabilityReason);
+    const firstAvailable = types.find(type => !type.isDisabled);
     if (firstAvailable) {
       _onSelect(firstAvailable.id);
     }
   }, [view, _onSelect]);
 
-  const [query, setQuery] = useState('');
   return {
     types,
     query,
