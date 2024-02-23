@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useMemo} from 'react';
 
 import TilesSelector from '@/features/TilesSelector';
 import {WidgetId} from '@/entities/widget/model';
@@ -22,7 +22,11 @@ export const Types = ({widgetId}: Props) => {
       </div>
     )
   }
-  , [])
+  , []);
+
+  const sections = useMemo(() => [
+    {id: 'type', tiles: types, renderTile: renderType, onSelect}
+  ], [types, renderType, onSelect]);
 
   return (
     <div>
@@ -31,9 +35,7 @@ export const Types = ({widgetId}: Props) => {
         query={query}
         setQuery={setQuery}
         placeholder="Search for Widget Types"
-        tiles={types}
-        renderTile={renderType}
-        onSelect={onSelect}
+        sections={sections}
       />
     </div>
   );

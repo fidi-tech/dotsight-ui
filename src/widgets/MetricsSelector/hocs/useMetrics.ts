@@ -4,11 +4,13 @@ import {useSelector} from 'react-redux';
 import {getMetricsByWidgetId} from '@/entities/metric/model/providers/getMetricsByWidgetId';
 import {useDispatch} from '@/infra/providers/redux';
 import {selectAll} from '@/entities/metric/model/selectors';
+import {selectAll as selectAllPresets} from '@/entities/preset/model/selectors';
 import {WidgetId} from '@/entities/widget/model';
 import {getMetricId, getMetricIsSelected} from '@/entities/metric/model/getters';
 import {MetricId} from '@/entities/metric/model';
 
 import {setMetricsByWidgetId} from '@/entities/metric/model/providers/setMetricsByWidgetId';
+import {PresetId} from '@/entities/preset/model';
 
 export const useMetrics = (id: WidgetId) => {
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ export const useMetrics = (id: WidgetId) => {
     dispatch(getMetricsByWidgetId(id, query));
   }, [dispatch, id, query]);
   const metrics = useSelector(selectAll);
-  const onSelect = useCallback((metricId) => {
+  const onSelectMetrics = useCallback((metricId: MetricId) => {
     const currentSelectedMetricsIds = metrics.reduce((acc: MetricId[], metric) => {
       if (getMetricIsSelected(metric)) {
         acc.push(getMetricId(metric));
@@ -28,11 +30,19 @@ export const useMetrics = (id: WidgetId) => {
       ? currentSelectedMetricsIds.filter(id => id !== metricId)
       : [...currentSelectedMetricsIds, metricId];
 
-    dispatch(setMetricsByWidgetId(id, updatedMetricsIds, query));
-  }, [metrics]);
+    dispatch(setMetricsByWidgetId(id, updatedMetricsIds, undefined, query));
+  }, [metrics, query, id]);
+
+  const presets = useSelector(selectAllPresets);
+  const onSelectPreset = useCallback((presetId: PresetId) => {
+    dispatch(setMetricsByWidgetId(id, undefined, presetId, query));
+  }, [query, id]);
+
   return {
     metrics,
-    onSelectMetrics: onSelect,
+    presets,
+    onSelectMetrics,
+    onSelectPreset,
     query,
     setQuery,
   }

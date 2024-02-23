@@ -3,6 +3,7 @@ import {Widget, WidgetId, WidgetView} from '@/entities/widget/model';
 import {SubCategoryId} from '@/entities/subCategory/model';
 import {MetricId} from '@/entities/metric/model';
 import {CategoryId} from '@/entities/category/model';
+import {PresetId} from '@/entities/preset/model';
 
 const BASE_URL = '/widgets';
 
@@ -40,13 +41,13 @@ export const setWidgetSubcategoriesById = async (id: WidgetId, subcategories: Su
 
 export const fetchWidgetMetricsById = async (id: WidgetId, query?: string): any => {
   const response = await api.get(`${BASE_URL}/${id}/metrics`, { params: { query } });
-  return response.data.metrics;
+  return response.data;
 }
 
-export const setWidgetMetricsById = async (id: WidgetId, metrics: MetricId[], query: string): any => {
+export const setWidgetMetricsById = async (id: WidgetId, metrics?: MetricId[], preset?: PresetId, query?: string): any => {
   const response = await api.put(
     `${BASE_URL}/${id}/metrics`,
-    { metrics },
+    { metrics, preset },
     { params: { query } },
   );
   return response.data;

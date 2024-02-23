@@ -5,4 +5,5 @@ export const getWidgetName = (widget: Widget) => widget.name;
 export const getWidgetCategoryId = (widget: Widget) => widget.category;
 export const getWidgetSubCategoriesIds = (widget: Widget) => widget.subcategories;
 export const getWidgetMetricsIds = (widget: Widget) => widget.metrics;
+export const getWidgetPresetId = (widget: Widget) => widget.preset;
 export const getWidgetView = (widget: Widget) => widget.view;

@@ -1,3 +1,5 @@
+@import '~@styles/colors.scss';
+
 .root {
 
 }
@@ -29,9 +31,19 @@
 }
 
 .content {
+
+}
+
+.section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $border;
+  }
 }
 
 .tile {

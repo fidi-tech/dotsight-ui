@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import { useWizard } from 'react-use-wizard';
 
 import WizardControls from '@/features/WizardControls';
@@ -41,10 +41,6 @@ const SubCategoriesSelector = ({id}: Props) => {
     isCompleted,
   } = useEnhance(id);
 
-  if (!categoryId) {
-    return null;
-  }
-
   const renderSubCategory = useCallback(subCategory =>
       <NameWithIcon
         Icon={getSubCategoryIcon(subCategory) &&
@@ -57,7 +53,15 @@ const SubCategoriesSelector = ({id}: Props) => {
       >
         {getSubCategoryName(subCategory)}
       </NameWithIcon>
-    , [])
+    , []);
+
+  const sections = useMemo(() => [
+    {id: 'subcategories', tiles: subCategories, renderTile: renderSubCategory, onSelect: onSelectSubCategory},
+  ], [subCategories, renderSubCategory, onSelectSubCategory]);
+
+  if (!categoryId) {
+    return null;
+  }
 
   return (
     <div className={styles.root}>
@@ -70,10 +74,8 @@ const SubCategoriesSelector = ({id}: Props) => {
             title={TITLES_MAP[categoryId]}
             placeholder={PLACEHOLDER_MAP[categoryId]}
             query={query}
+            sections={sections}
             setQuery={setQuery}
-            tiles={subCategories}
-            renderTile={renderSubCategory}
-            onSelect={onSelectSubCategory}
           />
         </Module>
       </div>

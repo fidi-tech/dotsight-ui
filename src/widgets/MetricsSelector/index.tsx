@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {useWizard} from 'react-use-wizard';
 
 import WizardControls from '@/features/WizardControls';
@@ -13,6 +13,9 @@ import {getMetricIcon, getMetricName} from '@/entities/metric/model/getters';
 import {Title} from './components/Title';
 import styles from './index.module.scss';
 import {useEnhance} from './hocs';
+import {Preset} from '@/entities/preset/model';
+import {Metric} from '@/entities/metric/model';
+import {getPresetIcon, getPresetName} from '@/entities/preset/model/getters';
 
 type Props = {
   id: string;
@@ -22,13 +25,15 @@ const MetricsSelector = ({id}: Props) => {
   const { previousStep, nextStep } = useWizard();
   const {
     metrics,
+    presets,
     onSelectMetrics,
+    onSelectPreset,
     query,
     setQuery,
     isCompleted,
   } = useEnhance(id);
 
-  const renderMetric = useCallback((metric) =>
+  const renderMetric = useCallback((metric: Metric) =>
     <NameWithIcon
       Icon={getMetricIcon(metric) &&
         <img
@@ -40,7 +45,26 @@ const MetricsSelector = ({id}: Props) => {
     >
       {getMetricName(metric)}
     </NameWithIcon>
-  , [])
+  , []);
+
+  const renderPreset = useCallback((preset: Preset) =>
+    <NameWithIcon
+      Icon={getPresetIcon(preset) &&
+        <img
+          alt={getPresetName(preset)}
+          src={getPresetIcon(preset)}
+          className={styles.tileIcon}
+        />
+      }
+    >
+      {getPresetName(preset)}
+    </NameWithIcon>
+  , []);
+
+  const sections = useMemo(() => [
+    {id: 'metrics', tiles: metrics, renderTile: renderMetric, onSelect: onSelectMetrics},
+    {id: 'presets', tiles: presets, renderTile: renderPreset, onSelect: onSelectPreset},
+  ], [metrics, presets, renderPreset, renderMetric, onSelectPreset, onSelectMetrics]);
 
   return (
     <div className={styles.root}>
@@ -53,10 +77,8 @@ const MetricsSelector = ({id}: Props) => {
             title="Available Metrics"
             placeholder="Search for metrics"
             query={query}
+            sections={sections}
             setQuery={setQuery}
-            tiles={metrics}
-            renderTile={renderMetric}
-            onSelect={onSelectMetrics}
           />
         </Module>
       </div>

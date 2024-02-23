@@ -11,17 +11,22 @@ type Tile = {
   isSelected: boolean,
 }
 
+type Section = {
+  id: string;
+  tiles: Tile[],
+  renderTile: (tile: Tile) => React.Node,
+  onSelect: (id: string) => void,
+};
+
 type Props = {
   title: string,
   query: string,
   setQuery: (value: string) => void,
   placeholder: string,
-  tiles: Tile[],
-  renderTile: (tile: Tile) => React.ReactNode,
-  onSelect: (id: string) => void,
+  sections: Section[],
 }
 
-const TilesSelector = ({title, placeholder, query, setQuery, tiles, onSelect, renderTile}: Props) => {
+const TilesSelector = ({title, placeholder, query, setQuery, sections}: Props) => {
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   }, [setQuery]);
@@ -37,19 +42,21 @@ const TilesSelector = ({title, placeholder, query, setQuery, tiles, onSelect, re
         </div>
       </div>
       <div className={styles.content}>
-        {tiles.map(tile => {
-          return (
-            <Tile
-              isActive={tile.isSelected}
-              isDisabled={tile.isDisabled}
-              className={styles.tile}
-              key={tile.id}
-              onClick={(!tile.isDisabled ? onSelect.bind(this, tile.id) : undefined)}
-            >
-              {renderTile(tile)}
-            </Tile>
-          )
-        })}
+        {sections.filter(section => section.tiles.length > 0).map(section => (
+          <div key={section.id} className={styles.section}>
+            {section.tiles.map(tile => (
+              <Tile
+                isActive={tile.isSelected}
+                isDisabled={tile.isDisabled}
+                className={styles.tile}
+                key={tile.id}
+                onClick={(!tile.isDisabled ? section.onSelect.bind(this, tile.id) : undefined)}
+              >
+                {section.renderTile(tile)}
+              </Tile>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   )
