@@ -24,7 +24,7 @@ const WidgetConfigurator = ({id}: Props) => {
     <div className={styles.root}>
       <div className={styles.content}>
         <div className={styles.preview}>
-          <Preview id={id} viewType={viewType} />
+          {viewType && <Preview id={id} viewType={viewType} />}
         </div>
         <div className={styles.types}>
           <Module>

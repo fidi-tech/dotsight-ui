@@ -7,7 +7,7 @@ import {Icons} from '@/shared/ui/icons';
 import styles from './index.module.scss';
 
 type Props = {
-  Icon?: React.ComponentType;
+  Icon?: React.ReactNode;
   title: string;
   children: React.ReactNode;
 };
@@ -20,7 +20,7 @@ const HideableBlock = ({
   const [isOpened, setIsOpened] = useState(true);
   const toggleIsOpened = useCallback(() => setIsOpened(!isOpened), [isOpened, setIsOpened]);
   return (
-    <Module border className={styles.root}>
+    <Module className={styles.root}>
       <div
         className={styles.header}
         onClick={toggleIsOpened}

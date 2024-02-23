@@ -14,7 +14,7 @@ import {useEnhance} from './hocs';
 
 type Props = {
   params: {
-    id?: WidgetId;
+    id: WidgetId;
   }
 }
 

@@ -14,9 +14,11 @@ import {Icons} from '@/shared/ui/icons';
 import {NameWithIcon} from '@/shared/ui/NameWithIcon';
 import {selectAll} from '@/entities/category/model/selectors';
 import {createWidget} from '@/shared/api/dotsight';
+import {getCategoryId, getCategoryName} from '@/entities/category/model/getters';
+import {CategoryId} from '@/entities/category/model';
+import {getWidgetId} from '@/entities/widget/model/getters';
 
 import styles from './index.module.scss';
-import {getCategoryId, getCategoryName} from '@/entities/category/model/getters';
 
 const ICON_MAP = {
   'wallet': Icons.Wallet,
@@ -32,10 +34,10 @@ const NewWidget = ({}: Props) => {
     dispatch(getCategoriesList());
   }, [dispatch]);
   const categories = useSelector(selectAll);
-  const onCreate = useCallback(async (category) => {
+  const onCreate = useCallback(async (category: CategoryId) => {
     const widget = await createWidget({category, name: 'Untitled widget'});
-    router.push(`/v2/widget/${widget.id}`)
-  }, [createWidget]);
+    router.push(`/v2/widget/${getWidgetId(widget)}`)
+  }, [router]);
 
   return <MainLayout>
     <div className={styles.root}>

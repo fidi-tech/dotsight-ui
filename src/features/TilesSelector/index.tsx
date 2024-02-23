@@ -1,11 +1,9 @@
-import React, {useState, useMemo, useCallback} from 'react';
+import React, {useCallback} from 'react';
+
+import {Tile} from '@/shared/ui/Tile';
+import {Input} from '@/shared/ui/InputV2';
 
 import styles from './index.module.scss';
-import {Tile} from '@/shared/ui/Tile';
-import {NameWithIcon} from '@/shared/ui/NameWithIcon';
-import {Button} from '@/shared/ui/Button';
-import Autosuggest from 'react-autosuggest';
-import {Input} from '@/shared/ui/InputV2';
 
 type Tile = {
   id: string,
@@ -16,15 +14,15 @@ type Tile = {
 type Props = {
   title: string,
   query: string,
-  setQuery: () => void,
+  setQuery: (value: string) => void,
   placeholder: string,
   tiles: Tile[],
-  renderTile: (tile: Tile) => React.ElementType,
+  renderTile: (tile: Tile) => React.ReactNode,
   onSelect: (id: string) => void,
 }
 
 const TilesSelector = ({title, placeholder, query, setQuery, tiles, onSelect, renderTile}: Props) => {
-  const onChange = useCallback((e) => {
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   }, [setQuery]);
   return (

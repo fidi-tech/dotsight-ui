@@ -3,7 +3,10 @@ import cx from 'classnames';
 
 import styles from './index.module.scss';
 
-type Props = { Icon?: React.Component, nameClassName?: string };
+type Props = {
+  Icon?: React.ReactNode,
+  nameClassName?: string
+};
 
 export const NameWithIcon = ({Icon, children, nameClassName}: React.PropsWithChildren<Props>) => {
   return (

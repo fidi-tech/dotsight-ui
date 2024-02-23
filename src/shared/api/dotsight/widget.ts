@@ -1,11 +1,12 @@
 import {api} from '@/shared/api/dotsight/base';
-import {WidgetId, WidgetView} from '@/entities/widget/model';
+import {Widget, WidgetId, WidgetView} from '@/entities/widget/model';
 import {SubCategoryId} from '@/entities/subCategory/model';
 import {MetricId} from '@/entities/metric/model';
+import {CategoryId} from '@/entities/category/model';
 
 const BASE_URL = '/widgets';
 
-export const createWidget = async ({category, name}): Promise<any[]> => {
+export const createWidget = async ({category, name}: {category?: CategoryId, name?: string}): Promise<Widget> => {
   const response = await api.post(BASE_URL, {
     category,
     name,

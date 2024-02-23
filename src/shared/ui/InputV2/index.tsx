@@ -4,7 +4,7 @@ import {Icons} from '@/shared/ui/icons';
 
 import styles from './index.module.scss';
 
-type Props = React.HTMLProps<HTMLButtonElement>;
+type Props = React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = ({...props}: Props) => {
   return (

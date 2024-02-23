@@ -22,7 +22,7 @@ const CustomizedLegend = (props) => {
       <div className={styles.title}><div>{title}</div></div>
       <div className={styles.marks}>
         {payload.map(mark =>(
-          <div className={styles.mark}>
+          <div className={styles.mark} key={mark.dataKey}>
             <LegendLine name={items[mark.dataKey].name} color={mark.color} />
           </div>
         ))}
@@ -44,7 +44,7 @@ const View = ({data}: Props) => {
       <AreaChart width={700} height={230} data={chart} margin={{top: 20, right: 0, bottom: 20, left: 0}}>
         <defs>
           {keys.map((key, i) =>
-            <linearGradient id={`color${key}`} x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id={`color${key}`} key={`color${key}`} x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]} stopOpacity={0.2}/>
               <stop offset="55%" stopColor={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]} stopOpacity={0}/>
             </linearGradient>
@@ -75,6 +75,7 @@ const View = ({data}: Props) => {
         <Legend verticalAlign="top" align="left" iconType="plainline" content={<CustomizedLegend external={{title, items}} />} />
         {keys.map((key, i) =>
           <Area
+            key={key}
             type="monotone"
             dataKey={key}
             stroke={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]}

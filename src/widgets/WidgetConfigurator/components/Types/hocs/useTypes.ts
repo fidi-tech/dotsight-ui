@@ -22,7 +22,7 @@ export const useTypes = (id: WidgetId) => {
     dispatch(getWidgetById(id));
   }, [dispatch, id]);
   const widget = useSelector((state) => selectById(state, id));
-  const view = getWidgetView(widget);
+  const view = widget && getWidgetView(widget);
 
   const [selected, onSelect] = useState();
   const [query, setQuery] = useState('');
@@ -35,13 +35,13 @@ export const useTypes = (id: WidgetId) => {
         unavailabilityReason: getUnavailabilityReason?.(widget),
       };
     }).filter(type => type.isSelected || type.name.toLowerCase().includes(query.toLowerCase()))
-  }, [widget, TYPES, selected, query]);
+  }, [widget, selected, query]);
   const _onSelect = useCallback((type) => {
     onSelect(type);
     if (type !== view) {
       dispatch(updateWidgetById(id, {view: type}))
     }
-  }, [onSelect, view, id]);
+  }, [onSelect, view, id, dispatch]);
   useEffect(() => {
     if (view) {
       const type = types.find(t => t.id === view && !t.isDisabled);
@@ -54,7 +54,7 @@ export const useTypes = (id: WidgetId) => {
     if (firstAvailable) {
       _onSelect(firstAvailable.id);
     }
-  }, [view, _onSelect]);
+  }, [view, _onSelect, types]);
 
   return {
     types,

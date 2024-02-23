@@ -5,6 +5,7 @@ import {useRouter} from 'next/navigation';
 import {useDispatch} from '@/infra/providers/redux';
 import {getWidgets} from '@/entities/widget/model/providers/getWidgets';
 import {selectAll} from '@/entities/widget/model/selectors';
+import {WidgetId} from '@/entities/widget/model';
 
 export const useWidgets = () => {
   const dispatch = useDispatch();
@@ -13,9 +14,9 @@ export const useWidgets = () => {
     dispatch(getWidgets());
   }, [dispatch]);
   const widgets = useSelector(selectAll);
-  const goToWidget = useCallback((id) => {
+  const goToWidget = useCallback((id: WidgetId) => {
     router.push(`/v2/widget/${id}`);
-  }, [])
+  }, [router])
   return {
     widgets,
     goToWidget,

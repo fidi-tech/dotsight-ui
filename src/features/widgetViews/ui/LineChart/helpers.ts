@@ -1,7 +1,9 @@
 import {getWidgetMetricsIds} from '@/entities/widget/model/getters';
+import {Widget} from '@/entities/widget/model';
 
-export const getUnavailabilityReason = (widget) => {
-  if (getWidgetMetricsIds(widget)?.length > 1) {
+export const getUnavailabilityReason = (widget: Widget) => {
+  const metricsIds = getWidgetMetricsIds(widget);
+  if (metricsIds && metricsIds.length > 1) {
     return 'Only one metric can be selected';
   }
   return;

@@ -1,12 +1,12 @@
 import Widget from './widget';
 import Placeholder from './placeholder';
 import Icon from './icon.svg';
+import {WidgetConfig} from '..';
+import {WidgetType} from '../constants';
 
-const type = 'table';
-
-const table = {
+const table: WidgetConfig = {
   title: 'Table',
-  type,
+  type: WidgetType.table,
   Widget,
   Placeholder,
   Icon,

@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, {ReactNode} from 'react';
 
 import styles from './index.module.scss';
 import {Bar} from '@/shared/ui/Bar';
 
 type Props = {
-  left?: React.Component,
-  right: React.Component,
+  left?: ReactNode,
+  right: ReactNode,
   percentage?: number,
 }
 

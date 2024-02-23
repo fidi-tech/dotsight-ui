@@ -2,12 +2,12 @@ import Widget from './widget';
 import Placeholder from './placeholder';
 import Icon from './icon.svg';
 import {getUnavailabilityReason} from './helpers';
+import {WidgetConfig} from '..';
+import {WidgetType} from '../constants';
 
-const type = 'lineChart';
-
-const lineChart = {
+const lineChart: WidgetConfig = {
   title: 'Line Chart',
-  type,
+  type: WidgetType.lineChart,
   Widget,
   Placeholder,
   Icon,
