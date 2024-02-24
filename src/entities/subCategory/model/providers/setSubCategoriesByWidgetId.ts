@@ -10,7 +10,6 @@ import {SubCategoryId} from '@/entities/subCategory/model';
 export const setSubCategoriesByWidgetId = (id: WidgetId, selectedSubCategoriesIds: SubCategoryId[], query: string) =>
   async (dispatch: Dispatch) => {
     const {widget, subcategories} = await setWidgetSubcategoriesById(id, selectedSubCategoriesIds, query);
-    console.log(subcategories, query, '!!!');
     dispatch(updateSubCategories(subcategories));
     dispatch(upsert(widget));
   }

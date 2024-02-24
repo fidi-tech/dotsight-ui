@@ -8,14 +8,15 @@ import {CURRENCY_FORMATTER} from '@/shared/lib/currency';
 import {getColorsFromPaletteByVariant, PaletteVariant} from '@/shared/ui/styles/palettes';
 
 import styles from './index.module.scss';
+import {DEFAULT_UNIT_ID} from '@/entities/unit/model';
 
 const ROWS = [
-  ['Placeholder 1', CURRENCY_FORMATTER.usd.format(1568)],
-  ['Placeholder 2', CURRENCY_FORMATTER.usd.format(1237.2)],
-  ['Placeholder 3', CURRENCY_FORMATTER.usd.format(420)],
-  ['Placeholder 4', CURRENCY_FORMATTER.usd.format(57)],
-  ['Placeholder 5', CURRENCY_FORMATTER.usd.format(22)],
-  ['Other', CURRENCY_FORMATTER.usd.format(2130)],
+  ['Placeholder 1', CURRENCY_FORMATTER[DEFAULT_UNIT_ID].format(1568)],
+  ['Placeholder 2', CURRENCY_FORMATTER[DEFAULT_UNIT_ID].format(1237.2)],
+  ['Placeholder 3', CURRENCY_FORMATTER[DEFAULT_UNIT_ID].format(420)],
+  ['Placeholder 4', CURRENCY_FORMATTER[DEFAULT_UNIT_ID].format(57)],
+  ['Placeholder 5', CURRENCY_FORMATTER[DEFAULT_UNIT_ID].format(22)],
+  ['Other', CURRENCY_FORMATTER[DEFAULT_UNIT_ID].format(2130)],
 ];
 
 const PALETTE = getColorsFromPaletteByVariant(PaletteVariant.v1);

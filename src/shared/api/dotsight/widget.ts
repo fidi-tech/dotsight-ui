@@ -4,6 +4,8 @@ import {SubCategoryId} from '@/entities/subCategory/model';
 import {MetricId} from '@/entities/metric/model';
 import {CategoryId} from '@/entities/category/model';
 import {PresetId} from '@/entities/preset/model';
+import {UnitId} from '@/entities/unit/model';
+import {MetricValue} from '@/entities/MetricValue/model';
 
 const BASE_URL = '/widgets';
 
@@ -53,9 +55,37 @@ export const setWidgetMetricsById = async (id: WidgetId, metrics?: MetricId[], p
   return response.data;
 }
 
-export const fetchWidgetDataById = async (id: WidgetId): any => {
+export type RawWidgetData = {
+  items: Record<SubCategoryId, {id: SubCategoryId, name: string, icon?: string}>,
+  metrics: Record<MetricId, {id: MetricId, name: string, icon?: string}>,
+  units: Record<UnitId, {id: UnitId, name: string, icon?: string, symbol: string}>,
+  data: {
+    items: SubCategoryId[],
+    metrics: MetricId[],
+    values: Record<
+      SubCategoryId,
+      Record<
+        MetricId,
+        {timestamp: number, value: MetricValue}[]
+      >
+    >
+  },
+};
+export const fetchWidgetDataById = async (id: WidgetId): Promise<RawWidgetData> => {
   const response = await api.get(`${BASE_URL}/${id}/data`);
-  return response.data;
+  const data = JSON.parse(JSON.stringify(response.data.data));
+  const subCategoriesIds = Object.keys(data.data.values);
+  subCategoriesIds.forEach(subcategoryId => {
+    const metricsIds = Object.keys(data.data.values[subcategoryId]);
+    metricsIds.forEach(metricId => {
+
+      data.data.values[subcategoryId][metricId] = data.data.values[subcategoryId][metricId].map(({timestamp, value}: {timestamp: number, value: number | Record<UnitId, number>}) => ({
+        timestamp,
+        value: new MetricValue(value)
+      }));
+    })
+  })
+  return data;
 }
 
 export const updateWidget = async (id: WidgetId, {name, view}: { name?: string, view?: WidgetView }): any => {

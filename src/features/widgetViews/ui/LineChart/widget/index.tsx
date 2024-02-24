@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useCallback, useMemo, useRef} from 'react';
 import {XAxis, YAxis, Tooltip, Legend, AreaChart, Area} from 'recharts';
+import {createPortal} from 'react-dom';
 
 import {getColorsFromPaletteByVariant, PaletteVariant} from '@/shared/ui/styles/palettes';
 import {Module} from '@/shared/ui/Module';
@@ -16,32 +17,48 @@ type Props = {
 
 const CustomizedLegend = (props) => {
   const {payload, external} = props;
-  const {title, items} = external;
+  const {title, items, containerRef} = external;
   return (
-    <div className={styles.legend}>
-      <div className={styles.title}><div>{title}</div></div>
-      <div className={styles.marks}>
-        {payload.map(mark =>(
-          <div className={styles.mark} key={mark.dataKey}>
-            <LegendLine name={items[mark.dataKey].name} color={mark.color} />
+    <>
+      {containerRef?.current && createPortal(
+        <div className={styles.legend}>
+          <div className={styles.title}>
+            <div>{title}</div>
           </div>
-        ))}
-      </div>
-    </div>
+          <div className={styles.marks}>
+            {payload.map(mark => (
+              <div className={styles.mark} key={mark.dataKey}>
+                <LegendLine name={items[mark.dataKey].name} color={mark.color}/>
+              </div>
+            ))}
+          </div>
+        </div>,
+        containerRef.current
+      )}
+    </>
   )
 }
 
 const View = ({data}: Props) => {
+  const legendContainerRef = useRef(null);
   const {
     title,
     chart,
     keys,
     items,
+    unitId,
   } = useEnhance(data);
+  const formatter = useCallback(value => formatValue(value, unitId), [unitId]);
+  const longestLabelLength = useMemo(() => chart
+    .reduce((acc, {timestamp, ...values}) => {
+      return Math.max(acc, ...Object.values(values).map(t => formatter(t).length))
+    }, 0)
+  , [chart, formatter])
 
   return (
     <Module className={styles.root}>
-      <AreaChart width={700} height={230} data={chart} margin={{top: 20, right: 0, bottom: 20, left: 0}}>
+      <div ref={legendContainerRef} className={styles.titleWrapper} />
+      <AreaChart width={700} height={230} data={chart} margin={{top: 0, right: 0, bottom: 20, left: 0}}>
         <defs>
           {keys.map((key, i) =>
             <linearGradient id={`color${key}`} key={`color${key}`} x1="0" y1="0" x2="0" y2="1">
@@ -56,8 +73,9 @@ const View = ({data}: Props) => {
           axisLine={false}
           type="number"
           stroke="#dcdee1"
-          tickFormatter={formatValue}
+          tickFormatter={formatter}
           interval="preserveEnd"
+          textAnchor="start"
           tick={{stroke: '#79818D', fill: '#79818D', fontSize: '14px', fontWeight: 500, strokeWidth: 0}}
           tickMargin={30}
         />
@@ -68,11 +86,17 @@ const View = ({data}: Props) => {
           stroke="#dcdee1"
           minTickGap={50}
           tickFormatter={formatTime}
-          padding={{left: 80, right: 40}}
+          padding={{left: 20 + longestLabelLength * 12, right: 40}}
           tick={{stroke: '#79818D', fill: '#79818D', fontSize: '14px', fontWeight: 500, strokeWidth: 0}}
         />
-        <Tooltip content={<CustomizedTooltip external={{items}} />} />
-        <Legend verticalAlign="top" align="left" iconType="plainline" content={<CustomizedLegend external={{title, items}} />} />
+        <Tooltip content={<CustomizedTooltip external={{items, formatter}} />} />
+        <Legend
+          verticalAlign="top"
+          align="left"
+          iconType="plainline"
+          content={<CustomizedLegend external={{title, items, containerRef: legendContainerRef}} />}
+          wrapperStyle={{position: 'relative'}}
+        />
         {keys.map((key, i) =>
           <Area
             key={key}
@@ -81,7 +105,7 @@ const View = ({data}: Props) => {
             stroke={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]}
             strokeWidth={2}
             activeDot={{ stroke: getColorsFromPaletteByVariant(PaletteVariant.v1)[i], strokeWidth: 2, r: 2 }}
-            dot={false}
+            dot={{ strokeWidth: 0, r: 1, fill: getColorsFromPaletteByVariant(PaletteVariant.v1)[i] }}
             fillOpacity={1}
             fill={`url(#color${key})`}
           />

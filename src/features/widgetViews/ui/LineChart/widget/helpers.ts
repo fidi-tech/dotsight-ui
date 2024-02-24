@@ -1,6 +1,9 @@
 import {format} from 'date-fns';
 
-export const formatTime = value => {
+import {UnitId} from '@/entities/unit/model';
+import {CURRENCY_FORMATTER} from '@/shared/lib/currency';
+
+export const formatTime = (value: number) => {
   if (!value) {
     return '';
   }
@@ -11,9 +14,9 @@ const formatCompact = Intl.NumberFormat('en-US', {
   notation: "compact",
   maximumFractionDigits: 1
 })
-export const formatValue = value => {
+export const formatValue = (value: number, unitId?: UnitId) => {
   if (!value) {
     return '';
   }
-  return formatCompact.format(value);
+  return unitId ? CURRENCY_FORMATTER[unitId].format(value) : formatCompact.format(value);
 }

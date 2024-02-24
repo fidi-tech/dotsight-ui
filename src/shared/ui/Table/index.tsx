@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 
 type Props = {
   header: string[],
-  rows: (string | undefined)[][],
+  rows: (string | undefined | null)[][],
   palette?: string[],
 }
 

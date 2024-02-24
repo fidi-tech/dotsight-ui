@@ -1,18 +1,20 @@
-import {getScalarValue} from '@/shared/lib/unit';
+import {RawWidgetData} from '@/shared/api/dotsight';
 
-export const useDataset = (_data) => {
-  const data = _data.data.data;
-  const metrics = _data.data.metrics;
-  const items = _data.data.items;
-  const units = _data.data.units;
+export const useDataset = (_data: RawWidgetData) => {
+  const {data, metrics, items} = _data;
 
   return {
     header: ['', ...data.metrics.map(metric => metrics[metric].name)],
     rows: data.items.map(item => {
       return [
         items[item].name,
-        ...data.metrics.map(metric =>
-          getScalarValue(data.values[item][metric]?.[0]?.value, units['usd'])
+        ...data.metrics.map(metric => {
+            const value = data.values[item][metric]?.[0]?.value;
+            if (value && !value.isNull()) {
+              return value.getStringValue();
+            }
+            return null;
+          },
         ),
       ];
     }),
