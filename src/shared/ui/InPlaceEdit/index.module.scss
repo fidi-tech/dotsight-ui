@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+.hide {
+  position: absolute;
+  opacity: 0;
+  left: -1000000px;
+}
+
+.icon {
+  display: flex;
+  svg {
+    width: 18px;
+  }
+}

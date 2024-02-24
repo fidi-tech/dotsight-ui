@@ -12,6 +12,7 @@ import Google from './google.svg';
 import LinkedIn from './linkedin.svg';
 import Nodes from './nodes.svg';
 import OutlinedArrow from './outlinedArrow.svg';
+import Pen from './pen.svg';
 import Plus from './plus.svg';
 import Reddit from './reddit.svg';
 import Search from './search.svg';
@@ -38,6 +39,7 @@ export const IconNames = {
   LinkedIn: 'LinkedIn',
   Nodes: 'Nodes',
   OutlinedArrow: 'OutlinedArrow',
+  Pen: 'Pen',
   Plus: 'Plus',
   Reddit: 'Reddit',
   Search: 'Search',
@@ -67,6 +69,7 @@ export const Icons: Record<IconName, any> = {
   [IconNames.LinkedIn]: LinkedIn,
   [IconNames.Nodes]: Nodes,
   [IconNames.OutlinedArrow]: OutlinedArrow,
+  [IconNames.Pen]: Pen,
   [IconNames.Plus]: Plus,
   [IconNames.Reddit]: Reddit,
   [IconNames.Search]: Search,
