@@ -1,12 +1,12 @@
 import React from 'react';
 
 import widgets from '@/features/widgetViews/ui';
-import {WidgetView} from '@/entities/widget/model';
+import {WidgetType} from '@/features/widgetViews/ui/constants';
 
 import styles from './index.module.scss';
 
 type Props = {
-  type?: WidgetView;
+  type?: WidgetType;
 }
 
 export const WidgetTypeTag = ({type}: Props) => {

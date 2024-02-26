@@ -13,17 +13,21 @@ type Props = {
 }
 
 export const Preview = ({id, viewType}: Props) => {
-  const {data} = useEnhance(id);
+  const {data, isLoading, isError} = useEnhance(id);
 
   if (!viewType) {
     return null;
   }
 
   const Widget = widgets[viewType].Widget;
+  const Placeholder = widgets[viewType].Placeholder;
 
   return (
     <div className={styles.root}>
-      {data && <Widget data={data} />}
+      {data
+        ? <Widget data={data} />
+        : <Placeholder isLoading={isLoading} isError={isError} />
+      }
     </div>
   );
 }

@@ -1,11 +1,12 @@
 import {api} from '@/shared/api/dotsight/base';
-import {Widget, WidgetId, WidgetView} from '@/entities/widget/model';
+import {Widget, WidgetId} from '@/entities/widget/model';
 import {SubCategoryId} from '@/entities/subCategory/model';
 import {MetricId} from '@/entities/metric/model';
 import {CategoryId} from '@/entities/category/model';
 import {PresetId} from '@/entities/preset/model';
 import {UnitId} from '@/entities/unit/model';
 import {MetricValue} from '@/entities/MetricValue/model';
+import {WidgetType} from '@/features/widgetViews/ui/constants';
 
 const BASE_URL = '/widgets';
 
@@ -88,7 +89,7 @@ export const fetchWidgetDataById = async (id: WidgetId): Promise<RawWidgetData> 
   return data;
 }
 
-export const updateWidget = async (id: WidgetId, {name, view}: { name?: string, view?: WidgetView }): any => {
+export const updateWidget = async (id: WidgetId, {name, view}: { name?: string, view?: WidgetType }): any => {
   const response = await api.patch(
     `${BASE_URL}/${id}`,
     {name, view}

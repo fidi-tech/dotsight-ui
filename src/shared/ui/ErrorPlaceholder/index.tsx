@@ -4,11 +4,14 @@ import DataFailed from './dataFailed.svg';
 
 import styles from './index.module.scss';
 
-const ErrorPlaceholder = () => {
+type Props = {
+  text?: string;
+}
+const ErrorPlaceholder = ({text}: Props) => {
     return (
       <div className={styles.root}>
           <DataFailed />
-          <p>Oops! Something went wrong</p>
+          <p>{text || 'Oops! Something went wrong'}</p>
       </div>
     );
 }

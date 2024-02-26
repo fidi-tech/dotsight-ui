@@ -1,8 +1,8 @@
 import {SubCategoryId} from '@/entities/subCategory/model';
 import {MetricId} from '@/entities/metric/model';
+import {WidgetType} from '@/features/widgetViews/ui/constants';
 
 export type WidgetId = string;
-export type WidgetView = string;
 
 export type Widget = {
   id: WidgetId,
@@ -11,5 +11,5 @@ export type Widget = {
   subcategories: SubCategoryId[],
   metrics?: MetricId[],
   preset?: string,
-  view?: WidgetView,
+  view?: WidgetType,
 }
