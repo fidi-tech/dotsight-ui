@@ -6,7 +6,7 @@ import {WidgetConfig} from '..';
 import {WidgetType} from '../constants';
 
 const lineChart: WidgetConfig = {
-  title: 'Line Chart',
+  title: 'Time Series',
   type: WidgetType.lineChart,
   Widget,
   Placeholder,
