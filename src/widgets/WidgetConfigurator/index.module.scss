@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
 }
 
 .content {
@@ -11,9 +12,15 @@
   overflow: auto;
   display: grid;
   grid-template-areas:
+    "breadcrumbs breadcrumbs"
     "preview preview"
     "types types";
+  grid-template-rows: auto 1fr auto;
   gap: 20px;
+}
+
+.breadcrumbs {
+  grid-area: breadcrumbs;
 }
 
 .preview {

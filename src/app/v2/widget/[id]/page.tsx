@@ -11,8 +11,6 @@ import WidgetConfigurator from '@/widgets/WidgetConfigurator';
 import {WidgetId} from '@/entities/widget/model';
 
 import {useEnhance} from './hocs';
-import {Breadcrumbs} from './components/Breadcrumbs';
-import styles from './index.module.scss';
 
 type Props = {
   params: {
@@ -29,9 +27,6 @@ const Widget = ({ params }: Props) => {
   }
 
   return <MainLayout>
-    <div className={styles.breadcrumbs}>
-      <Breadcrumbs id={id} />
-    </div>
     <Wizard startIndex={step}>
       <SubCategoriesSelector id={id} />
       <MetricsSelector id={id} />

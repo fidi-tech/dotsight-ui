@@ -12,7 +12,7 @@ export const useWidget = (id: WidgetId) => {
   const widget = useSelector((state) => selectById(state, id));
   const onSaveName = useCallback((value: string) => {
     dispatch(updateWidgetById(id, {name: value}))
-  }, [])
+  }, [id, dispatch])
   return {
     name: widget && getWidgetName(widget),
     onSaveName,

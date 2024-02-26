@@ -8,8 +8,9 @@ import {Module} from '@/shared/ui/Module';
 import {WidgetId} from '@/entities/widget/model';
 
 import styles from './index.module.scss';
-import {Types} from './components/Types';
+import {Breadcrumbs} from './components/Breadcrumbs';
 import {Preview} from './components/Preview';
+import {Types} from './components/Types';
 import {useEnhance} from './hocs';
 
 type Props = {
@@ -23,6 +24,9 @@ const WidgetConfigurator = ({id}: Props) => {
   return (
     <div className={styles.root}>
       <div className={styles.content}>
+        <div className={styles.breadcrumbs}>
+          <Breadcrumbs id={id} />
+        </div>
         <div className={styles.preview}>
           {viewType && <Preview id={id} viewType={viewType} />}
         </div>

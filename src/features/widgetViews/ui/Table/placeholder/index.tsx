@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {Module} from '@/shared/ui/Module';
 import Loader from '@/shared/ui/Loader';
 import ErrorPlaceholder from '@/shared/ui/ErrorPlaceholder';
 
@@ -21,9 +20,9 @@ const Placeholder = ({isLoading, isError}: Props) => {
   }
 
   return (
-    <Module className={styles.root}>
+    <div className={styles.root}>
       {content}
-    </Module>
+    </div>
   )
 }
 
