@@ -1,4 +1,4 @@
-import {format} from 'date-fns';
+import {addMinutes, format} from 'date-fns';
 
 import {UnitId} from '@/entities/unit/model';
 import {CURRENCY_FORMATTER} from '@/shared/lib/currency';
@@ -7,7 +7,8 @@ export const formatTime = (value: number) => {
   if (!value) {
     return '';
   }
-  return format(new Date(value * 1000), 'd MMM')
+  const date = new Date(value * 1000);
+  return format(addMinutes(date, date.getTimezoneOffset()), 'd MMM')
 };
 
 const formatCompact = Intl.NumberFormat('en-US', {
