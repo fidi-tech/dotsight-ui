@@ -98,3 +98,5 @@ export const updateWidget = async (id: WidgetId, {name, view}: { name?: string, 
   )
   return response.data.widget;
 }
+
+export const deleteWidget = async (id: WidgetId): any => api.delete(`${BASE_URL}/${id}`);

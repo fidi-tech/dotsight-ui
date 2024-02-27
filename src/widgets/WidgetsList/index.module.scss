@@ -2,7 +2,39 @@
 
 .title, .row {
   display: grid;
+  grid-template-areas: "name datasources category type creator actions";
   grid-template-columns: repeat(6, 1fr);
+}
+
+.name, .datasources, .category, .type, .creator, .actions {
+  flex: 1;
+}
+
+.name {
+  grid-area: name;
+  cursor: pointer;
+}
+
+.datasources {
+  grid-area: datasources;
+}
+
+.category {
+  grid-area: category;
+}
+
+.type {
+  grid-area: type;
+}
+
+.creator {
+  grid-area: creator;
+}
+
+.actions {
+  grid-area: actions;
+  display: flex;
+  justify-content: end;
 }
 
 .title, .list {
@@ -27,6 +59,18 @@
   }
 }
 
-.name {
-  cursor: pointer;
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: $gray;
+  color: $dark;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }

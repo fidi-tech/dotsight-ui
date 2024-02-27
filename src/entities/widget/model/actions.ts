@@ -1,3 +1,7 @@
 import {widgetSlice} from './slice';
 
-export const {upsert, updateAll} = widgetSlice.actions;
+export const {
+  upsert,
+  updateAll,
+  deleteById,
+} = widgetSlice.actions;

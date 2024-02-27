@@ -11,6 +11,9 @@ export const widgetSlice = createSlice({
     },
     updateAll(state, action) {
       widgetAdapter.setAll(state, action.payload);
+    },
+    deleteById(state, action) {
+      widgetAdapter.removeOne(state, action.payload);
     }
   },
 });

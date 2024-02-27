@@ -12,4 +12,5 @@ export type Widget = {
   metrics?: MetricId[],
   preset?: string,
   view?: WidgetType,
+  canDelete: boolean,
 }

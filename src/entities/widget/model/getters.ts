@@ -7,3 +7,4 @@ export const getWidgetSubCategoriesIds = (widget: Widget) => widget.subcategorie
 export const getWidgetMetricsIds = (widget: Widget) => widget.metrics;
 export const getWidgetPresetId = (widget: Widget) => widget.preset;
 export const getWidgetView = (widget: Widget) => widget.view;
+export const isWidgetDeletable = (widget: Widget) => widget.canDelete;
