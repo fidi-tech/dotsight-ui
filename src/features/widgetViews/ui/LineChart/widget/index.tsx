@@ -107,6 +107,7 @@ const View = ({data}: Props) => {
             activeDot={{ stroke: getColorsFromPaletteByVariant(PaletteVariant.v1)[i], strokeWidth: 2, r: 2 }}
             dot={{ strokeWidth: 0, r: 1, fill: getColorsFromPaletteByVariant(PaletteVariant.v1)[i] }}
             fillOpacity={1}
+            connectNulls
             fill={`url(#color${key})`}
           />
         )}
