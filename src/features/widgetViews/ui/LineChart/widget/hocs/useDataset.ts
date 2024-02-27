@@ -30,5 +30,6 @@ export const useDataset = (data: RawWidgetData) => {
     chart,
     keys: data.data.items,
     unitId,
+    copyrights: data.data.copyrights,
   }
 }

@@ -18,5 +18,6 @@ export const useDataset = (_data: RawWidgetData) => {
         ),
       ];
     }),
+    copyrights: data.copyrights,
   }
 }

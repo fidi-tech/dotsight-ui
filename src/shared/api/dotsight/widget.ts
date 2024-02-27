@@ -56,6 +56,7 @@ export const setWidgetMetricsById = async (id: WidgetId, metrics?: MetricId[], p
   return response.data;
 }
 
+export type CopyrightsRaw = Record<SubCategoryId, Record<string, {id: string, name: string, icon?: string}>>
 export type RawWidgetData = {
   items: Record<SubCategoryId, {id: SubCategoryId, name: string, icon?: string}>,
   metrics: Record<MetricId, {id: MetricId, name: string, icon?: string}>,
@@ -69,7 +70,8 @@ export type RawWidgetData = {
         MetricId,
         {timestamp: number, value: MetricValue}[]
       >
-    >
+    >,
+    copyrights: CopyrightsRaw,
   },
 };
 export const fetchWidgetDataById = async (id: WidgetId): Promise<RawWidgetData> => {

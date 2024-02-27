@@ -9,6 +9,7 @@ export const useEnhance = (data: RawWidgetData) => {
     chart,
     keys,
     unitId,
+    copyrights,
   } = useDataset(data);
   return {
     title,
@@ -16,5 +17,6 @@ export const useEnhance = (data: RawWidgetData) => {
     chart,
     keys,
     unitId,
+    copyrights,
   };
 }

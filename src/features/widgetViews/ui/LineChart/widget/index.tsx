@@ -4,6 +4,7 @@ import {createPortal} from 'react-dom';
 
 import {getColorsFromPaletteByVariant, PaletteVariant} from '@/shared/ui/styles/palettes';
 import {Module} from '@/shared/ui/Module';
+import {Copyrights} from '@/shared/ui/Copyrights';
 
 import {useEnhance} from './hocs';
 import styles from './index.module.scss';
@@ -47,6 +48,7 @@ const View = ({data}: Props) => {
     keys,
     items,
     unitId,
+    copyrights,
   } = useEnhance(data);
   const formatter = useCallback(value => formatValue(value, unitId), [unitId]);
   const longestLabelLength = useMemo(() => chart
@@ -112,6 +114,7 @@ const View = ({data}: Props) => {
           />
         )}
       </AreaChart>
+      <Copyrights copyrights={copyrights} className={styles.copyright} />
     </Module>
   )
 }
