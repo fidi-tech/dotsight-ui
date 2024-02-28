@@ -8,16 +8,28 @@
   border: 1px solid #DCDEE1;
   color: #131417;
   padding: 10px;
+  user-select: none;
+  background-color: transparent;
 }
 
 .isDisabled {
   opacity: 0.5;
 }
 
-.isActive, .root:hover:not(.isDisabled) {
+.isActive {
   cursor: pointer;
   color: $brand;
   border-radius: 10px;
   border: 1px solid $brand;
   background: rgba(126, 139, 255, 0.15);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .root:hover:not(.isDisabled) {
+    cursor: pointer;
+    color: $brand;
+    border-radius: 10px;
+    border: 1px solid $brand;
+    background: rgba(126, 139, 255, 0.15);
+  }
 }

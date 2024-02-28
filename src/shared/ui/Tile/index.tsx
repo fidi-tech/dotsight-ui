@@ -7,7 +7,7 @@ type Props = { isActive?: boolean, isDisabled?: boolean, className?: string, onC
 
 export const Tile = ({isActive, isDisabled, className, children, onClick}: React.PropsWithChildren<Props>) => {
   return (
-    <div
+    <button
       className={cx(styles.root, className, {
         [styles.isActive]: isActive,
         [styles.isDisabled]: isDisabled,
@@ -15,6 +15,6 @@ export const Tile = ({isActive, isDisabled, className, children, onClick}: React
       onClick={onClick}
     >
       {children}
-    </div>
+    </button>
   );
 };
