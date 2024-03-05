@@ -10,6 +10,7 @@ import TilesSelector from '@/features/TilesSelector';
 import {CategoryId} from '@/entities/category/model';
 import {NameWithIcon} from '@/shared/ui/NameWithIcon';
 import {getSubCategoryIcon, getSubCategoryName} from '@/entities/subCategory/model/getters';
+import {SubCategory} from '@/entities/subCategory/model';
 
 import styles from './index.module.scss';
 import {useEnhance} from './hocs';
@@ -41,12 +42,12 @@ const SubCategoriesSelector = ({id}: Props) => {
     isCompleted,
   } = useEnhance(id);
 
-  const renderSubCategory = useCallback(subCategory =>
+  const renderSubCategory = useCallback((subCategory: SubCategory) =>
       <NameWithIcon
         Icon={getSubCategoryIcon(subCategory) &&
           <img
             alt={getSubCategoryName(subCategory)}
-            src={getSubCategoryIcon(subCategory)}
+            src={getSubCategoryIcon(subCategory) || undefined}
             className={styles.tileIcon}
           />
         }

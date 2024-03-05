@@ -5,6 +5,7 @@ import {WidgetId} from '@/entities/widget/model';
 
 import styles from './index.module.scss';
 import {useEnhance} from './hocs';
+import {Type} from './hocs/useTypes';
 
 type Props = {
   widgetId: WidgetId,
@@ -13,7 +14,7 @@ type Props = {
 export const Types = ({widgetId}: Props) => {
   const {types, query, setQuery, onSelect} = useEnhance(widgetId);
 
-  const renderType = useCallback(tile => {
+  const renderType = useCallback((tile: Type) => {
     const Icon = tile.Icon;
     return (
       <div className={styles.tile}>

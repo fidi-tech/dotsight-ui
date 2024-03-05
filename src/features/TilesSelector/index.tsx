@@ -1,20 +1,20 @@
-import React, {useCallback} from 'react';
+import React, {ReactNode, useCallback} from 'react';
 
 import {Tile} from '@/shared/ui/Tile';
 import {Input} from '@/shared/ui/InputV2';
 
 import styles from './index.module.scss';
 
-type Tile = {
+export type Tile = {
   id: string,
   isDisabled?: boolean,
-  isSelected: boolean,
+  isSelected?: boolean,
 }
 
 type Section = {
   id: string;
   tiles: Tile[],
-  renderTile: (tile: Tile) => React.Node,
+  renderTile: (entity: any) => ReactNode,
   onSelect: (id: string) => void,
 };
 

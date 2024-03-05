@@ -23,17 +23,17 @@ export const fetchWidgets = async (): Promise<any[]> => {
   return response.data.widgets;
 }
 
-export const fetchWidgetById = async (id: WidgetId): any => {
+export const fetchWidgetById = async (id: WidgetId) => {
   const response = await api.get(`${BASE_URL}/${id}`);
   return response.data.widget;
 }
 
-export const fetchWidgetSubcategoriesById = async (id: WidgetId, query?: string): any => {
+export const fetchWidgetSubcategoriesById = async (id: WidgetId, query?: string) => {
   const response = await api.get(`${BASE_URL}/${id}/subcategories`, { params: { query } });
   return response.data.subcategories;
 }
 
-export const setWidgetSubcategoriesById = async (id: WidgetId, subcategories: SubCategoryId[], query: string): any => {
+export const setWidgetSubcategoriesById = async (id: WidgetId, subcategories: SubCategoryId[], query: string) => {
   const response = await api.put(
     `${BASE_URL}/${id}/subcategories`,
     { subcategories },
@@ -42,12 +42,12 @@ export const setWidgetSubcategoriesById = async (id: WidgetId, subcategories: Su
   return response.data;
 }
 
-export const fetchWidgetMetricsById = async (id: WidgetId, query?: string): any => {
+export const fetchWidgetMetricsById = async (id: WidgetId, query?: string) => {
   const response = await api.get(`${BASE_URL}/${id}/metrics`, { params: { query } });
   return response.data;
 }
 
-export const setWidgetMetricsById = async (id: WidgetId, metrics?: MetricId[], preset?: PresetId, query?: string): any => {
+export const setWidgetMetricsById = async (id: WidgetId, metrics?: MetricId[], preset?: PresetId, query?: string) => {
   const response = await api.put(
     `${BASE_URL}/${id}/metrics`,
     { metrics, preset },
@@ -91,7 +91,7 @@ export const fetchWidgetDataById = async (id: WidgetId): Promise<RawWidgetData> 
   return data;
 }
 
-export const updateWidget = async (id: WidgetId, {name, view}: { name?: string, view?: WidgetType }): any => {
+export const updateWidget = async (id: WidgetId, {name, view}: { name?: string, view?: WidgetType }) => {
   const response = await api.patch(
     `${BASE_URL}/${id}`,
     {name, view}
@@ -99,4 +99,4 @@ export const updateWidget = async (id: WidgetId, {name, view}: { name?: string, 
   return response.data.widget;
 }
 
-export const deleteWidget = async (id: WidgetId): any => api.delete(`${BASE_URL}/${id}`);
+export const deleteWidget = async (id: WidgetId) => api.delete(`${BASE_URL}/${id}`);

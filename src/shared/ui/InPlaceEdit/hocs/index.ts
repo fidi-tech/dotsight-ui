@@ -28,7 +28,7 @@ export const useEnhance = ({value, onSave}: Props) => {
   const startEditing = useCallback(() => {
     setIsEditing(true);
     if (inputRef.current) {
-      inputRef.current.tabIndex = '-1';
+      inputRef.current.tabIndex = -1;
       inputRef.current.selectionStart = inputRef.current.selectionEnd = inputRef.current.value.length;
       setTimeout(() => inputRef?.current?.focus(), 0);
     }

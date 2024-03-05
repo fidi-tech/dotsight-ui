@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux';
-import {useEffect, useState, useMemo, useCallback} from 'react';
+import React, {useEffect, useState, useMemo, useCallback} from 'react';
 
 import widgetViews from '@/features/widgetViews/ui';
 import {WidgetId} from '@/entities/widget/model';
@@ -8,6 +8,14 @@ import {getWidgetById} from '@/entities/widget/model/providers/getWidgetById';
 import {selectById} from '@/entities/widget/model/selectors';
 import {getWidgetView} from '@/entities/widget/model/getters';
 import {updateWidgetById} from '@/entities/widget/model/providers/updateWidgetById';
+import {WidgetType} from '@/features/widgetViews/ui/constants';
+
+export type Type = {
+  id: WidgetType,
+  name: string,
+  Icon: React.FunctionComponent,
+  getUnavailabilityReason?: () => string,
+}
 
 const TYPES = Object.values(widgetViews).map(widgetView => ({
   id: widgetView.type,
@@ -24,22 +32,24 @@ export const useTypes = (id: WidgetId) => {
   const widget = useSelector((state) => selectById(state, id));
   const view = widget && getWidgetView(widget);
 
-  const [selected, onSelect] = useState();
+  const [selected, onSelect] = useState<WidgetType>();
   const [query, setQuery] = useState('');
   const types = useMemo(() => {
     return TYPES.map(({getUnavailabilityReason, ...type}) => {
       return {
         ...type,
         isSelected: selected === type.id,
-        isDisabled: !!getUnavailabilityReason?.(widget),
-        unavailabilityReason: getUnavailabilityReason?.(widget),
+        isDisabled: !widget || !!getUnavailabilityReason?.(widget),
+        unavailabilityReason: widget ? getUnavailabilityReason?.(widget) : '',
       };
-    }).filter(type => type.isSelected || type.name.toLowerCase().includes(query.toLowerCase()))
+    }).filter(type =>
+      type.isSelected || type.name.toLowerCase().includes(query.toLowerCase())
+    )
   }, [widget, selected, query]);
-  const _onSelect = useCallback((type) => {
-    onSelect(type);
+  const _onSelect = useCallback((type: string) => {
+    onSelect(type as WidgetType);
     if (type !== view) {
-      dispatch(updateWidgetById(id, {view: type}))
+      dispatch(updateWidgetById(id, {view: type as WidgetType}))
     }
   }, [onSelect, view, id, dispatch]);
   useEffect(() => {

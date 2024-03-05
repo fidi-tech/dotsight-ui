@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react';
 
 import {WidgetId} from '@/entities/widget/model';
-import {fetchWidgetDataById} from '@/shared/api/dotsight';
+import {fetchWidgetDataById, RawWidgetData} from '@/shared/api/dotsight';
 
 export const useData = (id: WidgetId) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState<RawWidgetData | undefined>();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 

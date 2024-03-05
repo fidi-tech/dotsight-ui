@@ -29,10 +29,10 @@ export const Copyrights = ({copyrights, className}: Props) => {
     <div className={className}>
       <span>{pluralize(list.length, 'Data source')}: </span>
       {list.map((copyright, i) => (
-        <>
+        <React.Fragment key={copyright.id}>
           {i > 0 && ', '}
-          <span key={copyright.id}>{copyright.name}</span>
-        </>
+          <span>{copyright.name}</span>
+        </React.Fragment>
       ))}
     </div>
   )

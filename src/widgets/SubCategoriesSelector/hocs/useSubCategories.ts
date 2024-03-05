@@ -16,7 +16,7 @@ export const useSubCategories = (id: WidgetId) => {
     dispatch(getSubCategoriesByWidgetId(id, query));
   }, [dispatch, id, query]);
   const subCategories = useSelector(selectAll);
-  const onSelect = useCallback((subCategoryId) => {
+  const onSelect = useCallback((subCategoryId: SubCategoryId) => {
     const currentSelectedSubCategoriesIds = subCategories.reduce((acc: SubCategoryId[], subCategory) => {
       if (getSubCategoryIsSelected(subCategory)) {
         acc.push(getSubCategoryId(subCategory));

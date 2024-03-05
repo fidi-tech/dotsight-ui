@@ -6,7 +6,7 @@ import {useDispatch} from '@/infra/providers/redux';
 import {selectAll} from '@/entities/metric/model/selectors';
 import {selectAll as selectAllPresets} from '@/entities/preset/model/selectors';
 import {WidgetId} from '@/entities/widget/model';
-import {getMetricId, getMetricIsSelected} from '@/entities/metric/model/getters';
+import {getMetricId, getMetricIsAvailable, getMetricIsSelected} from '@/entities/metric/model/getters';
 import {MetricId} from '@/entities/metric/model';
 
 import {setMetricsByWidgetId} from '@/entities/metric/model/providers/setMetricsByWidgetId';
@@ -39,7 +39,7 @@ export const useMetrics = (id: WidgetId) => {
   }, [query, id]);
 
   return {
-    metrics,
+    metrics: metrics.map(m => ({...m, isDisabled: !getMetricIsAvailable(m)})),
     presets,
     onSelectMetrics,
     onSelectPreset,

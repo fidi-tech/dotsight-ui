@@ -38,7 +38,7 @@ const MetricsSelector = ({id}: Props) => {
       Icon={getMetricIcon(metric) &&
         <img
           alt={getMetricName(metric)}
-          src={getMetricIcon(metric)}
+          src={getMetricIcon(metric) || undefined}
           className={styles.tileIcon}
         />
       }
@@ -52,7 +52,7 @@ const MetricsSelector = ({id}: Props) => {
       Icon={getPresetIcon(preset) &&
         <img
           alt={getPresetName(preset)}
-          src={getPresetIcon(preset)}
+          src={getPresetIcon(preset) || undefined}
           className={styles.tileIcon}
         />
       }
@@ -86,7 +86,7 @@ const MetricsSelector = ({id}: Props) => {
         <WizardControls
           left={
             <Button
-              onClick={() => previousStep()}
+              onClick={previousStep}
               text="Back"
               theme="minor"
               iconPosition="Left"

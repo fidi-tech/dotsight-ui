@@ -21,8 +21,8 @@ export const useDataset = (data: RawWidgetData) => {
       map[timestamp][item] = value.getNumericValue();
     })
   });
-  const chart = Object.entries(map).map(
-    ([timestamp, values]) => ({timestamp, ...values})
+  const chart: {timestamp: number, [key: string]: number}[] = Object.entries(map).map(
+    ([timestamp , values]) => ({timestamp: Number(timestamp), ...values})
   );
   return {
     title: data.metrics[metric].name,

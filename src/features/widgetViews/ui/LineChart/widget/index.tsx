@@ -1,6 +1,5 @@
 import React, {useCallback, useMemo, useRef} from 'react';
 import {XAxis, YAxis, Tooltip, Legend, AreaChart, Area} from 'recharts';
-import {createPortal} from 'react-dom';
 
 import {getColorsFromPaletteByVariant, PaletteVariant} from '@/shared/ui/styles/palettes';
 import {Module} from '@/shared/ui/Module';
@@ -8,36 +7,12 @@ import {Copyrights} from '@/shared/ui/Copyrights';
 
 import {useEnhance} from './hocs';
 import styles from './index.module.scss';
-import {LegendLine} from './components/LegendLine';
 import {Tooltip as CustomizedTooltip} from './components/Tooltip';
+import {Legend as CustomizedLegend} from './components/Legend';
 import {formatTime, formatValue} from './helpers';
 
 type Props = {
   data: any,
-}
-
-const CustomizedLegend = (props) => {
-  const {payload, external} = props;
-  const {title, items, containerRef} = external;
-  return (
-    <>
-      {containerRef?.current && createPortal(
-        <div className={styles.legend}>
-          <div className={styles.title}>
-            <div>{title}</div>
-          </div>
-          <div className={styles.marks}>
-            {payload.map(mark => (
-              <div className={styles.mark} key={mark.dataKey}>
-                <LegendLine name={items[mark.dataKey].name} color={mark.color}/>
-              </div>
-            ))}
-          </div>
-        </div>,
-        containerRef.current
-      )}
-    </>
-  )
 }
 
 const View = ({data}: Props) => {
@@ -50,7 +25,7 @@ const View = ({data}: Props) => {
     unitId,
     copyrights,
   } = useEnhance(data);
-  const formatter = useCallback(value => formatValue(value, unitId), [unitId]);
+  const formatter = useCallback((value: number) => formatValue(value, unitId), [unitId]);
   const longestLabelLength = useMemo(() => chart
     .reduce((acc, {timestamp, ...values}) => {
       return Math.max(acc, ...Object.values(values).map(t => formatter(t).length))
@@ -96,7 +71,7 @@ const View = ({data}: Props) => {
           verticalAlign="top"
           align="left"
           iconType="plainline"
-          content={<CustomizedLegend external={{title, items, containerRef: legendContainerRef}} />}
+          content={<CustomizedLegend payload={[]} external={{title, items, containerRef: legendContainerRef}} />}
           wrapperStyle={{position: 'relative'}}
         />
         {keys.map((key, i) =>
