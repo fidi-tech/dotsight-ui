@@ -15,7 +15,7 @@ import {getColorsFromPaletteByVariant, PaletteVariant} from '@/shared/ui/styles/
 import {RawWidgetData} from '@/shared/api/dotsight';
 
 import styles from './index.module.scss';
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 import {Tooltip as CustomizedTooltip} from './components/Tooltip';
 import {Legend as CustomizedLegend} from './components/Legend';
 import {Tick as CustomTick} from './components/Tick';

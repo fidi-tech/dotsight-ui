@@ -5,7 +5,7 @@ import {getColorsFromPaletteByVariant, PaletteVariant} from '@/shared/ui/styles/
 import {Module} from '@/shared/ui/Module';
 import {Copyrights} from '@/shared/ui/Copyrights';
 
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 import styles from './index.module.scss';
 import {Tooltip as CustomizedTooltip} from './components/Tooltip';
 import {Legend as CustomizedLegend} from './components/Legend';

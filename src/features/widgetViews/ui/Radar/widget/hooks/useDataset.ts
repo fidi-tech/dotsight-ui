@@ -14,11 +14,15 @@ export const useDataset = (data: RawWidgetData) => {
           map[metric].unitId = DEFAULT_UNIT_ID;
         }
       }
-      map[metric][item] = data.data.values[item][metric]?.[0].value.getNumericValue();
+      if (data.data.values[item][metric]) {
+        map[metric][item] = data.data.values[item][metric][0].value.getNumericValue();
+      }
     })
     map[metric].max = Math.max(...Object.values(omit(map[metric], ['unitId'])).filter(Boolean));
     data.data.items.forEach(item => {
-      map[metric][item] = map[metric][item] / map[metric].max;
+      if (map[metric][item]) {
+        map[metric][item] = map[metric][item] / map[metric].max;
+      }
     })
   });
   return {
