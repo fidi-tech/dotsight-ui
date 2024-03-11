@@ -4,6 +4,7 @@ import {Widget} from '@/entities/widget/model';
 
 import LineChart from './LineChart';
 import Table from './Table';
+import Radar from './Radar';
 import {WidgetType} from './constants';
 
 export type WidgetConfig = {
@@ -17,6 +18,7 @@ export type WidgetConfig = {
 export const widgets: Record<WidgetType, WidgetConfig> = {
   [WidgetType.lineChart]: LineChart,
   [WidgetType.table]: Table,
+  [WidgetType.radar]: Radar,
 };
 
 export default widgets;

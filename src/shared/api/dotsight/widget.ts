@@ -82,10 +82,11 @@ export const fetchWidgetDataById = async (id: WidgetId): Promise<RawWidgetData> 
     const metricsIds = Object.keys(data.data.values[subcategoryId]);
     metricsIds.forEach(metricId => {
 
-      data.data.values[subcategoryId][metricId] = data.data.values[subcategoryId][metricId].map(({timestamp, value}: {timestamp: number, value: number | Record<UnitId, number>}) => ({
-        timestamp,
-        value: new MetricValue(value)
-      }));
+      data.data.values[subcategoryId][metricId] = data.data.values[subcategoryId][metricId].map(
+        ({timestamp, value}: {timestamp: number, value: number | Record<UnitId, number>}) => ({
+          timestamp,
+          value: new MetricValue(value)
+        }));
     })
   })
   return data;

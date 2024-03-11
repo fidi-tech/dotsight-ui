@@ -23,13 +23,13 @@ export const withConfirmation = ({text, positive, negative, onPositiveClick, onN
           onNegativeClick()
         }
         hide();
-      }, [onNegativeClick]);
+      }, [hide]);
       const _onPositiveClick = useCallback(() => {
         if (onPositiveClick) {
           onPositiveClick()
         }
         hide();
-      }, [onPositiveClick]);
+      }, [hide]);
       const _stopPropagation = useCallback((e: React.MouseEvent<HTMLElement>) => {
         e.stopPropagation();
       }, []);

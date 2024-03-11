@@ -20,7 +20,7 @@ export const useWidgets = () => {
   }, [router])
   const deleteWidget = useCallback((id: WidgetId) => {
     dispatch(deleteWidgetById(id))
-  }, [deleteWidgetById])
+  }, [dispatch])
   return {
     widgets,
     goToWidget,

@@ -31,12 +31,12 @@ export const useMetrics = (id: WidgetId) => {
       : [...currentSelectedMetricsIds, metricId];
 
     dispatch(setMetricsByWidgetId(id, updatedMetricsIds, undefined, query));
-  }, [metrics, query, id]);
+  }, [metrics, query, id, dispatch]);
 
   const presets = useSelector(selectAllPresets);
   const onSelectPreset = useCallback((presetId: PresetId) => {
     dispatch(setMetricsByWidgetId(id, undefined, presetId, query));
-  }, [query, id]);
+  }, [query, id, dispatch]);
 
   return {
     metrics: metrics.map(m => ({...m, isDisabled: !getMetricIsAvailable(m)})),

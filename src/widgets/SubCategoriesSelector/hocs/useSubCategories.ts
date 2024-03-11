@@ -28,7 +28,7 @@ export const useSubCategories = (id: WidgetId) => {
       : [...currentSelectedSubCategoriesIds, subCategoryId];
 
     dispatch(setSubCategoriesByWidgetId(id, updatedSubCategoriesIds, query));
-  }, [subCategories]);
+  }, [subCategories, dispatch, id, query]);
   return {
     subCategories,
     onSelectSubCategory: onSelect,
