@@ -9,7 +9,15 @@ export const useDataset = (_data: RawWidgetData) => {
       return [
         items[item].name,
         ...data.metrics.map(metric => {
-            const value = data.values[item][metric]?.[0]?.value;
+            const m = data.values[item][metric];
+            if (!m) {
+              return null;
+            }
+            const length = m.length;
+            if (!length) {
+              return null;
+            }
+            const value = m[length - 1]?.value;
             if (value && !value.isNull()) {
               return value.getStringValue();
             }

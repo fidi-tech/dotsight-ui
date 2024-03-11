@@ -4,7 +4,7 @@ import {Table} from '@/shared/ui/Table';
 import {Module} from '@/shared/ui/Module';
 import {Copyrights} from '@/shared/ui/Copyrights';
 
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 import styles from './index.module.scss';
 
 type Props = {
