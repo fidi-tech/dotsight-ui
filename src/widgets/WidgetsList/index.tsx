@@ -12,7 +12,7 @@ import {withConfirmation} from '@/features/HOC/withConfirmation/ui';
 import {Icons} from '@/shared/ui/icons';
 
 import styles from './index.module.scss';
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 
 export const WidgetsList = () => {
   const {widgets, goToWidget, deleteWidget} = useEnhance();

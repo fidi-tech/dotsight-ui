@@ -3,7 +3,7 @@ import {WidgetId} from '@/entities/widget/model';
 import {Icons} from '@/shared/ui/icons';
 import {InPlaceEdit} from '@/shared/ui/InPlaceEdit';
 
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 import styles from './index.module.scss';
 
 type Props = {

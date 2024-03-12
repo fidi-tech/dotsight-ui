@@ -11,7 +11,7 @@ import styles from './index.module.scss';
 import {Breadcrumbs} from './components/Breadcrumbs';
 import {Preview} from './components/Preview';
 import {Types} from './components/Types';
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 
 type Props = {
   id: WidgetId;
