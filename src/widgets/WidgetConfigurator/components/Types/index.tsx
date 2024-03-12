@@ -4,8 +4,8 @@ import TilesSelector from '@/features/TilesSelector';
 import {WidgetId} from '@/entities/widget/model';
 
 import styles from './index.module.scss';
-import {useEnhance} from './hocs';
-import {Type} from './hocs/useTypes';
+import {useEnhance} from './hooks';
+import {Type} from '@/widgets/WidgetConfigurator/components/Types/hooks/useTypes';
 
 type Props = {
   widgetId: WidgetId,
