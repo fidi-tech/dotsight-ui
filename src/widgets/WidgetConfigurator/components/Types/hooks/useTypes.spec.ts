@@ -6,7 +6,7 @@ import {selectById} from '@/entities/widget/model/selectors';
 import {updateWidgetById} from '@/entities/widget/model/providers/updateWidgetById';
 import {WidgetType} from '@/features/widgetViews/ui/constants';
 
-import * as module from './useTypes';
+import {useTypes} from './useTypes';
 
 let mockDispatch = jest.fn(action => action);
 jest.mock('@/infra/providers/redux', () => ({
@@ -55,17 +55,17 @@ describe('widgets/WidgetConfigurator/components/Types/hooks/useWidget', () => {
     jest.clearAllMocks();
   });
   it('gets widget', () => {
-    renderHook(() => module.useTypes('2024'));
+    renderHook(() => useTypes('2024'));
     expect(mockDispatch).toHaveBeenCalledWith(getWidgetById('2024'));
   });
   describe('composes types', () => {
     it('by default', () => {
-      const {result} = renderHook(() => module.useTypes('2024'));
+      const {result} = renderHook(() => useTypes('2024'));
       expect(result.current.types.map(type => type.id))
         .toEqual(Object.values(widgetViews).map(t => t.type))
     })
     it('with query', () => {
-      const {result} = renderHook(() => module.useTypes('2024'));
+      const {result} = renderHook(() => useTypes('2024'));
       act(() => {
         result.current.setQuery('t3');
       })
@@ -73,7 +73,7 @@ describe('widgets/WidgetConfigurator/components/Types/hooks/useWidget', () => {
       expect(result.current.types.map(type => type.id)).toEqual(['w2', 'w3']);
     })
     it('handles unavailable', () => {
-      const {result} = renderHook(() => module.useTypes('2024'));
+      const {result} = renderHook(() => useTypes('2024'));
       const expectedUnavailable = result.current.types.find(
         t => t.id === 'w1' as WidgetType
       );
@@ -82,9 +82,9 @@ describe('widgets/WidgetConfigurator/components/Types/hooks/useWidget', () => {
       expect(expectedUnavailable?.isSelected).toBeFalsy();
     });
     it('handles selection', () => {
-      const {result} = renderHook(() => module.useTypes('2024'));
+      const {result} = renderHook(() => useTypes('2024'));
       expect(result.current.types.find(type => type.isSelected)?.id).toEqual('w2');
-      updateWidgetById.mockClear();
+      (updateWidgetById as jest.MockedFn<any>).mockClear();
       act(() => {
         (selectById as jest.MockedFn<any>).mockReturnValue({
           id: '2024',

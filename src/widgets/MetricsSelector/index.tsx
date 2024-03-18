@@ -9,13 +9,13 @@ import {Module} from '@/shared/ui/Module';
 import TilesSelector from '@/features/TilesSelector';
 import {NameWithIcon} from '@/shared/ui/NameWithIcon';
 import {getMetricIcon, getMetricName} from '@/entities/metric/model/getters';
-
-import {Title} from './components/Title';
-import styles from './index.module.scss';
-import {useEnhance} from './hocs';
 import {Preset} from '@/entities/preset/model';
 import {Metric} from '@/entities/metric/model';
 import {getPresetIcon, getPresetName} from '@/entities/preset/model/getters';
+
+import {Title} from './components/Title';
+import styles from './index.module.scss';
+import {useEnhance} from './hooks';
 
 type Props = {
   id: string;

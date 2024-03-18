@@ -4,7 +4,7 @@ import {WidgetId} from '@/entities/widget/model';
 import widgets from '@/features/widgetViews/ui';
 import {WidgetType} from '@/features/widgetViews/ui/constants';
 
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 import styles from './index.module.scss';
 
 type Props = {

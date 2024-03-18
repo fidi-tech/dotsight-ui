@@ -38,10 +38,10 @@ export const useEnhance = ({value, onSave}: Props) => {
     setContent(e.target.value);
   };
 
-  const onConfirm = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
-    onSave(e.target.value);
+  const onConfirm = useCallback(() => {
+    onSave(content);
     setIsEditing(false);
-  }, [onSave, setIsEditing]);
+  }, [onSave, setIsEditing, content]);
 
   return {
     spanRef,

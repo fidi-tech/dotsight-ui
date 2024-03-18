@@ -3,7 +3,7 @@ import React from 'react';
 import {Icons} from '@/shared/ui/icons';
 
 import styles from './index.module.scss';
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 
 type Props = {
   value: string,

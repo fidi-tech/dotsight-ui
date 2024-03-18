@@ -13,7 +13,7 @@ import {getSubCategoryIcon, getSubCategoryName} from '@/entities/subCategory/mod
 import {SubCategory} from '@/entities/subCategory/model';
 
 import styles from './index.module.scss';
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 import {Title} from './components/Title';
 
 type Props = {
