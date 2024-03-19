@@ -1,56 +1,52 @@
 import '@testing-library/jest-dom';
 import React from 'react';
-import {fireEvent, render, screen} from '@testing-library/react';
-
-import {fetchPipelines} from '@/entities/pipeline/model';
+import {act, fireEvent, render, screen} from '@testing-library/react';
 
 import Home from './page';
 
-let mockDispatch = jest.fn(action => action);
-let createPipelineMock = jest.fn();
+let pushMock = jest.fn();
 
-jest.mock('@/infra/providers/redux', () => ({
-  useDispatch: jest.fn(() => mockDispatch),
-}));
-jest.mock('@/entities/pipeline/model', () => ({
-  fetchPipelines: () => ({fetchPipelines: true}),
-}));
-jest.mock('@/widgets/pipelinesList/ui', () => ({
-  PipelinesList: () => (
-    <div data-testid="pipelines" />
-  ),
-}));
-jest.mock('@/features/HOC/withAuth/ui', () => ({
-  withAuth: (component: any) => component,
-}));
-jest.mock('@/features/mainLayout/ui', () => function MainLayout(props: any) { return props.children })
 jest.mock('next/navigation', () => ({
-  useRouter: jest.fn()
+  useRouter() {
+    return {
+      push: pushMock,
+    };
+  },
 }));
 jest.mock('@/shared/ui/icons', () => ({
   Icons: {Database: jest.fn()}
 }));
-jest.mock('@/shared/api/dotsight', () => ({
-  createPipeline: jest.fn(() => createPipelineMock()),
-}))
+jest.mock('@/features/HOC/withAuth/ui', () => ({
+  withAuth: (component: any) => component,
+}));
+jest.mock('@/widgets/WidgetsList', () => ({
+  WidgetsList: () => (
+    <div data-testid="widgetsList" />
+  ),
+}));
+jest.mock('@/features/mainLayout/ui', () => function MainLayout(props: any) { return props.children })
+jest.mock('@/shared/ui/icons', () => ({
+  Icons: {
+    Tiles: jest.fn(),
+    Database: jest.fn(),
+    ChevronUp: jest.fn(),
+  }
+}));
 
 describe('Home', () => {
-  it('dispatches fetchPipelines on mount', () => {
+  it('renders WidgetsList', () => {
     render(<Home />);
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
-    expect(mockDispatch).toHaveBeenCalledWith(fetchPipelines());
+    const widgetsList = screen.getByTestId('widgetsList');
+    expect(widgetsList).toBeInTheDocument();
   });
 
-  it('renders PipelinesList', () => {
-    render(<Home />);
-    const pipelinesList = screen.getByTestId('pipelines');
-    expect(pipelinesList).toBeInTheDocument();
-  });
-
-  it('call create api on click create button', () => {
+  it('redirects on click create button', () => {
     render(<Home />);
     const createButton = screen.getByTestId('create');
-    fireEvent.click(createButton);
-    expect(createPipelineMock).toHaveBeenCalledTimes(1);
+    act(() => {
+      fireEvent.click(createButton);
+    })
+    expect(pushMock).toHaveBeenCalledTimes(1);
+    expect(pushMock).toHaveBeenCalledWith('/widget');
   })
 });

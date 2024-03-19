@@ -16,7 +16,7 @@ export const useWidgets = () => {
   }, [dispatch]);
   const widgets = useSelector(selectAll);
   const goToWidget = useCallback((id: WidgetId) => {
-    router.push(`/v2/widget/${id}`);
+    router.push(`/widget/${id}`);
   }, [router])
   const deleteWidget = useCallback((id: WidgetId) => {
     dispatch(deleteWidgetById(id))

@@ -67,7 +67,7 @@ describe('widgets/WidgetsList/hooks/widgets', () => {
       expect(result.current.goToWidget).toEqual(expect.any(Function));
       result.current.goToWidget('2024');
       expect(pushMock).toHaveBeenCalledTimes(1);
-      expect(pushMock).toHaveBeenCalledWith('/v2/widget/2024');
+      expect(pushMock).toHaveBeenCalledWith('/widget/2024');
     })
     it('provides deleteWidget callback', () => {
       const {result} = renderHook(() => useWidgets());
