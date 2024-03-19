@@ -1,4 +1,4 @@
-import {ReactNode} from 'react';
+import {ReactNode, FunctionComponent, SVGAttributes} from 'react';
 
 import {Widget} from '@/entities/widget/model';
 
@@ -12,7 +12,7 @@ export type WidgetConfig = {
   type: WidgetType,
   Widget: ({data}: any) => ReactNode;
   Placeholder: ({isLoading, isError}: any) => ReactNode;
-  Icon: ReactNode;
+  Icon: FunctionComponent<SVGAttributes<SVGElement>>;
   getUnavailabilityReason?: (widget: Widget) => string | undefined
 }
 export const widgets: Record<WidgetType, WidgetConfig> = {
