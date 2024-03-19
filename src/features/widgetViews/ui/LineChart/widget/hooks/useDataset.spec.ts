@@ -41,12 +41,12 @@ describe('features/widgetViews/ui/Radar/hooks/useDataset', () => {
         {
           item1: 12,
           item2: 112,
-          timestamp: 199990800,
+          timestamp: 199918800,
         },
         {
           item1: 13,
           item2: 113,
-          timestamp: 299955600,
+          timestamp: 299970000,
         },
       ],
       copyrights: {
