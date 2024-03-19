@@ -10,7 +10,7 @@ import MetricsSelector from '@/widgets/MetricsSelector';
 import WidgetConfigurator from '@/widgets/WidgetConfigurator';
 import {WidgetId} from '@/entities/widget/model';
 
-import {useEnhance} from './hocs';
+import {useEnhance} from './hooks';
 
 type Props = {
   params: {
@@ -19,7 +19,6 @@ type Props = {
 }
 
 const Widget = ({ params }: Props) => {
-  console.log('ggf');
   const {id} = params;
   const {step} = useEnhance(id);
 

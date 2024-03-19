@@ -1,4 +1,4 @@
-import {getAbsoluteMetricValue} from '@/shared/lib/unit';
+import {getAbsoluteMetricValue, isMetricMultiValue} from '@/shared/lib/unit';
 
 describe('getAbsoluteMetricValue', () => {
   it('should return the number if value is number', () => {
@@ -14,3 +14,12 @@ describe('getAbsoluteMetricValue', () => {
     expect(getAbsoluteMetricValue({otherUnit: 10, someUnit: 11}, 'another')).toEqual(undefined);
   })
 });
+
+describe('isMetricMultiValue', () => {
+  it('returns true if value is object', () => {
+    expect(isMetricMultiValue({})).toBeTruthy();
+  })
+  it('returns false if value is not an object', () => {
+    expect(isMetricMultiValue(1)).toBeFalsy();
+  })
+})

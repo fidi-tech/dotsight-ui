@@ -2,7 +2,6 @@ import {act, renderHook} from '@testing-library/react';
 
 import {getSubCategoriesByWidgetId} from '@/entities/subCategory/model/providers/getSubCategoriesByWidgetId';
 import {setSubCategoriesByWidgetId} from '@/entities/subCategory/model/providers/setSubCategoriesByWidgetId';
-import {selectAll} from '@/entities/subCategory/model/selectors';
 
 import {useSubCategories} from './useSubCategories';
 
