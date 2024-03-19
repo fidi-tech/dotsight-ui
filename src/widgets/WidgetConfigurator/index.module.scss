@@ -1,0 +1,54 @@
+@import '~@styles/colors.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  display: grid;
+  grid-template-areas:
+    "breadcrumbs breadcrumbs"
+    "preview preview"
+    "types types";
+  grid-template-rows: auto 1fr auto;
+  gap: 20px;
+}
+
+.breadcrumbs {
+  grid-area: breadcrumbs;
+}
+
+.preview {
+  grid-area: preview;
+  padding: 85px 85px;
+  background-color: $border;
+  border-radius: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.types {
+  grid-area: types;
+}
+
+.adjustments {
+  grid-area: adjustments;
+}
+
+.controls {
+  background-color: $module;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.nextIcon {
+  width: 24px;
+  height: 24px;
+  transform: rotate(180deg);
+}

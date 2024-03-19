@@ -1,0 +1,25 @@
+.legend {
+  display: flex;
+  gap: 40px;
+}
+
+.marks {}
+
+.mark {
+  display: inline-flex;
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #79818D;
+}
+
+.title {
+  color: #22262B;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}

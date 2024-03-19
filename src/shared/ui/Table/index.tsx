@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 
 type Props = {
   header: string[],
-  rows: (string | undefined)[][],
+  rows: (string | undefined | null)[][],
   palette?: string[],
 }
 
@@ -22,9 +22,9 @@ export const Table = ({header, rows, palette}: Props) => {
           </>
         }
         {rows.map((row, i) => (
-          <tr className={styles.row} key={row[0]}>
+          <tr className={styles.row} key={i}>
             {row.map((value, j) =>
-              <td className={styles.cell} key={`${value}${i}`}>
+              <td className={styles.cell} key={`${j}${i}`}>
                 {j === 0 && palette
                   ? <div className={styles.marker} style={{color: palette[i % palette.length]}} />
                   : null

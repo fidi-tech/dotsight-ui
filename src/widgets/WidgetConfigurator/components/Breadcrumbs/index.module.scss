@@ -1,0 +1,19 @@
+@import '~@styles/colors.scss';
+
+.root {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.icon {
+  color: $brand;
+  display: flex;
+  svg {
+    height: 15px;
+  }
+}
+
+.name {
+  color: #79818D;
+}

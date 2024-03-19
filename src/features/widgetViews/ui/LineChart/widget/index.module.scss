@@ -1,0 +1,18 @@
+@import '~@styles/colors.scss';
+
+.root {
+  position: relative;
+  padding: 0;
+}
+
+.titleWrapper {
+  padding: 20px 35px 20px 35px;
+}
+
+.copyright {
+  padding: 0 35px 20px 35px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: $dark;
+}

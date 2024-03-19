@@ -18,9 +18,9 @@ const Login = () => {
       redirect('/');
     }
   }, [token]);
-  const loginGoogle = () => window.location.assign('/api/auth/google');
-  const loginX = () => window.location.assign('/api/auth/twitter');
-  const loginGithub = () => window.location.assign('/api/auth/github');
+  const loginGoogle = () => window.location.assign('/api/v2/auth/google');
+  const loginX = () => window.location.assign('/api/v2/auth/twitter');
+  const loginGithub = () => window.location.assign('/api/v2/auth/github');
   return (
     <div className={styles.root}>
       <div className={styles.header}>

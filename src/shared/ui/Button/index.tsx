@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import styles from './index.module.scss';
 
-type Theme = 'regular' | 'muted';
+type Theme = 'regular' | 'muted' | 'minor';
 type IconPosition = 'Left' | 'Right';
 
 type Props = {

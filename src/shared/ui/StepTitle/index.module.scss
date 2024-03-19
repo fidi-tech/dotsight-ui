@@ -1,0 +1,28 @@
+@import '~@styles/colors.scss';
+
+$size: 50px;
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number {
+  width: $size;
+  height: $size;
+  border-radius: 15px;
+  background: rgba(126, 139, 255, 0.15);
+  line-height: $size;
+  font-size: 28px;
+  font-weight: 600;
+  color: $brand;
+  text-align: center;
+  margin-right: 15px;
+}
+
+.text {
+  font-size: 30px;
+  font-weight: 600;
+  color: black;
+}

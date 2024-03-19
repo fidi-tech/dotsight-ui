@@ -13,7 +13,7 @@ const Header = () => {
   const disconnect = () => window.location.assign('/api/auth/logout');
   return (
     <Module className={styles.root}>
-      <a href="https://dot.fidi.tech" className={styles.badge}>
+      <a href="https://dot.fidi.tech/" className={styles.badge}>
         <div className={styles.logo} />
       </a>
       <div className={styles.links}>

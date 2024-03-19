@@ -1,0 +1,19 @@
+@import '~@styles/colors.scss';
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.titleIcon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.branded {
+  display: flex;
+  gap: 6px;
+  color: $brand;
+  margin: 0 10px;
+}

@@ -1,0 +1,35 @@
+@import '~@styles/colors.scss';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+.module {
+  margin: 40px 0;
+}
+
+.controls {
+  background-color: $module;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.nextIcon {
+  width: 24px;
+  height: 24px;
+  transform: rotate(180deg);
+}
+
+.tileIcon {
+  height: 30px;
+  width: 30px;
+  border-radius: 30px;
+  overflow: hidden;
+}

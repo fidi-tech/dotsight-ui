@@ -1,0 +1,12 @@
+@import '~@styles/colors.scss';
+
+.root {
+  display: inline-flex;
+  border-radius: 12px;
+  background: rgba(126, 139, 255, 0.05);
+  padding: 10px;
+  color: $brand;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 10px;
+}

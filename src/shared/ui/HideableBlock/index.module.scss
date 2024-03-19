@@ -1,0 +1,91 @@
+@import '~@styles/colors.scss';
+
+$title: 66px;
+
+.root {
+  padding: 0 !important;
+}
+
+.header {
+  height: $title;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  margin: -1px;
+  border: 1px solid #DCDEE1;
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.iconWrapper {
+  width: $title;
+  min-width: $title;
+  height: 100%;
+  color: $dark;
+  border: 1px solid #DCDEE1;
+  border-radius: 20px;
+  box-sizing: content-box;
+  margin: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 24px;
+    }
+  }
+}
+
+.title {
+  color: #131417;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 25px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  overflow: hidden;
+  margin-left: 20px;
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.openIcon {
+  color: $dark;
+  padding: 0 30px 0 0;
+  display: flex;
+
+  svg {
+    width: 10px;
+  }
+
+  &.reverted {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.body {
+  display: none;
+
+  &.bodyOpened {
+    display: block;
+  }
+}
