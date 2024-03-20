@@ -8,9 +8,9 @@
     "start": "next start -p 3001",
     "lint": "next lint",
     "lint:types": "tsc --noemit",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage"
+    "test": "TZ=UTC jest",
+    "test:watch": "TZ=UTC jest --watch",
+    "test:cov": "TZ=UTC jest --coverage"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
