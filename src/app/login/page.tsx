@@ -18,9 +18,8 @@ const Login = () => {
       redirect('/');
     }
   }, [token]);
-  const loginGoogle = () => window.location.assign('/api/v2/auth/google');
-  const loginX = () => window.location.assign('/api/v2/auth/twitter');
-  const loginGithub = () => window.location.assign('/api/v2/auth/github');
+  const loginGoogle = () => window.location.assign('/api/auth/google');
+  const loginGithub = () => window.location.assign('/api/auth/github');
   return (
     <div className={styles.root}>
       <div className={styles.header}>
@@ -33,7 +32,6 @@ const Login = () => {
           <div className={styles.buttons}>
             <Button text="Sign in with Google" onClick={loginGoogle} Logo={<Icons.Google />} />
             <Button text="Sign in with Github" onClick={loginGithub} Logo={<Icons.Github />} />
-            <Button text="Sign in with X" onClick={loginX} Logo={<Icons.X />} className={styles.dark} />
           </div>
         </Module>
       </div>
