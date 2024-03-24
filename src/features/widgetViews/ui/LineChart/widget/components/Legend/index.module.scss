@@ -1,9 +1,18 @@
 .legend {
   display: flex;
   gap: 40px;
+  width: 100%;
+  align-items: start;
 }
 
-.marks {}
+.title {
+  flex: 1;
+  min-width: 30%;
+}
+
+.marks {
+  margin-top: -5px;
+}
 
 .mark {
   display: inline-flex;
@@ -19,7 +28,6 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 19px;
-  flex: 1;
   display: flex;
   align-items: center;
 }
