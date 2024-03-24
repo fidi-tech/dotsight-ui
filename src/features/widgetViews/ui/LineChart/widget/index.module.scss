@@ -3,6 +3,7 @@
 .root {
   position: relative;
   padding: 0;
+  max-width: 700px;
 }
 
 .titleWrapper {
@@ -15,4 +16,7 @@
   font-weight: 500;
   line-height: 20px;
   color: $dark;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
