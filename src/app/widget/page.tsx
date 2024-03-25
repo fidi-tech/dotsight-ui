@@ -17,6 +17,7 @@ import {createWidget} from '@/shared/api/dotsight';
 import {getCategoryId, getCategoryName} from '@/entities/category/model/getters';
 import {CategoryId} from '@/entities/category/model';
 import {getWidgetId} from '@/entities/widget/model/getters';
+import Loader from '@/shared/ui/Loader';
 
 import styles from './index.module.scss';
 
@@ -44,25 +45,34 @@ const NewWidget = ({}: Props) => {
       <StepTitle n={1}>
         What would you like to explore?
       </StepTitle>
-      <div className={styles.tiles}>
-        {categories.map(category => {
-          const Icon = ICON_MAP[getCategoryId(category)];
-          return (
-            <Tile
-              className={styles.tile}
-              key={getCategoryId(category)}
-              onClick={onCreate.bind(this, getCategoryId(category))}
-            >
-              <NameWithIcon
-                Icon={<div className={styles.icon}>{Icon && <Icon />}</div>}
-                nameClassName={styles.name}
-              >
-                {getCategoryName(category)}
-              </NameWithIcon>
-            </Tile>
-          )
-        })}
-      </div>
+      {categories.length
+        ? (
+          <div className={styles.tiles}>
+            {categories.map(category => {
+              const Icon = ICON_MAP[getCategoryId(category)];
+              return (
+                <Tile
+                  className={styles.tile}
+                  key={getCategoryId(category)}
+                  onClick={onCreate.bind(this, getCategoryId(category))}
+                  testId={`tile-${getCategoryId(category)}`}
+                >
+                  <NameWithIcon
+                    Icon={<div className={styles.icon}>{Icon && <Icon/>}</div>}
+                    nameClassName={styles.name}
+                  >
+                    {getCategoryName(category)}
+                  </NameWithIcon>
+                </Tile>
+              )
+            })}
+          </div>
+        ) : (
+          <div className={styles.loader}>
+            <Loader testId="loader" />
+          </div>
+        )
+      }
     </div>
   </MainLayout>;
 }

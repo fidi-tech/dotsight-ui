@@ -3,9 +3,9 @@ import cx from 'classnames';
 
 import styles from './index.module.scss';
 
-type Props = { isActive?: boolean, isDisabled?: boolean, className?: string, onClick?: () => void };
+type Props = { isActive?: boolean, isDisabled?: boolean, className?: string, onClick?: () => void, testId?: string };
 
-export const Tile = ({isActive, isDisabled, className, children, onClick}: React.PropsWithChildren<Props>) => {
+export const Tile = ({isActive, isDisabled, className, children, onClick, testId}: React.PropsWithChildren<Props>) => {
   return (
     <button
       className={cx(styles.root, className, {
@@ -13,6 +13,7 @@ export const Tile = ({isActive, isDisabled, className, children, onClick}: React
         [styles.isDisabled]: isDisabled,
       })}
       onClick={onClick}
+      data-testid={testId}
     >
       {children}
     </button>
