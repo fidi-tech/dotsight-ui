@@ -1,0 +1,22 @@
+@import '~@styles/colors.scss';
+
+.root {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  display: flex;
+  gap: 40px;
+}
+
+.link {
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 12px;
+  align-content: center;
+  color: #131417;
+  text-decoration: none;
+  &.active {
+    background: rgba(126, 139, 255, 0.05);
+    color: $brand;
+  }
+}

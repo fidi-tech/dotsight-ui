@@ -8,16 +8,17 @@ import {Button} from '@/shared/ui/Button';
 import {Icons} from '@/shared/ui/icons';
 
 import styles from './index.module.scss';
+import Links from './components/Links';
 
 const Header = () => {
   const disconnect = () => window.location.assign('/api/auth/logout');
   return (
     <Module className={styles.root}>
-      <a href="https://dot.fidi.tech/" className={styles.badge}>
-        <div className={styles.logo} />
-      </a>
+      <Link href="/" className={styles.badge}>
+        <div className={styles.logo}/>
+      </Link>
       <div className={styles.links}>
-        <Link href="/" className={styles.link}>Code-Free Analytics</Link>
+        <Links />
       </div>
       <Button onClick={disconnect} icon={<Icons.Disconnect />} theme="muted" className={styles.disconnect} />
     </Module>
