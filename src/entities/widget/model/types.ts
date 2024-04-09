@@ -14,4 +14,7 @@ export type Widget = {
   preset?: string,
   view?: WidgetType,
   canDelete: boolean,
+  canModify: boolean,
+  canExecute: boolean,
+  isPublic: boolean,
 }

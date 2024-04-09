@@ -7,9 +7,10 @@ import {useEnhance} from './hooks';
 
 type Props = {
   value: string,
+  disabled?: boolean,
   onSave: (s: string) => void,
 }
-export const InPlaceEdit = ({value, onSave}: Props) => {
+export const InPlaceEdit = ({value, onSave, disabled}: Props) => {
   const {
     spanRef,
     inputRef,
@@ -32,7 +33,7 @@ export const InPlaceEdit = ({value, onSave}: Props) => {
         disabled={!isEditing}
         ref={inputRef}
       />
-      {!isEditing && <div className={styles.icon} onClick={startEditing}><Icons.Pen/></div>}
+      {!isEditing && !disabled && <div className={styles.icon} onClick={startEditing}><Icons.Pen/></div>}
     </div>
   )
 }

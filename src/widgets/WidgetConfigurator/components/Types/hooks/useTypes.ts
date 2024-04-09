@@ -6,9 +6,10 @@ import {WidgetId} from '@/entities/widget/model';
 import {useDispatch} from '@/infra/providers/redux';
 import {getWidgetById} from '@/entities/widget/model/providers/getWidgetById';
 import {selectById} from '@/entities/widget/model/selectors';
-import {getWidgetView} from '@/entities/widget/model/getters';
+import {canModifyWidget, getWidgetView} from '@/entities/widget/model/getters';
 import {updateWidgetById} from '@/entities/widget/model/providers/updateWidgetById';
 import {WidgetType} from '@/features/widgetViews/ui/constants';
+import {upsert} from '@/entities/widget/model/actions';
 
 export type Type = {
   id: WidgetType,
@@ -31,6 +32,7 @@ export const useTypes = (id: WidgetId) => {
   }, [dispatch, id]);
   const widget = useSelector((state) => selectById(state, id));
   const view = widget && getWidgetView(widget);
+  const canModify = widget && canModifyWidget(widget);
 
   const [selected, onSelect] = useState<WidgetType>();
   const [query, setQuery] = useState('');
@@ -49,9 +51,13 @@ export const useTypes = (id: WidgetId) => {
   const _onSelect = useCallback((type: string) => {
     onSelect(type as WidgetType);
     if (type !== view) {
-      dispatch(updateWidgetById(id, {view: type as WidgetType}))
+      if (canModify) {
+        dispatch(updateWidgetById(id, {view: type as WidgetType}))
+      } else {
+        dispatch(upsert({...widget, view: type}));
+      }
     }
-  }, [onSelect, view, id, dispatch]);
+  }, [onSelect, view, id, dispatch, canModify]);
   useEffect(() => {
     if (view) {
       const type = types.find(t => t.id === view && !t.isDisabled);

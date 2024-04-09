@@ -10,7 +10,7 @@ type Props = {
   id: WidgetId,
 }
 export const Breadcrumbs = ({id}: Props) => {
-  const {name, onSaveName} = useEnhance(id);
+  const {name, canModify, onSaveName} = useEnhance(id);
   if (!name) {
     return null;
   }
@@ -20,7 +20,7 @@ export const Breadcrumbs = ({id}: Props) => {
         <Icons.Tiles />
       </div>
       <div className={styles.name}>
-        <InPlaceEdit value={name} onSave={onSaveName} />
+        <InPlaceEdit value={name} onSave={onSaveName} disabled={!canModify} />
       </div>
     </div>
   );

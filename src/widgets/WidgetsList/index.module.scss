@@ -2,12 +2,13 @@
 
 .title, .row {
   display: grid;
-  grid-template-areas: "name datasources category type creator actions";
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas: "name datasources category type visibility creator actions";
+  grid-template-columns: repeat(7, 1fr);
 }
 
-.name, .datasources, .category, .type, .creator, .actions {
+.name, .datasources, .category, .type, .visibility, ,.creator, .actions {
   flex: 1;
+  text-align: start;
 }
 
 .name {
@@ -27,6 +28,10 @@
   grid-area: type;
 }
 
+.visibility {
+  grid-area: visibility;
+}
+
 .creator {
   grid-area: creator;
 }
@@ -35,6 +40,7 @@
   grid-area: actions;
   display: flex;
   justify-content: flex-end;
+  gap: 10px;
 }
 
 .title, .list {
@@ -61,21 +67,5 @@
 
   & + & {
     border-top: 1px solid $gray;
-  }
-}
-
-.action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  background-color: $gray;
-  color: $dark;
-
-  svg {
-    width: 20px;
-    height: 20px;
   }
 }

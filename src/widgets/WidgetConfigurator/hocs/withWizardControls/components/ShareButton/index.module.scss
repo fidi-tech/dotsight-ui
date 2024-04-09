@@ -1,0 +1,23 @@
+@import '~@styles/colors.scss';
+
+.root {
+  display: flex;
+  height: 40px;
+  padding: 10px 15px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  background: #F4F4F4;
+  cursor: pointer;
+}
+
+.icon {
+  display: flex;
+  color: $dark;
+  align-items: center;
+  justify-content: center;
+  svg {
+    height: 18px;
+    width: 18px;
+  }
+}

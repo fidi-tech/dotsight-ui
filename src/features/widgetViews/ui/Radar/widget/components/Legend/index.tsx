@@ -29,7 +29,7 @@ export const Legend = (props: Props) => {
               return null;
             }
             return (
-              <div className={styles.mark} key={mark.id}>
+              <div className={styles.mark} key={key}>
                 <LegendLine name={items[key].name} color={mark.color!}/>
               </div>
             );

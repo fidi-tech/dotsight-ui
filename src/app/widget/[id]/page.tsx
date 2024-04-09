@@ -8,6 +8,7 @@ import {withAuth} from '@/features/HOC/withAuth/ui';
 import SubCategoriesSelector from '@/widgets/SubCategoriesSelector';
 import MetricsSelector from '@/widgets/MetricsSelector';
 import WidgetConfigurator from '@/widgets/WidgetConfigurator';
+import {withWizardControls} from '@/widgets/WidgetConfigurator/hocs/withWizardControls';
 import {WidgetId} from '@/entities/widget/model';
 
 import {useEnhance} from './hooks';
@@ -17,6 +18,8 @@ type Props = {
     id: WidgetId;
   }
 }
+
+const WidgetConfiguratorWithWizardControls = withWizardControls(WidgetConfigurator);
 
 const Widget = ({ params }: Props) => {
   const {id} = params;
@@ -30,7 +33,7 @@ const Widget = ({ params }: Props) => {
     <Wizard startIndex={step}>
       <SubCategoriesSelector id={id} />
       <MetricsSelector id={id} />
-      <WidgetConfigurator id={id} />
+      <WidgetConfiguratorWithWizardControls id={id} />
     </Wizard>
   </MainLayout>;
 }
