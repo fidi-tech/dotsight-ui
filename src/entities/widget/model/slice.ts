@@ -14,6 +14,6 @@ export const widgetSlice = createSlice({
     },
     deleteById(state, action) {
       widgetAdapter.removeOne(state, action.payload);
-    }
+    },
   },
 });

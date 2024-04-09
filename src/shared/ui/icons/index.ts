@@ -6,6 +6,7 @@ import Disconnect from './disconnect.svg';
 import Discord from './discord.svg';
 import EmptyPipe from './emptyPipe.svg';
 import Ethereum from './ethereum.svg';
+import Export from './export.svg';
 import FlatStack from './flatStack.svg';
 import Github from './github.svg';
 import Google from './google.svg';
@@ -33,6 +34,7 @@ export const IconNames = {
   Discord: 'Discord',
   EmptyPipe: 'EmptyPipe',
   Ethereum: 'Ethereum',
+  Export: 'Export',
   FlatStack: 'FlatStack',
   Github: 'Github',
   Google: 'Google',
@@ -63,6 +65,7 @@ export const Icons: Record<IconName, any> = {
   [IconNames.Discord]: Discord,
   [IconNames.EmptyPipe]: EmptyPipe,
   [IconNames.Ethereum]: Ethereum,
+  [IconNames.Export]: Export,
   [IconNames.FlatStack]: FlatStack,
   [IconNames.Github]: Github,
   [IconNames.Google]: Google,

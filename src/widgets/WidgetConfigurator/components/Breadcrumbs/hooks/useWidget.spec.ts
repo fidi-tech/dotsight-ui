@@ -12,18 +12,21 @@ jest.mock('@/infra/providers/redux', () => ({
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(fn => fn()),
 }));
-jest.mock('@/entities/widget/model/selectors', () => ({
-  selectById: jest.fn(() => ({
-    id: '1',
-    name: 'widget1',
-  })),
-}));
+jest.mock('@/entities/widget/model/selectors');
 
 jest.mock('@/entities/widget/model/providers/updateWidgetById', () => ({
   updateWidgetById: jest.fn(() => ({type: 'updateWidgetById'})),
 }));
 
 describe('widgets/WidgetConfigurator/components/Breadcrumbs/hooks/useWidget', () => {
+  (selectById as jest.MockedFn<any>).mockImplementation(() => ({
+    id: '2024',
+    name: 'widget1',
+    category: 'category1',
+    subcategories: [],
+    canDelete: true,
+    canModify: true,
+  }));
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -42,5 +45,23 @@ describe('widgets/WidgetConfigurator/components/Breadcrumbs/hooks/useWidget', ()
     result.current.onSaveName('new');
     expect(updateWidgetById).toHaveBeenCalledTimes(1);
     expect(updateWidgetById).toHaveBeenCalledWith('2024', {name: 'new'});
+  })
+  describe('returns canModify', () => {
+    it('true', () => {
+      const {result} = renderHook(() => useWidget('2024'));
+      expect(result.current.canModify).toBeTruthy();
+    })
+    it('true', () => {
+      (selectById as jest.MockedFn<any>).mockImplementation(() => ({
+        id: '2024',
+        name: 'widget1',
+        category: 'category1',
+        subcategories: [],
+        canDelete: true,
+        canModify: false,
+      }));
+      const {result} = renderHook(() => useWidget('2024'));
+      expect(result.current.canModify).toBeFalsy();
+    })
   })
 });

@@ -1,0 +1,1 @@
+export const isIOS = () => navigator.userAgent.match(/ipad|iphone/i);

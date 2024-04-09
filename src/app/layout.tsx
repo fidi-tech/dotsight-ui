@@ -1,7 +1,6 @@
 'use client'
 
 import {Providers} from '@/infra/providers';
-import 'react-tooltip/dist/react-tooltip.css';
 
 import styles from './layout.module.scss';
 import './globals.css'

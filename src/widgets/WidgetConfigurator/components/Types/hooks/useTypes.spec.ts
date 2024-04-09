@@ -26,6 +26,7 @@ jest.mock('@/entities/widget/model/selectors', () => ({
     category: 'category1',
     subcategories: [],
     canDelete: true,
+    canModify: true,
   })),
 }));
 
@@ -93,6 +94,7 @@ describe('widgets/WidgetConfigurator/components/Types/hooks/useWidget', () => {
           view: 'w3',
           subcategories: [],
           canDelete: true,
+          canModify: true,
         });
         result.current.onSelect('w3');
       })

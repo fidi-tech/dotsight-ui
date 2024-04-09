@@ -12,6 +12,9 @@ describe('features/widgetViews/ui/LineChart/helpers', () => {
         subcategories: ['sc1'],
         metrics: ['m1'],
         canDelete: false,
+        canModify: true,
+        canExecute: true,
+        isPublic: true,
       })).toBeUndefined();
     });
     describe('returns restriction message', () => {
@@ -23,6 +26,9 @@ describe('features/widgetViews/ui/LineChart/helpers', () => {
           subcategories: ['sc1'],
           metrics: ['m1', 'm2'],
           canDelete: false,
+          canModify: true,
+          canExecute: true,
+          isPublic: true,
         })).toEqual('Only one metric can be selected');
       })
       it('if preset selected', () => {
@@ -33,6 +39,9 @@ describe('features/widgetViews/ui/LineChart/helpers', () => {
           subcategories: ['sc1'],
           preset: 'p1',
           canDelete: false,
+          canModify: true,
+          canExecute: true,
+          isPublic: true,
         })).toEqual('Does not work with presets');
       })
     })

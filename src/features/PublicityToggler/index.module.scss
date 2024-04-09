@@ -1,0 +1,28 @@
+@import '~@styles/colors.scss';
+
+.root {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.export {
+  display: flex;
+  color: $dark;
+  align-items: center;
+  justify-content: center;
+  svg {
+    height: 18px;
+    width: 18px;
+  }
+}
+
+.switcherContainer {
+  border-radius: 8px;
+}
+
+.switcher {
+  border-radius: 6px;
+}

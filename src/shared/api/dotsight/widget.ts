@@ -92,10 +92,13 @@ export const fetchWidgetDataById = async (id: WidgetId): Promise<RawWidgetData> 
   return data;
 }
 
-export const updateWidget = async (id: WidgetId, {name, view}: { name?: string, view?: WidgetType }) => {
+export const updateWidget = async (
+  id: WidgetId,
+  {name, view, isPublic}: { name?: string, view?: WidgetType, isPublic?: boolean },
+) => {
   const response = await api.patch(
     `${BASE_URL}/${id}`,
-    {name, view}
+    {name, view, isPublic}
   )
   return response.data.widget;
 }
