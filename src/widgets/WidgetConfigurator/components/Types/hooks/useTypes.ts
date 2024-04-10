@@ -57,7 +57,7 @@ export const useTypes = (id: WidgetId) => {
         dispatch(upsert({...widget, view: type}));
       }
     }
-  }, [onSelect, view, id, dispatch, canModify]);
+  }, [onSelect, view, id, dispatch, canModify, widget]);
   useEffect(() => {
     if (view) {
       const type = types.find(t => t.id === view && !t.isDisabled);
