@@ -10,6 +10,7 @@ import {fetchWidgets} from '@/shared/api/dotsight';
 import {updateAll} from '@/entities/widget/model/actions';
 
 export const useWidgets = () => {
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -20,9 +21,8 @@ export const useWidgets = () => {
       .then(_data => dispatch(updateAll(_data)))
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false))
-  }, []);
+  }, [dispatch]);
 
-  const dispatch = useDispatch();
   const router = useRouter();
   const widgets = useSelector(selectAll);
   const goToWidget = useCallback((id: WidgetId) => {
