@@ -12,28 +12,26 @@ type Props = {
 export const useEnhance = ({value, onHover}: Props) => {
   const tooltipRef = useRef<TooltipRefProps>(null);
   const [isCopied, setIsCopied] = useState(false);
-  const [hideTimeoutId, setHideTimeoutId] = useState<TimeoutId | null>(null);
-  const [textTimeoutId, setTextTimeoutId] = useState<TimeoutId | null>(null);
+  const hideTimeoutId = useRef<TimeoutId | null>(null);
+  const textTimeoutId = useRef<TimeoutId | null>(null);
 
   const onCopy = useCallback((e: MouseEvent<HTMLDivElement>) => {
     setIsCopied(true);
     copyToClipboard(value);
-    if (textTimeoutId) {
-      clearTimeout(textTimeoutId);
+    if (textTimeoutId.current) {
+      clearTimeout(textTimeoutId.current);
     }
-    if (hideTimeoutId) {
-      clearTimeout(hideTimeoutId);
+    if (hideTimeoutId.current) {
+      clearTimeout(hideTimeoutId.current);
     }
-    const htId = setTimeout(() => {
+    hideTimeoutId.current = setTimeout(() => {
       if (!onHover) {
         tooltipRef.current?.close();
       }
-      const ttId = setTimeout(() => setIsCopied(false), 200);
-      setTextTimeoutId(ttId);
+      textTimeoutId.current = setTimeout(() => setIsCopied(false), 200);
     }, 1000);
-    setHideTimeoutId(htId);
     e.stopPropagation();
-  }, [value, onHover, hideTimeoutId, textTimeoutId, setIsCopied, setHideTimeoutId, setTextTimeoutId]);
+  }, [value, onHover, setIsCopied]);
 
   const copyTooltipId = `copy-tooltip`;
   const copyTooltip = {

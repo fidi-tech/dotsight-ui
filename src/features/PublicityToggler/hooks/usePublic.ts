@@ -10,7 +10,7 @@ import {isWidgetPublic} from '@/entities/widget/model/getters';
 export const usePublic = (id: WidgetId) => {
   const dispatch = useDispatch();
   const widget = useSelector((state) => selectById(state, id));
-  const [isPublic, setIsPublic] = useState(widget && isWidgetPublic(widget));
+  const [isPublic, setIsPublic] = useState(Boolean(widget && isWidgetPublic(widget)));
   useEffect(() => {
     if (!widget) {
       return;
