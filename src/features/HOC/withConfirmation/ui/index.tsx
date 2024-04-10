@@ -35,7 +35,7 @@ export const withConfirmation = ({text, positive, negative, onPositiveClick, onN
       }, []);
 
       return (
-        <>
+        <div>
           <div onClick={show} className={styles.root}>
             <Component {...props}/>
           </div>
@@ -52,7 +52,7 @@ export const withConfirmation = ({text, positive, negative, onPositiveClick, onN
               </div>
             </div>
           )}
-        </>
+        </div>
       );
     }
     MyComp.displayName = `withConfirmation(${Component.displayName || Component.name || 'Component'})`;
