@@ -27,8 +27,8 @@ const Login = () => {
       </div>
       <div className={styles.container}>
         <Module className={styles.module}>
-          <p className={styles.title}>Welcome to DotSight</p>
-          <p className={styles.text}>Visualize with Precision, Simplify with Innovation</p>
+          <p className={styles.title}>Code-Free Analytics for Web3</p>
+          <p className={styles.text}>Visualize on-chain and off-chain data in a matter several clicks.</p>
           <div className={styles.buttons}>
             <Button text="Sign in with Google" onClick={loginGoogle} Logo={<Icons.Google />} />
             <Button text="Sign in with Github" onClick={loginGithub} Logo={<Icons.Github />} />
