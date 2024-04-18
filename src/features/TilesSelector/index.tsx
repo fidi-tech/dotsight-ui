@@ -9,6 +9,7 @@ export type Tile = {
   id: string,
   isDisabled?: boolean,
   isSelected?: boolean,
+  unavailabilityReason?: string,
 }
 
 type Section = {
@@ -51,6 +52,7 @@ const TilesSelector = ({title, placeholder, query, setQuery, sections}: Props) =
                 className={styles.tile}
                 key={tile.id}
                 onClick={(!tile.isDisabled ? section.onSelect.bind(this, tile.id) : undefined)}
+                Tooltip={tile.unavailabilityReason && <div className={styles.tooltip}>{tile.unavailabilityReason}</div>}
               >
                 {section.renderTile(tile)}
               </Tile>

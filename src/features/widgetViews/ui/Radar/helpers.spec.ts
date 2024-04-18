@@ -41,7 +41,7 @@ describe('features/widgetViews/ui/Radar/helpers', () => {
           canModify: true,
           canExecute: true,
           isPublic: true,
-        })).toEqual('Unavailable with one subCategory selected');
+        })).toEqual('Unavailable with one entity selected');
       })
       it('if preset selected', () => {
         expect(getUnavailabilityReason({
