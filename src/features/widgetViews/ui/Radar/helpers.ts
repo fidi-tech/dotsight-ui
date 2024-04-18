@@ -8,7 +8,7 @@ export const getUnavailabilityReason = (widget: Widget) => {
     return 'Unavailable with less than 3 metrics selected';
   }
   if (subCategoriesIds && subCategoriesIds.length < 2) {
-    return 'Unavailable with one subCategory selected';
+    return 'Unavailable with one entity selected';
   }
   if (getWidgetPresetId(widget)) {
     return 'Does not work with presets';
