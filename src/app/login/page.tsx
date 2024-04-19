@@ -28,7 +28,7 @@ const Login = () => {
       <div className={styles.container}>
         <Module className={styles.module}>
           <p className={styles.title}>Code-Free Analytics for Web3</p>
-          <p className={styles.text}>Visualize on-chain and off-chain data in a matter several clicks.</p>
+          <p className={styles.text}>Visualize on-chain and off-chain data in a matter of several clicks.</p>
           <div className={styles.buttons}>
             <Button text="Sign in with Google" onClick={loginGoogle} Logo={<Icons.Google />} />
             <Button text="Sign in with Github" onClick={loginGithub} Logo={<Icons.Github />} />
