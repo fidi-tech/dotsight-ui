@@ -63,7 +63,7 @@ const MetricsSelector = ({id}: Props) => {
 
   const sections = useMemo(() => [
     {id: 'metrics', tiles: metrics, renderTile: renderMetric, onSelect: onSelectMetrics},
-    {id: 'presets', tiles: presets, renderTile: renderPreset, onSelect: onSelectPreset},
+    {id: 'presets', title: 'Metrics collections', tiles: presets, renderTile: renderPreset, onSelect: onSelectPreset},
   ], [metrics, presets, renderPreset, renderMetric, onSelectPreset, onSelectMetrics]);
 
   return (
