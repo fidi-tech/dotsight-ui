@@ -29,7 +29,7 @@ describe('features/widgetViews/ui/LineChart/helpers', () => {
           canModify: true,
           canExecute: true,
           isPublic: true,
-        })).toEqual('Only one metric can be selected');
+        })).toEqual('This widget type requires a single metric being selected.');
       })
       it('if preset selected', () => {
         expect(getUnavailabilityReason({
@@ -42,7 +42,7 @@ describe('features/widgetViews/ui/LineChart/helpers', () => {
           canModify: true,
           canExecute: true,
           isPublic: true,
-        })).toEqual('Does not work with presets');
+        })).toEqual('This widget type doesn’t support metrics collection type. Please try again with the regular metrics only.');
       })
     })
   })
