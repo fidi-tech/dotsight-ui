@@ -14,6 +14,7 @@ export type Tile = {
 
 type Section = {
   id: string;
+  title?: string;
   tiles: Tile[],
   renderTile: (entity: any) => ReactNode,
   onSelect: (id: string) => void,
@@ -42,21 +43,24 @@ const TilesSelector = ({title, placeholder, query, setQuery, sections}: Props) =
           {/*<Button onClick={console.log} text="Select All" theme="minor" />*/}
         </div>
       </div>
-      <div className={styles.content}>
+      <div>
         {sections.filter(section => section.tiles.length > 0).map(section => (
           <div key={section.id} className={styles.section}>
-            {section.tiles.map(tile => (
-              <Tile
-                isActive={tile.isSelected}
-                isDisabled={tile.isDisabled}
-                className={styles.tile}
-                key={tile.id}
-                onClick={(!tile.isDisabled ? section.onSelect.bind(this, tile.id) : undefined)}
-                Tooltip={tile.unavailabilityReason && <div className={styles.tooltip}>{tile.unavailabilityReason}</div>}
-              >
-                {section.renderTile(tile)}
-              </Tile>
-            ))}
+            {section.title && <div className={styles.heading}>{section.title}</div>}
+            <div className={styles.tiles}>
+              {section.tiles.map(tile => (
+                <Tile
+                  isActive={tile.isSelected}
+                  isDisabled={tile.isDisabled}
+                  className={styles.tile}
+                  key={tile.id}
+                  onClick={(!tile.isDisabled ? section.onSelect.bind(this, tile.id) : undefined)}
+                  Tooltip={tile.unavailabilityReason && <div className={styles.tooltip}>{tile.unavailabilityReason}</div>}
+                >
+                  {section.renderTile(tile)}
+                </Tile>
+              ))}
+            </div>
           </div>
         ))}
       </div>

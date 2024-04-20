@@ -28,7 +28,7 @@ describe('features/widgetViews/ui/Radar/helpers', () => {
           canModify: true,
           canExecute: true,
           isPublic: true,
-        })).toEqual('Unavailable with less than 3 metrics selected');
+        })).toEqual('This widget type requires more than 3 metrics to be selected.');
       })
       it('if one subcategory selected', () => {
         expect(getUnavailabilityReason({
@@ -41,7 +41,7 @@ describe('features/widgetViews/ui/Radar/helpers', () => {
           canModify: true,
           canExecute: true,
           isPublic: true,
-        })).toEqual('Unavailable with one entity selected');
+        })).toEqual('This widget type requires more than one metrics sub-category to be selected.');
       })
       it('if preset selected', () => {
         expect(getUnavailabilityReason({
@@ -54,7 +54,7 @@ describe('features/widgetViews/ui/Radar/helpers', () => {
           canModify: true,
           canExecute: true,
           isPublic: true,
-        })).toEqual('Does not work with presets');
+        })).toEqual('This widget type doesn’t support metrics collection type. Please try again with the regular metrics only.');
       })
     })
   })

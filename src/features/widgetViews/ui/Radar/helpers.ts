@@ -5,13 +5,13 @@ export const getUnavailabilityReason = (widget: Widget) => {
   const metricsIds = getWidgetMetricsIds(widget);
   const subCategoriesIds = getWidgetSubCategoriesIds(widget);
   if (metricsIds && metricsIds.length < 3) {
-    return 'Unavailable with less than 3 metrics selected';
+    return 'This widget type requires more than 3 metrics to be selected.';
   }
   if (subCategoriesIds && subCategoriesIds.length < 2) {
-    return 'Unavailable with one entity selected';
+    return 'This widget type requires more than one metrics sub-category to be selected.';
   }
   if (getWidgetPresetId(widget)) {
-    return 'Does not work with presets';
+    return 'This widget type doesn’t support metrics collection type. Please try again with the regular metrics only.';
   }
   return;
 }
