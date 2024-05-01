@@ -1,7 +1,10 @@
 @import '~@styles/colors.scss';
 
+.root {
+  width: 100%;
+}
+
 .copyright {
-  padding: 0 35px 20px 35px;
   font-size: 12px;
   font-weight: 500;
   line-height: 20px;

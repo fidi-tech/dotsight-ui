@@ -1,11 +1,17 @@
 @import '~@styles/colors.scss';
+@import '~@styles/mixins/breakpoints.scss';
 
 .root {
-  padding: 15px 20px !important;
   border: none !important;
   display: flex;
   gap: 60px;
   align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  @include respond-to('tablet') {
+    gap: 30px;
+  }
 }
 
 .badge {
@@ -27,6 +33,15 @@
 
 .links {
   flex: 1;
+  @include respond-to('phone') {
+    display: none;
+  }
+}
+
+.right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .disconnect {
@@ -52,4 +67,11 @@
 
 .dashboard {
   color: $brand;
+}
+
+.mobileNavigation {
+  display: none;
+  @include respond-to('phone') {
+    display: block;
+  }
 }

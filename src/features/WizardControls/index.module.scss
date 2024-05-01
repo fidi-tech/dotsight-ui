@@ -1,3 +1,5 @@
+@import '~@styles/mixins/breakpoints.scss';
+
 .root {
   display: flex;
   align-items: center;
@@ -20,6 +22,10 @@
   height: 8px;
   border-radius: 10px;
   overflow: hidden;
+
+  @include respond-to('phone') {
+    display: none;
+  }
 }
 
 .right {

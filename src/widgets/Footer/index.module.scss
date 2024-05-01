@@ -1,4 +1,5 @@
 @import '~@styles/colors.scss';
+@import '~@styles/mixins/breakpoints.scss';
 
 .root {
   display: flex;
@@ -6,7 +7,8 @@
   font-weight: 500;
   color: $dark;
   column-gap: 40px;
-  padding-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid $border;
 }
 
 .icon {
@@ -20,12 +22,32 @@
   }
 }
 
-.copyright {
+.left {
   display: flex;
   flex: 1;
   align-items: center;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.center {
+  display: flex;
+  gap: 24px;
+  font-family: Gilroy-Regular, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.link {
+  text-decoration: none;
+  color: $dark;
+}
+
+.copyright {
+  @include respond-to('phone') {
+    display: none;
+  }
 }
 
 .socialWrapper {

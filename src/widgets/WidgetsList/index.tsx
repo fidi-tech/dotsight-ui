@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  getWidgetCategoryId,
   getWidgetId,
   getWidgetName,
   getWidgetView,
@@ -15,22 +14,19 @@ import Loader from '@/shared/ui/Loader';
 import PublicityToggler from '@/features/PublicityToggler';
 import {getRawShareLink} from '@/app/widget/[id]/share/utils';
 import Copyable from '@/shared/ui/Copyable';
+import Action from '@/widgets/WidgetsList/components/Action';
 
 import styles from './index.module.scss';
 import {useEnhance} from './hooks';
-import Action from '@/widgets/WidgetsList/components/Action';
 
 export const WidgetsList = () => {
   const {widgets, goToWidget, deleteWidget, isLoading} = useEnhance();
   return (
-    <div>
+    <div className={styles.root}>
       <div className={styles.title}>
         <div className={styles.name}>Name</div>
-        <div className={styles.datasources}>Data Sources</div>
-        <div className={styles.category}>Category</div>
         <div className={styles.type}>Type</div>
         <div className={styles.visibility}>Visibility</div>
-        <div className={styles.creator}>Creator</div>
         <div className={styles.actions}/>
       </div>
       {isLoading && <div className={styles.loader}><Loader /></div>}
@@ -51,17 +47,12 @@ export const WidgetsList = () => {
                 <div className={styles.name} onClick={goToWidget.bind(this, widgetId)}>
                   {getWidgetName(widget)}
                 </div>
-                <div className={styles.datasources}/>
-                <div className={styles.category}>
-                  {getWidgetCategoryId(widget)}
-                </div>
                 <div className={styles.type}>
                   <WidgetTypeTag type={getWidgetView(widget)}/>
                 </div>
                 <div className={styles.visibility}>
-                  <PublicityToggler id={widgetId} />
+                  <PublicityToggler id={widgetId} labelClassName={styles.publicityTogglerLabel} />
                 </div>
-                <div className={styles.creator}/>
                 <div className={styles.actions}>
                   {isWidgetPublic(widget) && (
                     <Copyable value={getRawShareLink(widgetId)}>

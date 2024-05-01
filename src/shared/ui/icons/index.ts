@@ -1,6 +1,8 @@
+import Burger from './burger.svg';
 import Chart from './chart.svg';
 import ChevronUp from './chevronUp.svg';
 import Clock from './clock.svg';
+import Cross from './cross.svg';
 import Database from './database.svg';
 import Disconnect from './disconnect.svg';
 import Discord from './discord.svg';
@@ -26,9 +28,11 @@ import Wallet from './wallet.svg';
 import X from './x.svg';
 
 export const IconNames = {
+  Burger: 'Burger',
   Chart: 'Chart',
   ChevronUp: 'ChevronUp',
   Clock: 'Clock',
+  Cross: 'Cross',
   Database: 'Database',
   Disconnect: 'Disconnect',
   Discord: 'Discord',
@@ -57,9 +61,11 @@ export const IconNames = {
 export type IconName = typeof IconNames[keyof typeof IconNames];
 
 export const Icons: Record<IconName, any> = {
+  [IconNames.Burger]: Burger,
   [IconNames.Chart]: Chart,
   [IconNames.ChevronUp]: ChevronUp,
   [IconNames.Clock]: Clock,
+  [IconNames.Cross]: Cross,
   [IconNames.Database]: Database,
   [IconNames.Disconnect]: Disconnect,
   [IconNames.Discord]: Discord,

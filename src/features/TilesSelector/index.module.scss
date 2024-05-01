@@ -1,4 +1,5 @@
 @import '~@styles/colors.scss';
+@import '~@styles/mixins/breakpoints.scss';
 
 .root {
 
@@ -11,6 +12,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include respond-to('phone') {
+    flex-direction: column;
+    gap: 20px;
+    align-items: normal;
+  }
 }
 
 .title {
@@ -28,6 +35,10 @@
 .search {
   width: 475px;
   height: 40px;
+
+  @include respond-to('phone') {
+    width: 100%;
+  }
 }
 
 .section {
@@ -52,6 +63,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 10px;
+
+  @include respond-to('phone') {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
 }
 
 .tile {

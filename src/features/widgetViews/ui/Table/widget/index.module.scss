@@ -1,4 +1,12 @@
 @import '~@styles/colors.scss';
+@import '~@styles/mixins/breakpoints.scss';
+
+
+.root {
+  @include respond-to('phone') {
+    transform: scale(0.6);
+  }
+}
 
 .copyright {
   padding-top: 20px;

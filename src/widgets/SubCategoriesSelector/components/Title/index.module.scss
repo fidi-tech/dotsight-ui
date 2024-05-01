@@ -1,7 +1,6 @@
 @import '~@styles/colors.scss';
 
 .title {
-  display: flex;
   align-items: center;
 }
 
@@ -12,7 +11,8 @@
 }
 
 .branded {
-  display: flex;
+  display: inline-flex;
+  vertical-align: middle;
   gap: 6px;
   color: $brand;
   margin: 0 10px;

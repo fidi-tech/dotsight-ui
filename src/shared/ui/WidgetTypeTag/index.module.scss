@@ -1,7 +1,7 @@
 @import '~@styles/colors.scss';
 
 .root {
-  display: inline-flex;
+  display: inline-block;
   border-radius: 12px;
   background: rgba(126, 139, 255, 0.05);
   padding: 10px;
@@ -9,4 +9,9 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 10px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
