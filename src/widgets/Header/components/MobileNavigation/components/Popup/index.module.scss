@@ -1,0 +1,29 @@
+.root {
+  padding: 30px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.button {
+  padding: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 8px;
+    transform: rotate(90deg);
+  }
+}

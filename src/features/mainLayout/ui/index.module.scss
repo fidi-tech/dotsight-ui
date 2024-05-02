@@ -1,11 +1,24 @@
+@import '~@styles/mixins/breakpoints.scss';
+
 .container {
-  width: 1250px;
+  max-width: 1250px;
   margin: 0 auto;
-  padding: 26px 0;
+  padding: 20px 20px 15px;
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 60px;
   min-height: 100vh;
+
+  @include respond-to('tablet') {
+    width: auto;
+    gap: 40px;
+  }
+
+  @include respond-to('phone') {
+    width: auto;
+    padding: 20px 15px 15px;
+    gap: 35px;
+  }
 }
 
 .contentWrapper {
@@ -18,4 +31,5 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding-bottom: 20px;
 }

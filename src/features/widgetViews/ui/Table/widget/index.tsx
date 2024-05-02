@@ -18,12 +18,10 @@ const View = ({data}: Props) => {
     copyrights,
   } = useEnhance(data);
   return (
-    <div>
-      <Module>
-        <Table header={header} rows={rows} />
-        <Copyrights copyrights={copyrights} className={styles.copyright} />
-      </Module>
-    </div>
+    <Module className={styles.root}>
+      <Table header={header} rows={rows} />
+      <Copyrights copyrights={copyrights} className={styles.copyright} />
+    </Module>
   )
 }
 

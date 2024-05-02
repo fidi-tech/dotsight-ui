@@ -6,6 +6,7 @@ import {
   PolarRadiusAxis,
   Radar,
   RadarChart,
+  ResponsiveContainer,
   Tooltip
 } from 'recharts';
 
@@ -31,27 +32,29 @@ const View = ({data}: Props) => {
   const {items, chart, copyrights, metrics} = useEnhance(data);
   return (
     <Module className={styles.root}>
-      <RadarChart outerRadius={90} width={730} height={250} data={chart}>
-        <PolarGrid/>
-        <PolarAngleAxis
-          dataKey="metric"
-          // @ts-ignore
-          tick={<CustomTick external={{metrics}}/>}
-        />
-        <PolarRadiusAxis angle={30} domain={[0, 1]} tick={false} axisLine={false}/>
-        {Object.keys(items).map((item, i) =>
-          <Radar
-            key={item}
-            name={item}
-            dataKey={item}
-            stroke={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]}
-            fill={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]}
-            fillOpacity={0.6}
-          />,
-        )}
-        <Legend content={<CustomizedLegend payload={[]} external={{items, containerRef: legendContainerRef}}/>} />
-        <Tooltip content={<CustomizedTooltip external={{items, metrics}}/>} />
-      </RadarChart>
+      <ResponsiveContainer minHeight={300}>
+        <RadarChart outerRadius={90} data={chart}>
+          <PolarGrid/>
+          <PolarAngleAxis
+            dataKey="metric"
+            // @ts-ignore
+            tick={<CustomTick external={{metrics}}/>}
+          />
+          <PolarRadiusAxis angle={30} domain={[0, 1]} tick={false} axisLine={false}/>
+          {Object.keys(items).map((item, i) =>
+            <Radar
+              key={item}
+              name={item}
+              dataKey={item}
+              stroke={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]}
+              fill={getColorsFromPaletteByVariant(PaletteVariant.v1)[i]}
+              fillOpacity={0.6}
+            />,
+          )}
+          <Legend content={<CustomizedLegend payload={[]} external={{items, containerRef: legendContainerRef}}/>} />
+          <Tooltip content={<CustomizedTooltip external={{items, metrics}}/>} />
+        </RadarChart>
+      </ResponsiveContainer>
       <div ref={legendContainerRef} className={styles.legend} />
       <Copyrights copyrights={copyrights} className={styles.copyright} />
     </Module>

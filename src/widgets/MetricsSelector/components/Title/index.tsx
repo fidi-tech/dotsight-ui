@@ -12,7 +12,7 @@ export const Title = () => (
           <Icons.Chart />
         </span>
         Metrics
-      </span>
+    </span>
     for your widget
   </p>
 );

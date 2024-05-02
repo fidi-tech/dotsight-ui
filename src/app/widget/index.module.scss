@@ -1,9 +1,17 @@
 @import '~@styles/colors.scss';
+@import '~@styles/mixins/breakpoints.scss';
 
 .root {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 250px;
+  @include respond-to('tablet') {
+    margin-top: 150px;
+  }
+  @include respond-to('phone') {
+    margin-top: 30px;
+  }
 }
 
 .tiles {
@@ -16,11 +24,24 @@
   gap: 10px;
   align-items: center;
   justify-content: center;
+
+  @include respond-to('phone') {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .tile {
   width: 385px;
   height: 130px;
+
+  @include respond-to('tablet') {
+    width: 250px;
+  }
+
+  @include respond-to('phone') {
+    width: 100%;
+  }
 }
 
 .icon {

@@ -9,9 +9,10 @@ import {useEnhance} from './hooks';
 type Props = {
   id: WidgetId;
   controllable?: boolean;
+  labelClassName?: string;
 }
 
-const PublicityToggler = ({id, controllable}: Props) => {
+const PublicityToggler = ({id, controllable, labelClassName}: Props) => {
   const {label, isPublic, setIsPublic} = useEnhance(id);
   const toggle = useCallback(() => {
     if (controllable) {
@@ -21,7 +22,7 @@ const PublicityToggler = ({id, controllable}: Props) => {
   }, [isPublic, setIsPublic, controllable]);
   return (
     <div className={styles.root} onClick={toggle}>
-      <div>{label}</div>
+      <div className={labelClassName}>{label}</div>
       <Switch className={styles.switcherContainer} switcherClassName={styles.switcher} initial={isPublic} controllable={controllable} />
     </div>
   )

@@ -1,4 +1,5 @@
 @import '~@styles/colors.scss';
+@import '~@styles/mixins/breakpoints.scss';
 
 .root {
   display: flex;
@@ -16,6 +17,7 @@
     "preview preview"
     "types types";
   grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
@@ -31,6 +33,11 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  overflow: hidden;
+
+  @include respond-to('phone') {
+    padding: 15px 15px;
+  }
 }
 
 .types {

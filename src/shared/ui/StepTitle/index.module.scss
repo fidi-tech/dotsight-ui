@@ -1,4 +1,5 @@
 @import '~@styles/colors.scss';
+@import '~@styles/mixins/breakpoints.scss';
 
 $size: 50px;
 
@@ -6,6 +7,9 @@ $size: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  @include respond-to('phone') {
+    text-align: center;
+  }
 }
 
 .number {
@@ -19,6 +23,9 @@ $size: 50px;
   color: $brand;
   text-align: center;
   margin-right: 15px;
+  @include respond-to('phone') {
+    display: none;
+  }
 }
 
 .text {

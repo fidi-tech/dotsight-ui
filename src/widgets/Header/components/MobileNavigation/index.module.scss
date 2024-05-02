@@ -1,0 +1,25 @@
+@import '~@styles/colors.scss';
+
+.content {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  left: 0;
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  padding: 9px;
+  justify-content: center;
+  background-color: $module;
+  color: #79818D;
+  svg {
+    width: 22px;
+  }
+}

@@ -1,27 +1,44 @@
 @import '~@styles/colors.scss';
+@import '~@styles/mixins/breakpoints.scss';
+
+.root {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+
+  @include respond-to('phone') {
+    font-size: 14px;
+  }
+}
+
+.publicityTogglerLabel {
+  @include respond-to('phone') {
+    display: none;
+  }
+}
 
 .title, .row {
   display: grid;
-  grid-template-areas: "name datasources category type visibility creator actions";
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas: "name type visibility actions";
+  grid-template-columns: repeat(3, 1fr) 70px;
+  @include respond-to('phone') {
+    grid-template-columns: repeat(3, 1fr) 60px;
+  }
 }
 
-.name, .datasources, .category, .type, .visibility, ,.creator, .actions {
-  flex: 1;
+.name, .type, .visibility, .actions {
   text-align: start;
+  overflow: hidden;
+  display: flex;
 }
 
 .name {
+  display: block;
   grid-area: name;
   cursor: pointer;
-}
-
-.datasources {
-  grid-area: datasources;
-}
-
-.category {
-  grid-area: category;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .type {
@@ -30,10 +47,6 @@
 
 .visibility {
   grid-area: visibility;
-}
-
-.creator {
-  grid-area: creator;
 }
 
 .actions {
