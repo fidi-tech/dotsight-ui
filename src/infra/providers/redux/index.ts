@@ -10,3 +10,4 @@ export const store = configureStore({
 
 export const useDispatch = () => useReduxDispatch<ReduxDispatch>()
 export type ReduxDispatch = typeof store.dispatch
+export type AppState = ReturnType<typeof store.getState>;

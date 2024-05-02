@@ -10,7 +10,6 @@ import {getMetricId, getMetricIsAvailable, getMetricIsSelected} from '@/entities
 import {MetricId} from '@/entities/metric/model';
 import {setMetricsByWidgetId} from '@/entities/metric/model/providers/setMetricsByWidgetId';
 import {PresetId} from '@/entities/preset/model';
-import {getPresetId, getPresetIsSelected} from '@/entities/preset/model/getters';
 
 export const useMetrics = (id: WidgetId) => {
   const dispatch = useDispatch();
@@ -35,14 +34,7 @@ export const useMetrics = (id: WidgetId) => {
 
   const presets = useSelector(selectAllPresets);
   const onSelectPreset = useCallback((presetId: PresetId) => {
-    const currentSelectedPreset = presets.find(getPresetIsSelected);
-    const targetSelectedPresetId = (
-      currentSelectedPreset
-      && getPresetId(currentSelectedPreset) === presetId
-    )
-      ? undefined
-      : presetId;
-    dispatch(setMetricsByWidgetId(id, undefined, targetSelectedPresetId, query));
+    dispatch(setMetricsByWidgetId(id, undefined, presetId, query));
   }, [query, id, dispatch, presets]);
 
   return {

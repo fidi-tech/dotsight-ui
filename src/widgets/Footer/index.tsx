@@ -1,9 +1,9 @@
 import * as React from 'react';
+import Link from 'next/link';
 
 import {Icons} from '@/shared/ui/icons';
 
 import styles from './index.module.scss';
-import Link from 'next/link';
 
 const Footer = () => (
   <div className={styles.root}>
