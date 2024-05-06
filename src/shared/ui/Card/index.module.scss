@@ -1,8 +1,10 @@
+@import '~@styles/colors.scss';
+
 .root {
     stroke-width: 1px;
-    stroke: #DCDEE1;
+    stroke: $border;
     padding: 0 20px;
     display: flex;
     align-items: center;
-    fill: #FAFAFA;
+    fill: $module;
 }

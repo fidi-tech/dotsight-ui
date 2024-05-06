@@ -91,7 +91,7 @@ const MetricsSelector = ({id}: Props) => {
               theme="minor"
               iconPosition="Left"
               icon={
-                <div>
+                <div className={styles.prevIcon}>
                   <Icons.OutlinedArrow/>
                 </div>
               }

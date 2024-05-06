@@ -9,6 +9,7 @@ import {Icons} from '@/shared/ui/icons';
 
 import ShareButton from './components/ShareButton';
 import {Props, BaseProps} from '../../types';
+import styles from "./index.module.scss";
 
 export const withWizardControls = (Component: ComponentType<Props>) => {
   const MyComp = (props: BaseProps) => {
@@ -22,7 +23,7 @@ export const withWizardControls = (Component: ComponentType<Props>) => {
             theme="minor"
             iconPosition="Left"
             icon={
-              <div>
+              <div className={styles.prevIcon}>
                 <Icons.OutlinedArrow/>
               </div>
             }

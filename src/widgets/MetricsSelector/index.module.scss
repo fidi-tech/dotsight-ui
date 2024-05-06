@@ -21,10 +21,17 @@
   border-radius: 20px;
 }
 
-.nextIcon {
+.nextIcon, .prevIcon {
   width: 24px;
   height: 24px;
+}
+
+.nextIcon {
   transform: rotate(180deg);
+}
+
+.prevIcon {
+  color: $dark;
 }
 
 .tileIcon {

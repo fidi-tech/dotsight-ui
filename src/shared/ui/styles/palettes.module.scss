@@ -1,7 +1,7 @@
 @import '~@styles/colors.scss';
 
 :export {
-  v1: ['#7E8BFF', '#AD79FF', '#F07EFF', '#FF7EB5', '#FF6F6F', '#DCDEE1'];
-  v2: ["#{$brand}", '#7EC6FF', '#7EFFE5', '#7EFFB5', '#79818D', '#DCDEE1'];
-  v3: ["#{$brand}", '#DE8AE3', '#F18CB6', '#F4A58A', '#F9CD72', '#DCDEE1'];
+  v1: ['#{$brand}', '#AD79FF', '#F07EFF', '#FF7EB5', '#FF6F6F', '#{$border}'];
+  v2: ["#{$brand}", '#7EC6FF', '#7EFFE5', '#7EFFB5', '#{$dark}', '#{$border}'];
+  v3: ["#{$brand}", '#DE8AE3', '#F18CB6', '#F4A58A', '#F9CD72', '#{$border}'];
 }
