@@ -26,6 +26,7 @@ import Trash from './trash.svg';
 import Triangle from './triangle.svg';
 import Wallet from './wallet.svg';
 import X from './x.svg';
+import Metamask from './metamask.svg';
 
 export const IconNames = {
   Burger: 'Burger',
@@ -56,6 +57,7 @@ export const IconNames = {
   Triangle: 'Triangle',
   Wallet: 'Wallet',
   X: 'X',
+  Metamask: 'Metamask',
 }
 
 export type IconName = typeof IconNames[keyof typeof IconNames];
@@ -89,4 +91,5 @@ export const Icons: Record<IconName, any> = {
   [IconNames.Triangle]: Triangle,
   [IconNames.Wallet]: Wallet,
   [IconNames.X]: X,
+  [IconNames.Metamask]: Metamask,
 } as const;
