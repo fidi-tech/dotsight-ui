@@ -10,6 +10,7 @@ import {ACCESS_TOKEN} from '@/shared/constants/cookies';
 
 import Button from './components/Button';
 import styles from './index.module.scss';
+import dynamic from 'next/dynamic';
 
 const Login = () => {
   const token = getCookie(ACCESS_TOKEN);
@@ -58,4 +59,4 @@ const Login = () => {
   )
 }
 
-export default Login;
+export default dynamic(async () => Login, {ssr: false});
