@@ -4,6 +4,7 @@ import Icon from './icon.svg';
 import {WidgetConfig} from '..';
 import {WidgetType} from '../constants';
 import {getUnavailabilityReason} from './helpers';
+import {ViewComponents} from './widget/views'
 
 const radar: WidgetConfig = {
   title: 'Radar',
@@ -12,6 +13,7 @@ const radar: WidgetConfig = {
   Placeholder,
   Icon,
   getUnavailabilityReason,
+  views: ViewComponents,
 };
 
 export default radar;

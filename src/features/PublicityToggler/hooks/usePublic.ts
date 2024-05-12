@@ -20,7 +20,7 @@ export const usePublic = (id: WidgetId) => {
   const onChange = useCallback((value: boolean) => {
     setIsPublic(value);
     dispatch(updateWidgetById(id, {isPublic: value}))
-  }, [isPublic, setIsPublic]);
+  }, [dispatch, setIsPublic, id]);
 
   return {
     label: isPublic ? 'Public' : 'Private',

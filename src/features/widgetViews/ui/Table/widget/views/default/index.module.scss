@@ -3,9 +3,16 @@
 
 
 .root {
+  display: flex;
+  flex-direction: column;
   @include respond-to('phone') {
     transform: scale(0.6);
   }
+}
+
+.container {
+  flex: 1;
+  overflow: hidden;
 }
 
 .copyright {
