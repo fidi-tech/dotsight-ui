@@ -46,9 +46,9 @@ const Login = () => {
             <Button text="Sign in with Github" onClick={loginGithub} Logo={<Icons.Github />} />
             {
               // @ts-ignore
-              window.ethereum && (
+              typeof window !== 'undefined' && window.ethereum ? (
                 <Button text="Sign in with Metamask" onClick={loginWeb3} Logo={<Icons.Metamask />} />
-              )
+              ) : null
             }
           </div>
         </Module>
