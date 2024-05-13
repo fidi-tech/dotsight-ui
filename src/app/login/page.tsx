@@ -22,12 +22,18 @@ const Login = () => {
   const loginGoogle = () => window.location.assign('/api/auth/google');
   const loginGithub = () => window.location.assign('/api/auth/github');
   const loginWeb3 = useCallback(async () => {
+    // @ts-ignore global variable
+    const eth: {request: Function} = window?.ethereum;
+
+    if (!eth) {
+      window.open('https://metamask.io/download/');
+      return;
+    }
+
     try {
       const msg = '0x57656c636f6d6520746f20446f74736967687421'; // Welcome to Dotsight!
-      // @ts-ignore global variable
-      const [address] = await window.ethereum.request({method: "eth_requestAccounts"});
-      // @ts-ignore global variable
-      const signed = await window.ethereum.request({method: "personal_sign", params: [msg, address]});
+      const [address] = await eth.request({method: "eth_requestAccounts"});
+      const signed = await eth.request({method: "personal_sign", params: [msg, address]});
       window.location.assign(`/api/auth/web3?address=${address}&msg=${msg}&signed=${signed}`);
     } catch (err) {
       console.error(err);
@@ -45,12 +51,7 @@ const Login = () => {
           <div className={styles.buttons}>
             <Button text="Sign in with Google" onClick={loginGoogle} Logo={<Icons.Google />} />
             <Button text="Sign in with Github" onClick={loginGithub} Logo={<Icons.Github />} />
-            {
-              // @ts-ignore
-              typeof window !== 'undefined' && window.ethereum ? (
-                <Button text="Sign in with Metamask" onClick={loginWeb3} Logo={<Icons.Metamask />} />
-              ) : null
-            }
+            <Button text="Sign in with Metamask" onClick={loginWeb3} Logo={<Icons.Metamask />} />
           </div>
         </Module>
       </div>
@@ -59,4 +60,4 @@ const Login = () => {
   )
 }
 
-export default dynamic(async () => Login, {ssr: false});
+export default Login;
