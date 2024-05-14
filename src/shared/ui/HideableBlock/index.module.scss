@@ -12,7 +12,7 @@ $title: 66px;
   display: flex;
   align-items: center;
   margin: -1px;
-  border: 1px solid #DCDEE1;
+  border: 1px solid $border;
   border-radius: 20px;
   cursor: pointer;
   user-select: none;
@@ -23,7 +23,7 @@ $title: 66px;
   min-width: $title;
   height: 100%;
   color: $dark;
-  border: 1px solid #DCDEE1;
+  border: 1px solid $border;
   border-radius: 20px;
   box-sizing: content-box;
   margin: -1px;
@@ -48,7 +48,7 @@ $title: 66px;
 }
 
 .title {
-  color: #131417;
+  color: $black;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;

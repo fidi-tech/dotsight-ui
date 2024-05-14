@@ -2,6 +2,8 @@ import React from 'react';
 
 import {MetricId} from '@/entities/metric/model';
 
+import styles from './index.module.scss';
+
 type Props = {
   external: {
     metrics: Record<MetricId, {name: string}>,
@@ -18,15 +20,12 @@ type Props = {
 
 export const Tick = ({ payload, x, y, textAnchor, stroke, radius, external }: Props) => {
   return (
-    <g
-      className="recharts-layer recharts-polar-angle-axis-tick"
-    >
+    <g className={styles.root}>
       <text
         radius={radius}
         stroke={stroke}
         x={x}
         y={y}
-        className="recharts-text recharts-polar-angle-axis-tick-value"
         textAnchor={textAnchor}
       >
         <tspan x={x} dy="0em">

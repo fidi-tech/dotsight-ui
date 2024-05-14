@@ -1,3 +1,5 @@
+@import '~@styles/colors.scss';
+
 .marks {
   display: flex;
   justify-content: center;
@@ -9,11 +11,11 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 16px;
-  color: #79818D;
+  color: $dark;
 }
 
 .title {
-  color: #22262B;
+  color: $darker;
   font-size: 16px;
   font-weight: 600;
   line-height: 19px;

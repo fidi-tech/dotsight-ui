@@ -1,0 +1,7 @@
+@import '~@styles/mixins/breakpoints.scss';
+
+.root {
+  @include respond-to('phone') {
+    display: none;
+  }
+}
