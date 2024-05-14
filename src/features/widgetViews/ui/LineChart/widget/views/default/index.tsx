@@ -14,7 +14,7 @@ import {Legend as CustomizedLegend} from '../../components/Legend';
 import {formatValue, formatTime} from '../../helpers';
 import {BaseProps} from '..';
 
-export const configuration = {
+const configuration = {
     width: 2,
     height: 1,
 };

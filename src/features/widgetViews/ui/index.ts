@@ -14,7 +14,7 @@ export type WidgetConfig = {
   Placeholder: ({isLoading, isError}: any) => ReactNode;
   Icon: FunctionComponent<SVGAttributes<SVGElement>>;
   getUnavailabilityReason?: (widget: Widget) => string | undefined,
-  views: Record<string, {configuration: object, View: ComponentType<any>}>,
+  views: Record<string, {View: ComponentType<any>}>,
 }
 export const widgets: Record<WidgetType, WidgetConfig> = {
   [WidgetType.lineChart]: LineChart,

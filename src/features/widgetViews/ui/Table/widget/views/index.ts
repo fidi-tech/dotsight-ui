@@ -1,5 +1,5 @@
-import {View as DefaultView, configuration as defaultConfiguration} from './default';
-import {View as DynamicView, configuration as dynamicConfiguration} from './dynamic';
+import {View as DefaultView} from './default';
+import {View as DynamicView} from './dynamic';
 
 export type BaseProps = {
     header: string[],
@@ -13,11 +13,9 @@ export enum ViewType {
 
 export const ViewComponents = {
     [ViewType.default]: {
-        configuration: defaultConfiguration,
         View: DefaultView,
     },
     [ViewType.dynamic]: {
-        configuration: dynamicConfiguration,
         View: DynamicView,
     },
 }

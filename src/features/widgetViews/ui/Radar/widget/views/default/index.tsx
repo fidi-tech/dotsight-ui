@@ -23,7 +23,7 @@ import {Tick as CustomTick} from '../../components/Tick';
 import {BaseProps} from '..';
 import styles from './index.module.scss';
 
-export const configuration = {
+const configuration = {
     width: 2,
     height: 1,
 };

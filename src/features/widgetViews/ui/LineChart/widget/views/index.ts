@@ -1,7 +1,7 @@
 import {UnitId} from '@/entities/unit/model';
 import {SubCategoryId} from '@/entities/subCategory/model';
 
-import {View as DefaultView, configuration as defaultConfiguration} from "./default";
+import {View as DefaultView} from "./default";
 
 export enum ViewType {
     default = 'default',
@@ -20,7 +20,6 @@ export type BaseProps = {
 
 export const ViewComponents = {
     [ViewType.default]: {
-        configuration: defaultConfiguration,
         View: DefaultView,
     },
 }

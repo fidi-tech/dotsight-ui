@@ -8,7 +8,7 @@ import {CopyrightsRaw} from '@/shared/api/dotsight';
 import styles from './index.module.scss';
 import {BaseProps} from '..';
 
-export const configuration = {
+const configuration = {
     width: 2,
     height: 1,
 };

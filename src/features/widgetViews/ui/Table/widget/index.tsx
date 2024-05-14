@@ -14,7 +14,7 @@ const View = ({data}: Props) => {
     copyrights,
   } = useEnhance(data);
 
-  const viewType = ViewType.default;
+  const viewType = ViewType.dynamic;
   const Component = ViewComponents[viewType].View;
 
   return <Component header={header} rows={rows} copyrights={copyrights} />
