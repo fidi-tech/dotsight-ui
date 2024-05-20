@@ -4,6 +4,7 @@ import Icon from './icon.svg';
 import {getUnavailabilityReason} from './helpers';
 import {WidgetConfig} from '..';
 import {WidgetType} from '../constants';
+import {ViewComponents} from './widget/views'
 
 const lineChart: WidgetConfig = {
   title: 'Time Series',
@@ -12,6 +13,7 @@ const lineChart: WidgetConfig = {
   Placeholder,
   Icon,
   getUnavailabilityReason,
+  views: ViewComponents,
 };
 
 export default lineChart;

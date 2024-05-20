@@ -1,11 +1,7 @@
 import React from 'react';
 
-import {Table} from '@/shared/ui/Table';
-import {Module} from '@/shared/ui/Module';
-import {Copyrights} from '@/shared/ui/Copyrights';
-
 import {useEnhance} from './hooks';
-import styles from './index.module.scss';
+import {ViewComponents, ViewType} from './views';
 
 type Props = {
   data: any,
@@ -17,12 +13,11 @@ const View = ({data}: Props) => {
     rows,
     copyrights,
   } = useEnhance(data);
-  return (
-    <Module className={styles.root}>
-      <Table header={header} rows={rows} />
-      <Copyrights copyrights={copyrights} className={styles.copyright} />
-    </Module>
-  )
+
+  const viewType = ViewType.dynamic;
+  const Component = ViewComponents[viewType].View;
+
+  return <Component header={header} rows={rows} copyrights={copyrights} />
 }
 
 export default View;

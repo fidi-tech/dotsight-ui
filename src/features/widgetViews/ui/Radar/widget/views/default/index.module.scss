@@ -1,0 +1,31 @@
+@import '~@styles/colors.scss';
+
+.root {
+  width: 100%;
+  position: relative;
+  padding: 0;
+  border: none;
+}
+
+.copyright {
+  padding: 0 35px 20px 35px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: $dark;
+}
+
+.legend {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

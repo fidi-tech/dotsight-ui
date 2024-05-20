@@ -9,13 +9,13 @@ export const useEnhance = () => {
     if (popupRef.current && !popupRef.current.contains(event.target as Element)) {
       setIsOpened(false);
     }
-  }, [popupRef.current]);
+  }, []);
   useEffect(() => {
     document.addEventListener('click', handleClickOutside, true);
     return () => {
       document.removeEventListener('click', handleClickOutside, true);
     };
-  }, []);
+  }, [handleClickOutside]);
 
   return {
     isOpened,

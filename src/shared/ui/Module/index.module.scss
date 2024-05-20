@@ -5,6 +5,8 @@
   padding: 20px;
   border: 1px solid $border;
   border-radius: 20px;
+  overflow: hidden;
+  box-sizing: border-box;
 
   &:empty {
     display: none;

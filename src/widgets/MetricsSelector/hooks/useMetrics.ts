@@ -35,7 +35,7 @@ export const useMetrics = (id: WidgetId) => {
   const presets = useSelector(selectAllPresets);
   const onSelectPreset = useCallback((presetId: PresetId) => {
     dispatch(setMetricsByWidgetId(id, undefined, presetId, query));
-  }, [query, id, dispatch, presets]);
+  }, [query, id, dispatch]);
 
   return {
     metrics: metrics.map(m => ({...m, isDisabled: !getMetricIsAvailable(m)})),
